@@ -4,7 +4,14 @@ import Button from '../components/button.astro';
 ---
 
 <Layout title="Test build">
-	<main>
-			<Button title="test"/>
+	<main class="relative flex flex-col z-10 justify-center items-center text-center h-screen px-8">
+		<div class="relative flex flex-col items-center text-center p-8 w-full max-w-6xl space-y-4 border-solid outline outline-grey-100 outline-offset-0.5">
+			<div><img src="../../public/logo.svg" class="relative w-64"></div>
+			<div><p class="font-body text-lg">Portfolio is being rebuild from scratch! <br>It will be back soon!</p></div>
+			<Button 
+				title="visit my backup portfolio"
+				link='https://mbsn.webflow.io/'
+			/>
+		</div>	
 	</main>
 </Layout>
