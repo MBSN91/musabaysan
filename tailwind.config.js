@@ -4,6 +4,10 @@ module.exports = {
     content: ["./src/**/*.{html,js,astro,css}"],
     theme: {
 
+      fontFamily: {
+        'smallt': ['"Inconsolata"', 'monospace'],
+      },
+
       fontSize: {
         xxs: '0.625rem',
       },
