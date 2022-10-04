@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Teko';
-  src: url('../fonts/teko/Teko-Medium.woff2') format('woff');
+  src: url('../src/assets/fonts/teko/Teko-SemiBold.woff2') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Averta';
-  src: url('../fonts/averta/Averta-Regular.woff2') format('woff');
+  src: url('.././src/assets/fonts/averta/Averta-Regular.woff2') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
