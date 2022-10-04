@@ -18,3 +18,10 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('.././src/assets/fonts/inconsolata/Inconsolata-Bold.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

@@ -4,6 +4,10 @@ module.exports = {
     content: ["./src/**/*.{html,js,astro,css}"],
     theme: {
 
+      fontSize: {
+        xxs: '0.625rem',
+      },
+
       colors: {
         'primary': '#05192d',
         'primary-100':'#112e4b',
@@ -26,7 +30,8 @@ module.exports = {
       extend: {
         fontFamily: {
           button: ['Teko', 'sans-serif'],
-          body: ['Averta', 'sans-serif']
+          body: ['Averta', 'sans-serif'],
+          small: ['Inconsolata','sans-serif']
         }
       },
       
