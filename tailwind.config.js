@@ -6,6 +6,8 @@ module.exports = {
 
       fontFamily: {
         'smallt': ['"Inconsolata"', 'monospace'],
+        'body': ['"Open Sans"','sans-serif'],
+        'button': ['"Teko"','sans-serif']        
       },
 
       fontSize: {
@@ -31,12 +33,6 @@ module.exports = {
         '8': '8px',
       },
 
-      extend: {
-        fontFamily: {
-          button: ['Teko', 'sans-serif'],
-          body: ['Averta', 'sans-serif'],
-        }
-      },
       
     },
     plugins: [],
