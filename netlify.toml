@@ -1,5 +1,5 @@
 [[headers]]
-    for = "/assets/fonts/averta/*.woff && /assets/fonts/inconsolata/*.woff && /assets/fonts/recoleta/*.woff && /assets/fonts/teko/*.woff"
+    for = "/*.woff"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Content-Type = "application/font-woff"

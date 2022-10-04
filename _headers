@@ -1,17 +1,5 @@
 /*
 
-/assets/fonts/averta/*.woff
-    Access-Control-Allow-Origin: *
-    Content-Type: application/font-woff
-
-/assets/fonts/inconsolata/*.woff
-    Access-Control-Allow-Origin: *
-    Content-Type: application/font-woff
-
-/assets/fonts/recoleta/*.woff
-    Access-Control-Allow-Origin: *
-    Content-Type: application/font-woff
-
-/assets/fonts/teko/*.woff
+*.woff
     Access-Control-Allow-Origin: *
     Content-Type: application/font-woff
