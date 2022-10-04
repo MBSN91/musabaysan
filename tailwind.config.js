@@ -31,7 +31,6 @@ module.exports = {
         fontFamily: {
           button: ['Teko', 'sans-serif'],
           body: ['Averta', 'sans-serif'],
-          small: ['Inconsolata','sans-serif']
         }
       },
       
