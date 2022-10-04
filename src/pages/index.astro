@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/button.astro';
 import Logo from '../assets/logo.svg';
 import Arrow from '../assets/arrow.svg';
+import "@fontsource/Inconsolata";
 ---
 
 <Layout title="Test build">
@@ -14,7 +15,7 @@ import Arrow from '../assets/arrow.svg';
 				title="visit portfolio"
 				link='https://mbsn.webflow.io/'
 			/>
-			<div class="relative py-1 px-2 max-w-fit bg-primary text-secondary text-xxs font-small">my old portfolio website is still online!<div class="absolute -right-10 -top-11"><img src={ Arrow } class="h-12"></div></div>
+			<div class="relative py-1 px-2 max-w-fit bg-primary text-secondary text-xxs font-small"><p class="font-f"> old portfolio website is still online!</p><div class="absolute -right-10 -top-11"><img src={ Arrow } class="h-12"></div></div>
 		</div>	
 	</main>
 </Layout>
