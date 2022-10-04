@@ -1,5 +1,10 @@
 [[headers]]
-    for = "/*.woff"
+    for = "/assets/fonts/*.woff"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Content-Type = "application/font-woff"
+
+[[headers]]
+  for = "/assets/fonts/*"
+    [headers.values]
+    Cache-Control = "public, max-age=31536000"

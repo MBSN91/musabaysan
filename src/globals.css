@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Teko';
-  src: url('../src/assets/fonts/teko/teko-semibold.woff2') format('woff');
+  src: url('../src/assets/fonts/teko-semibold.woff2') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Averta';
-  src: url('.././src/assets/fonts/averta/averta-regular.woff2') format('woff');
+  src: url('.././src/assets/fonts/averta-regular.woff2') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: 'Inconsolata';
-  src: url('.././src/assets/fonts/inconsolata/inconsolata-bold.woff2') format('woff');
+  src: url('.././src/assets/fonts/inconsolata-bold.woff2') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
