@@ -9,8 +9,8 @@ const { title } = Astro.props;
 const { link } = Astro.props;
 ---
 <a href={ link }>
-<button class='flex z-10 flex-nowrap justify-center items-center space-x-2 p-2 border-solid border-3 text-background bg-primary border-primary rounded-md h-fit group hover:bg-primary-100 hover:border-primary-100 transition-all duration-350'>
-    <div class="font-button font-medium uppercase tracking-widest text-lg">{ title }</div>
+<button class='flex z-10 justify-center items-center space-x-2 p-2 border-solid border-3 text-background bg-primary border-primary rounded-md h-fit group hover:bg-primary-100 hover:border-primary-100 transition-all duration-350'>
+    <div class="font-button font-medium uppercase tracking-widest text-lg break-normal">{ title }</div>
     <img class='w-0 overflow-hidden group-hover:w-4 transition-all duration-500	' src={ arrow } alt='arrow pointing right' />
 </button>
 </a>
