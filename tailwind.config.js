@@ -4,6 +4,12 @@ module.exports = {
     content: ["./src/**/*.{html,js,astro,css}"],
     theme: {
 
+      extend: {
+        transitionProperty: {
+          'width': 'width, background-color, border-color' 
+        }
+      },
+
       fontFamily: {
         'smallt': ['"Inconsolata"', 'monospace'],
         'body': ['"Open Sans"','sans-serif'],
@@ -31,9 +37,7 @@ module.exports = {
         '4': '4px',
         '6': '6px',
         '8': '8px',
-      },
-
-      
+      }
     },
     plugins: [],
   }

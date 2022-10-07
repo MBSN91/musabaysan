@@ -1,0 +1,23 @@
+---
+import { Player } from '@lottiefiles/react-lottie-player';
+import Hamburger from './hamburger.json';
+import Spook from './spook.json'
+---
+
+
+  <div class="block w-16 h-16">
+    <Player 
+        src={ Spook }
+        autoplay={true}
+        loop={false}
+        keepLastFrame={true}
+        controls={true}
+        style = 
+        {
+          { 
+            width:'64px',
+            height:'64px', 
+          }
+        }
+    />
+  </div>
