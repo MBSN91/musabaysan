@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/netlify": "^1.1.0",
     "@astrojs/tailwind": "^2.0.2",
+    "@headlessui/react": "^1.7.3",
     "@lottiefiles/react-lottie-player": "^3.4.7",
     "astro": "^1.4.2",
     "lottie-web": "^5.9.6",
