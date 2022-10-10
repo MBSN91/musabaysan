@@ -11,8 +11,8 @@ function Mobilenav() {
           <Hamburger />
         </Popover.Button>
 
-        <Popover.Panel className="absolute z-10 backdrop-blur">
-          <div className="flex flex-col fixed inset-x-0 bottom-0 justify-center items-center">
+        <Popover.Panel className="relative z-10">
+          <div className="flex flex-col fixed inset-x-0 top-24 bottom-0 justify-center items-center">
             <a className="font-button text-primary" href="#">Home</a>
             <a className="font-button text-primary" href="#">About</a>
             <a className="font-button text-primary" href="#">Contact</a>
