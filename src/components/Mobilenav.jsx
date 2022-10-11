@@ -5,18 +5,18 @@ import Hamburger from '../assets/lottie/hamburger/Hamburger';
 
 function Mobilenav() {
     return (
-      <Popover className="relative z-40">
+      <Popover className="relative flex z-50">
         
         <Popover.Button>
           <Hamburger />
         </Popover.Button>
 
-        <Popover.Panel className="relative">
-          <div className="fixed -z-10 flex flex-col inset-0 justify-center items-center">
-            <a className="font-button text-primary" href="#">Home</a>
-            <a className="font-button text-primary" href="#">About</a>
-            <a className="font-button text-primary" href="#">Contact</a>
-            <a className="font-button text-primary" href="#">Start project</a>
+        <Popover.Panel className="relative flex flex-col z-50">
+          <div className="fixed flex flex-col z-10 inset-0 h-full justify-center items-center bg-secondary">
+            <a className="font-button text-primary uppercase text-base tracking-wider font-medium my-2" href="#">Home</a>
+            <a className="font-button text-primary uppercase text-base tracking-wider font-medium my-2" href="#">About</a>
+            <a className="font-button text-primary uppercase text-base tracking-wider font-medium my-2" href="#">Contact</a>
+            <a className="font-button text-primary uppercase text-base tracking-wider font-medium my-2" href="#">Start project</a>
           </div>
         </Popover.Panel>
     </Popover>
