@@ -5,7 +5,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 
 function Hamburger() {
   return (
-    <div>
+    <div className=' z-50'>
       <Player
           src={ Hamburgericon }
           autoplay={false}
