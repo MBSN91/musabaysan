@@ -2,7 +2,8 @@
 
 
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx,astro,css}"],
+  content: ["./src/**/*.{html,js,jsx,tsx,ts,astro,css}"],
+  darkMode: 'class',
     theme: {
 
       extend: {
@@ -24,6 +25,9 @@ module.exports = {
       colors: {
         'primary': '#05192d',
         'primary-100':'#112e4b',
+        'dark-100': '#121212',
+        'dark-200': '#222222',
+        'dark-300': '#3b3b3b',
         'secondary': '#68ebb8',
         'background': '#f9f4f0',
         'grid': '#efe7e0',
