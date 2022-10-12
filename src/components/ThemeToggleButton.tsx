@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import IoSunny from './../assets/sunny.svg'
-import IoMoon from './../assets/moon.svg'
+import { IoSunny, IoMoon } from 'react-icons/io5/index.js'
 
 const themes = ['light', 'dark']
 
@@ -37,15 +36,15 @@ useEffect(() => {
   }, [])
 
   return isMounted ? (
-    <div className="inline-flex items-center p-[1px] rounded-3xl bg-orange-300 dark:bg-zinc-600">
+    <div className="transition ease-in-out duration-300 inline-flex items-center p-[3px] rounded-3xl bg-orange dark:bg-orange-reverse border-solid border-2 border-primary dark:border-grey-100">
       {themes.map(t => {
         const checked = t === theme
         return (
           <button
             key={t}
             className={`${
-              checked ? 'bg-white text-black fill-primary h-6' : ''
-            } cursor-pointer rounded-3xl p-2 h-6 fill-primary`}
+              checked ? 'transition ease-in-out duration-300 bg-background text-primary dark:bg-dark-100 dark:text-background' : ''
+            } cursor-pointer rounded-3xl p-2`}
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >

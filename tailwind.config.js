@@ -32,6 +32,9 @@ module.exports = {
         'background': '#f9f4f0',
         'grid': '#efe7e0',
         'grey-100': '#d1d5db',
+        'orange': '#EBD5C2',
+        'orange-reverse': '#2F3135',
+        
       },
 
       borderWidth: {

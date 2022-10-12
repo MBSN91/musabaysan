@@ -6,11 +6,13 @@ import LogoLight from '../assets/logolight.svg';
 import Arrow from '../assets/point.svg';
 import ArrowLight from '../assets/pointlight.svg';
 import Navigation from '../components/navigation.astro';
+import ThemeToggle from '../components/ThemeToggleButton';
 ---
 
-<Layout title="Test build">
+<Layout title="Freelance UX designer | Musa Baysan">
 	<div class="opacity-0"><Navigation /></div>
 	<main class="relative flex flex-col z-10 justify-center items-center text-center h-screen px-8">
+		<div class="m-12"><ThemeToggle client:load /></div>
 		<div class="relative flex flex-col items-center text-center p-8 w-full max-w-6xl space-y-4 outline outline-1 outline-secondary outline-offset-0.5">
 			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -top-2" />
 			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 top-36" />
