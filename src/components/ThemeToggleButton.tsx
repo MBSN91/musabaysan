@@ -36,7 +36,7 @@ useEffect(() => {
   }, [])
 
   return isMounted ? (
-    <div className="transition ease-in-out duration-300 inline-flex items-center p-[3px] rounded-3xl bg-orange dark:bg-orange-reverse border-solid border-2 border-primary dark:border-grey-100">
+    <div className="transition ease-in-out duration-300 inline-flex items-center p-[3px] rounded-3xl bg-orange dark:bg-orange-reverse border-solid border-2 border-primary dark:border-grey-100 text-primary dark:text-background">
       {themes.map(t => {
         const checked = t === theme
         return (
