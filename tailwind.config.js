@@ -4,15 +4,18 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,tsx,ts,astro,css}"],
   darkMode: 'class',
-    theme: {
+  theme: {
+    extend: {
+      animation: {
+        aniheight: 'aniheight 1s ease-in-out',
+      },
 
-      extend: {
         transitionProperty: {
           'width': 'width, background-color, border-color' 
         }
       },
 
-      fontFamily: {
+        fontFamily: {
         'smallt': ['"Inconsolata"', 'monospace'],
         'body': ['"Open Sans"','sans-serif'],
         'button': ['"Teko"','sans-serif']        
@@ -37,6 +40,13 @@ module.exports = {
         
       },
 
+      keyframes: {
+        aniheight: {
+          '0%': { height: 'calc(0% - 6rem)' },
+          '100%': { height: 'calc(100% - 6rem)' },
+        },
+      },
+
       borderWidth: {
         DEFAULT: '1px',
         '0': '0',
@@ -47,5 +57,6 @@ module.exports = {
         '8': '8px',
       }
     },
-    plugins: [],
-  }
+  plugins: [require('@headlessui/tailwindcss')],
+    
+}
