@@ -36,15 +36,15 @@ useEffect(() => {
   }, [])
 
   return isMounted ? (
-    <div className="transition ease-in-out duration-300 inline-flex items-center p-[3px] rounded-3xl bg-orange dark:bg-orange-reverse border-solid border-2 border-primary dark:border-grey-100 text-primary dark:text-background">
+    <div className="transition group ease-in-out duration-300 inline-flex items-center p-[3px] rounded-3xl bg-orange dark:bg-orange-reverse border-solid border-2 border-primary hover:border-secondary dark:hover:border-secondary dark:border-grey-100 text-primary dark:text-background">
       {themes.map(t => {
         const checked = t === theme
         return (
           <button
             key={t}
             className={`${
-              checked ? 'transition ease-in-out duration-300 bg-background text-primary dark:bg-dark-100 dark:text-background' : ''
-            } cursor-pointer rounded-3xl p-2`}
+              checked ? 'transition ease-in-out duration-300 bg-primary group-hover:bg-secondary text-background dark:bg-dark-100 dark:text-background' : ''
+            } cursor-pointer rounded-3xl p-1`}
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >

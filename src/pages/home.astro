@@ -1,8 +1,43 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/navigation.astro';
+import Musa from '../assets/musa.png';
+import MusaDark from '../assets/musa-dark.png'
+import MusaMouse from '../assets/indicate.svg'
 ---
 
 <Layout title="Test nav">
     <Navigation />
+
+    <!-- the start of it all, get them recruiters and hiring managers hyped up yo! 🔥 -->
+    <main class="relative min-h-[70vh] flex flex-col md:flex-row justify-center px-8 py-8 w-full top-24 mb-8">
+        <div class="flex flex-col md:flex-row max-w-6xl w-full">
+            <div class="relative flex flex-col md:flex-row self-center flex-wrap w-full md:w-1/2">
+                <p class="font-button w-full md:w-auto tracking-wide font-light text-l text-primary dark:text-background">👋🏼 Hi, I am Musa Baysan</p>
+                <h1 class="font-title text-xl font-bold leading-10 text-secondary">Freelance UX designer,</h1><h1 class="font-title text-xl font-normal leading-10 text-primary dark:text-background">with passion for design and motion</h1>
+                <p class="py-4 font-body font-medium text-primary dark:text-background text-m">I enjoy building beautifull user interfaces, from intensive research, managing stakeholders, to validating them with the target audience. If you need a communicative team-player, I'd love to hear from you!</p>
+            </div>
+            <div class="relative flex h-24 md:h-auto flex-wrap w-full md:w-1/2 justify-center md:justify-center items-center">
+                <img src= { MusaMouse } alt="musa-pointer" class="h-12 z-10">
+                <img src= { Musa } alt="musa-selfie" class="w-24 md:w-48 absolute md:animate-floating h-max opacity-0 dark:opacity-100">
+                <img src= { MusaDark } alt="musa-selfie" class="w-24 md:w-48 absolute md:animate-floating h-max opacity-100 dark:opacity-0">
+            </div>
+        </div>    
+    </main>
+
+    <!-- divider disguised as clients i've worked with in the past -->
+    <div class="relative flex flex-col md:flex-row justify-center px-8 py-8 w-full mb-8">
+        <div class="flex flex-col md:flex-row max-w-6xl w-full">
+            <div class="">
+                <div class=""></div>
+                <div class=""></div>
+                <div class=""></div>
+                <div class=""></div>
+            </div>
+            <div class="flex flex-row w-full">
+                <h2 class="font-button text-l uppercase text-primary dark:text-background">My work</h2>
+                <h2 class="font-button text-l uppercase text-secondary">.</h2>
+            </div>
+        </div>    
+    </div>
 </Layout>

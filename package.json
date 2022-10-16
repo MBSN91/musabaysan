@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/netlify": "^1.1.0",
     "@astrojs/tailwind": "^2.0.2",
+    "@fontsource/cormorant": "^4.5.9",
     "@fontsource/inconsolata": "^4.5.8",
     "@fontsource/open-sans": "^4.5.12",
     "@fontsource/teko": "^4.5.9",

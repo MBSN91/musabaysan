@@ -9,8 +9,7 @@ import Guides  from "../components/guides.astro";
 import "@fontsource/inconsolata";
 import "@fontsource/open-sans";
 import "@fontsource/teko";
-
-
+import "@fontsource/cormorant"
 
 ---
 
@@ -24,7 +23,7 @@ import "@fontsource/teko";
 		<title>{title}</title>
 	</head>
 	<!-- Jooo, thanks voor het checken van de bron! Doe ik ook wel eens! Website is volledig zelfgemaakt in astro met een vleugje react en de styling in Tailwind. Gehost doormiddel van Netlify. Groetjes xoxo <3 -->
-	<body class="bg-background dark:bg-dark-100">
+	<body class="bg-background dark:bg-dark-100 cursor-fancy">
 		<Guides />
 		<slot />
 	</body>
