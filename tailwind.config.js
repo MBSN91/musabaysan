@@ -11,7 +11,7 @@ module.exports = {
       },
 
       cursor: {
-        'fancy': 'url(./src/assets/mouse.svg), pointer',
+        default: 'url(./src/assets/mouse.svg), default',
       },
 
         transitionProperty: {
