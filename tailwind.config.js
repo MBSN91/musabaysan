@@ -8,6 +8,7 @@ module.exports = {
       animation: {
         aniheight: 'aniheight 1s ease-in-out',
         floating: 'float 30s ease-in-out infinite',
+        floating2: 'float2 30s -0.5s ease-in-out infinite'
       },
 
       cursor: {
@@ -42,7 +43,9 @@ module.exports = {
         'dark-300': '#3b3b3b',
         'secondary': '#F46036',
         'secondary-100': '#CE3F19',
+        'tertiary': '#03B5AA',
         'background': '#f9f4f0',
+        'background-100': '#FFFEFD',
         'grid': '#efe7e0',
         'grey-100': '#d1d5db',
         'orange': '#EBD5C2',
@@ -57,13 +60,24 @@ module.exports = {
         },
         float: {
           '0%': {
-            transform: 'translatey(75px)',
+            transform: 'translatey(25px)',
           },
           '50%':{
-            transform: 'translatey(-75px)',
+            transform: 'translatey(-25px)',
           },
           '100%':{
-            transform: 'translatey(75px)',
+            transform: 'translatey(25px)',
+          },
+        },
+        float2: {
+          '0%': {
+            transform: 'translate(20px, -15px)',
+          },
+          '50%':{
+            transform: 'translate(-20px, 15px)',
+          },
+          '100%':{
+            transform: 'translate(20px, -15px)',
           },
         }
       },
