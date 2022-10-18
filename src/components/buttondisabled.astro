@@ -1,0 +1,13 @@
+---
+import arrow from './../assets/arrow-dark.svg'
+
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+<button class='flex z-10 justify-center items-center pointer-events-none space-x-2 p-2 border-solid border-3 text-background bg-dark-300 dark:bg-orange-reverse border-dark-300 dark:border-orange-reverse rounded-md h-fit transition-width duration-350 ease-in-out group'>
+    <div class="font-button uppercase tracking-widest text-lg whitespace-nowrap">{ title }</div>
+    <img class='transition-width duration-500 ease-in-out w-0 overflow-hidden group-hover:w-4' src={ arrow } alt='arrow pointing right' />
+</button>

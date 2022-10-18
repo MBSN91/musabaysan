@@ -1,0 +1,22 @@
+---
+import Button from './button.astro';
+import Buttondisabled from './buttondisabled.astro';
+
+export interface Props {
+	title: string;
+    caseimg: string;
+}
+
+const { title } = Astro.props;
+const { caseimg } = Astro.props;
+
+---
+<div class='md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap'>
+    <img class='' src={ caseimg } alt='caseimg' />
+    <div class='font-button text-l mb-2 text-center font-medium text-primary dark:text-background'>
+        { title }
+    </div>
+    <Buttondisabled 
+        title="Coming soon"
+        />
+</div>

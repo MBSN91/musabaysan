@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/navigation.astro';
+import Case from '../components/cases.astro';
+
 import Musa from '../assets/musa.png';
 import MusaDark from '../assets/musa-dark.png'
 import MusaMouse from '../assets/indicate.svg'
@@ -12,6 +14,11 @@ import AdidasDark from '../assets/clientele/dark/adi.svg'
 import HappyDark from '../assets/clientele/dark/HMG.svg'
 import HansDark from '../assets/clientele/dark/HansAnders.svg'
 import IngDark from '../assets/clientele/dark/ing.svg'
+
+import Case1 from '../assets/cases/case-happy.png'
+import Case2 from '../assets/cases/adidas-sam.png'
+import Case3 from '../assets/cases/opmaat.png'
+import Case4 from '../assets/cases/barber.png'
 ---
 
 <Layout title="Test nav">
@@ -61,6 +68,25 @@ import IngDark from '../assets/clientele/dark/ing.svg'
                 <h2 class="font-button text-xl uppercase text-primary dark:text-background">My work</h2>
                 <h2 class="font-button text-xl uppercase text-secondary">.</h2>
             </div>
+                <div class="w-full flex flex-row flex-wrap">
+                    <Case 
+                        caseimg= { Case1 }
+                        title="Strengthen guest loyalty with a Happy Italy app."
+                        />
+                    <Case 
+                        caseimg= { Case2 }
+                        title="Harmonising 5 employee apps into 1 app"
+                        />
+                    <Case 
+                        caseimg= { Case3 }
+                        title="Telling the story of a skilled custom tailorer"
+                        />
+                    <Case 
+                        caseimg= { Case4 }
+                        title="Barber appointment system and website facelift during the corona pandemic."
+                        />   
+                </div>             
+            
         </div>    
     </div>
 </Layout>
