@@ -1,4 +1,6 @@
 ---
+import { Image } from '@astrojs/image/components';
+
 import Button from './button.astro';
 import Buttondisabled from './buttondisabled.astro';
 
@@ -12,7 +14,10 @@ const { caseimg } = Astro.props;
 
 ---
 <div class='md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap'>
-    <img class='' src={ caseimg } alt='caseimg' />
+    <Image 
+        src= { caseimg }
+        alt='caseimg'
+    />
     <div class='font-button text-l mb-2 text-center font-medium text-primary dark:text-background'>
         { title }
     </div>

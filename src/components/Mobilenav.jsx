@@ -1,6 +1,5 @@
 import React from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import Something from './../components/button.astro'
+import { Popover } from '@headlessui/react'
 import Hamburger from '../assets/lottie/hamburger/Hamburger';
 
 

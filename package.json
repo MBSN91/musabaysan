@@ -13,6 +13,7 @@
     "defaults"
   ],
   "dependencies": {
+    "@astrojs/image": "^0.10.0",
     "@astrojs/netlify": "^1.1.0",
     "@astrojs/tailwind": "^2.0.2",
     "@fontsource/cormorant": "^4.5.9",
@@ -27,7 +28,8 @@
     "prop-types": "^15.8.1",
     "react-icons": "^4.4.0",
     "react-is": "^18.2.0",
-    "react-lottie-player": "^1.4.3"
+    "react-lottie-player": "^1.4.3",
+    "sharp": "^0.31.1"
   },
   "devDependencies": {
     "@astrojs/react": "^1.1.4",
