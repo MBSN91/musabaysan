@@ -17,6 +17,8 @@ import HappyDark from '../assets/clientele/dark/HMG.svg'
 import HansDark from '../assets/clientele/dark/HansAnders.svg'
 import IngDark from '../assets/clientele/dark/ing.svg'
 
+import Buttondisabled from '../components/buttondisabled.astro';
+
 import Case1 from '../assets/cases/case-happy.png'
 import Case2 from '../assets/cases/adidas-sam.png'
 import Case3 from '../assets/cases/opmaat.png'
@@ -60,6 +62,8 @@ import Case4 from '../assets/cases/barber.png'
             <div class="w-full drop-shadow dark:drop-shadow-lg bg-background-100 dark:bg-dark-200">
                     <p class="w-full font-smallt text-xxs text-secondary text-center m-2">formerly worked with</p>
                     <div class="flex flex-row">
+
+                        <!-- client 1 -->
                         <div class="w-1/4 h-16 flex justify-center">
                             <img
                                 src= { AdidasLight } 
@@ -72,6 +76,8 @@ import Case4 from '../assets/cases/barber.png'
                                 class="w-24 dark:hidden block opacity-30 hover:opacity-100" 
                                 />
                         </div>
+
+                        <!-- client 2 -->
                         <div class="w-1/4 h-16 flex justify-center">
                             <img 
                                 src= { HappyLight } 
@@ -84,6 +90,8 @@ import Case4 from '../assets/cases/barber.png'
                                 class="w-24 dark:hidden block opacity-30 hover:opacity-100"
                                 />
                         </div>
+
+                        <!-- client 3 -->
                         <div class="w-1/4 h-16 flex justify-center">
                             <img 
                                 src= { HansLight } 
@@ -96,6 +104,8 @@ import Case4 from '../assets/cases/barber.png'
                                 class="w-24 dark:hidden block opacity-30 hover:opacity-100" 
                                 />
                         </div>
+
+                        <!-- client 4 -->
                         <div class="w-1/4 h-16 flex justify-center">
                             <img
                                 src= { IngLight }
@@ -115,22 +125,62 @@ import Case4 from '../assets/cases/barber.png'
                 <h2 class="font-button text-xl uppercase text-secondary">.</h2>
             </div>
                 <div class="w-full flex flex-row flex-wrap">
-                    <Case 
-                        caseimg= { Case1 }
-                        title="Strengthen guest loyalty with a Happy Italy app."
+                    
+                    <!-- case 1 -->
+                    <div class='md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap'>
+                        <Image 
+                            src= { Case1 }
+                            alt='caseimg'
                         />
-                    <Case 
-                        caseimg= { Case2 }
-                        title="Harmonising 5 employee apps into 1 app"
+                        <div class='font-button text-l mb-2 text-center font-medium text-primary dark:text-background'>
+                            <p>Strengthen guest loyalty with a Happy Italy app.</p>
+                        </div>
+                        <Buttondisabled 
+                            title="Coming soon"
+                            />
+                    </div>
+
+                    <!-- case 2 -->
+                    <div class='md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap'>
+                        <Image 
+                            src= { Case2 }
+                            alt='caseimg'
                         />
-                    <Case 
-                        caseimg= { Case3 }
-                        title="Telling the story of a skilled custom tailorer"
+                        <div class='font-button text-l mb-2 text-center font-medium text-primary dark:text-background'>
+                            <p>Harmonising 5 employee apps into 1 app</p>
+                        </div>
+                        <Buttondisabled 
+                            title="Coming soon"
+                            />
+                    </div>
+
+                    <!-- case 3 -->
+                    <div class='md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap'>
+                        <Image 
+                            src= { Case3 }
+                            alt='caseimg'
                         />
-                    <Case 
-                        caseimg= { Case4 }
-                        title="Barber appointment system and website facelift during the corona pandemic."
-                        />   
+                        <div class='font-button text-l mb-2 text-center font-medium text-primary dark:text-background'>
+                            <p>Telling the story of a skilled custom tailorer</p>
+                        </div>
+                        <Buttondisabled 
+                            title="Coming soon"
+                            />
+                    </div>
+
+                    <!-- case 4 -->
+                    <div class='md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap'>
+                        <Image 
+                            src= { Case4 }
+                            alt='caseimg'
+                        />
+                        <div class='font-button text-l mb-2 text-center font-medium text-primary dark:text-background'>
+                            <p>Barber appointment system and website facelift during the corona pandemic.</p>
+                        </div>
+                        <Buttondisabled 
+                            title="Coming soon"
+                            />
+                    </div>
                 </div>             
             
         </div>    
