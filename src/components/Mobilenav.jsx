@@ -17,7 +17,7 @@ function Mobilenav() {
                 <a className="font-button text-primary dark:text-background uppercase text-base tracking-wider font-medium my-2" href="#">Home</a>
                 <a className="font-button text-primary dark:text-background uppercase text-base tracking-wider font-medium my-2" href="#">About</a>
                 <a className="font-button text-primary dark:text-background uppercase text-base tracking-wider font-medium my-2" href="#">Contact</a>
-                <a href='https://drive.google.com/file/d/13LwxmHJZkinu_vTYNS0WIM-fycswpsCo/view?usp=sharing'>
+                <a href='#'>
                   <button class='flex z-10 justify-center items-center space-x-2 p-2 border-solid border-3 text-background bg-primary border-primary rounded-md h-fit transition-width duration-350 ease-in-out group hover:bg-primary-100 dark:hover:bg-orange hover:border-primary-100 dark:hover:border-orange dark:text-primary dark:bg-background dark:border-background'>
                       <div class="font-button uppercase tracking-widest text-lg whitespace-nowrap">Download resume</div>
                   </button>
