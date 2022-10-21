@@ -1,6 +1,6 @@
 import React from 'react'
 import { Popover } from '@headlessui/react'
-import Hamburger from '../assets/lottie/hamburger/Hamburger';
+import Hamburger from '../../public/assets/lottie/hamburger/Hamburger';
 
 
 function Mobilenav() {
