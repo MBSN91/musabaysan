@@ -10,11 +10,8 @@ export default defineConfig({
   integrations: [
                   tailwind(), 
                   react(), 
-                  image(
-                    {
-                      serviceEntryPoint: '@astrojs/image/sharp'
-                    }
-                    )],
+                  image()
+                ],
   output: "server",
   adapter: netlify()
 });
