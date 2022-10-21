@@ -6,21 +6,30 @@ export interface Props {
 const { title } = Astro.props;
 
 import { Image } from '@astrojs/image/components';
-import Guides  from "../components/guides.astro";
-import "@fontsource/inconsolata";
-import "@fontsource/open-sans";
-import "@fontsource/teko";
-import "@fontsource/cormorant"
-
+import Guides from '../components/guides.astro';
+import '@fontsource/inconsolata';
+import '@fontsource/open-sans';
+import '@fontsource/teko';
+import '@fontsource/cormorant';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/musa-selfie.png" />	
-		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="viewport"
+			content="width=device-width"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/musa-selfie.png"
+		/>
+		<meta
+			name="generator"
+			content={Astro.generator}
+		/>
 		<title>{title}</title>
 	</head>
 	<!-- Jooo, thanks voor het checken van de bron! Doe ik ook wel eens! Website is volledig zelfgemaakt in astro met een vleugje react en de styling in Tailwind. Gehost doormiddel van Netlify. Groetjes xoxo <3 -->

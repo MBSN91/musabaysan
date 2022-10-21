@@ -11,61 +11,80 @@ import ThemeToggle from '../components/ThemeToggleButton';
 
 <Layout title="Freelance UX designer | Musa Baysan">
 	<div class="opacity-0">
-		<Navigation 
-		/>
+		<Navigation />
 	</div>
-	<main class="relative flex flex-col z-10 justify-center items-center text-center h-screen px-8">
+	<main
+		class="relative flex flex-col z-10 justify-center items-center text-center h-screen px-8">
 		<div class="m-6">
-			<ThemeToggle 
-				client:load 
-			/>
+			<ThemeToggle client:load />
 		</div>
-		<div class="relative flex flex-col items-center text-center p-8 w-full max-w-6xl space-y-4 outline outline-1 outline-secondary outline-offset-0.5">
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -top-2" />
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 top-36" />
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -top-6" />
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -top-6" />
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -bottom-2" />
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 top-36" />
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -bottom-2" />
-			<div class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -bottom-2" />
+		<div
+			class="relative flex flex-col items-center text-center p-8 w-full max-w-6xl space-y-4 outline outline-1 outline-secondary outline-offset-0.5">
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -top-2">
+			</div>
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 top-36">
+			</div>
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -top-6">
+			</div>
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -top-6">
+			</div>
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -bottom-2">
+			</div>
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 top-36">
+			</div>
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -bottom-2">
+			</div>
+			<div
+				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -bottom-2">
+			</div>
 			<div>
-				<img 
-					src={ Logo }
-					alt='musa baysan logo'
+				<img
+					src={Logo}
+					alt="musa baysan logo"
 					class="relative w-64 dark:hidden"
 				/>
-				<img 
-					src={ LogoLight }
-					alt='musa baysan logo'
+				<img
+					src={LogoLight}
+					alt="musa baysan logo"
 					class="hidden relative w-64 dark:block"
 				/>
 			</div>
 			<div>
 				<p class="font-body text-lg dark:text-background">
-					Portfolio is being rebuild from scratch with awesome features and the latest tech! 
-					<br>It will be back soon!</p>
-				</div>
-			<Button 
+					Portfolio is being rebuild from scratch with awesome features and the
+					latest tech!
+					<br />It will be back soon!
+				</p>
+			</div>
+			<Button
 				title="visit portfolio"
-				link='https://mbsn.webflow.io/'
+				link="https://mbsn.webflow.io/"
 			/>
-			<div class="relative py-1 px-2 max-w-fit bg-primary dark:bg-secondary text-secondary dark:text-primary font-smallt text-xxs">old portfolio website is still online!
+			<div
+				class="relative py-1 px-2 max-w-fit bg-primary dark:bg-secondary text-secondary dark:text-primary font-smallt text-xxs">
+				old portfolio website is still online!
 				<div class="absolute -right-10 -top-11 dark:hidden">
-					<img 
-						src= { Arrow }
-						alt= '' 
-						class="h-12" 
+					<img
+						src={Arrow}
+						alt=""
+						class="h-12"
 					/>
 				</div>
 				<div class="hidden absolute -right-10 -top-11 dark:block">
 					<img
-						src= { ArrowLight } 
-						alt= ''
+						src={ArrowLight}
+						alt=""
 						class="h-12"
 					/>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</main>
 </Layout>
