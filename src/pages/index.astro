@@ -1,8 +1,10 @@
 ---
-import {Image} from "@astrojs/image/components";
-
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/button.astro';
+import Logo from '../../public/assets/brand/logo-dark.svg';
+import LogoLight from '../../public/assets/brand/logo-light.svg';
+import Arrow from '../../public/assets/point.svg';
+import ArrowLight from '../../public/assets/pointlight.svg';
 import Navigation from '../components/navigation.astro';
 import ThemeToggle from '../components/ThemeToggleButton';
 ---
@@ -43,19 +45,15 @@ import ThemeToggle from '../components/ThemeToggleButton';
 				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -bottom-2">
 			</div>
 			<div>
-				<!-- class="relative w-64 dark:hidden"  -->
-				<Image
-					src="../assets/brand/logo-dark.png"
+				<img
+					src={Logo}
 					alt="musa baysan logo"
-					width={48}
-					height={48}
+					class="relative w-64 dark:hidden"
 				/>
-				<!-- class="hidden relative w-64 dark:block" -->
-				<Image
-					src="../assets/brand/logo-light.png"
+				<img
+					src={LogoLight}
 					alt="musa baysan logo"
-					width={48}
-					height={48}
+					class="hidden relative w-64 dark:block"
 				/>
 			</div>
 			<div>
@@ -73,21 +71,17 @@ import ThemeToggle from '../components/ThemeToggleButton';
 				class="relative py-1 px-2 max-w-fit bg-primary dark:bg-secondary text-secondary dark:text-primary font-smallt text-xxs">
 				old portfolio website is still online!
 				<div class="absolute -right-10 -top-11 dark:hidden">
-					<!-- class="h-12" -->
-					<Image
-						src="../assets/point-dark.png"
+					<img
+						src={Arrow}
 						alt=""
-						width={48}
-						height={48}
+						class="h-12"
 					/>
 				</div>
 				<div class="hidden absolute -right-10 -top-11 dark:block">
-					<!-- class="h-12" -->
-					<Image
-						src="../assets/point-light.png"
+					<img
+						src={ArrowLight}
 						alt=""
-						width={48}
-						height={48}
+						class="h-12"
 					/>
 				</div>
 			</div>
