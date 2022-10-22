@@ -1,4 +1,6 @@
 ---
+import {Image} from "@astrojs/image/components";
+
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/button.astro';
 import Navigation from '../components/navigation.astro';
@@ -41,15 +43,19 @@ import ThemeToggle from '../components/ThemeToggleButton';
 				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -bottom-2">
 			</div>
 			<div>
-				<img
-					src="../../public/assets/logo.svg"
+				<!-- class="relative w-64 dark:hidden"  -->
+				<Image
+					src="../assets/brand/logo-dark.png"
 					alt="musa baysan logo"
-					class="relative w-64 dark:hidden"
+					width={48}
+					height={48}
 				/>
-				<img
-					src="../../public/assets/logolight.svg"
+				<!-- class="hidden relative w-64 dark:block" -->
+				<Image
+					src="../assets/brand/logo-light.png"
 					alt="musa baysan logo"
-					class="hidden relative w-64 dark:block"
+					width={48}
+					height={48}
 				/>
 			</div>
 			<div>
@@ -67,17 +73,21 @@ import ThemeToggle from '../components/ThemeToggleButton';
 				class="relative py-1 px-2 max-w-fit bg-primary dark:bg-secondary text-secondary dark:text-primary font-smallt text-xxs">
 				old portfolio website is still online!
 				<div class="absolute -right-10 -top-11 dark:hidden">
-					<img
-						src="../../public/assets/point.svg"
+					<!-- class="h-12" -->
+					<Image
+						src="../assets/point-dark.png"
 						alt=""
-						class="h-12"
+						width={48}
+						height={48}
 					/>
 				</div>
 				<div class="hidden absolute -right-10 -top-11 dark:block">
-					<img
-						src="../../public/assets/pointlight.svg"
+					<!-- class="h-12" -->
+					<Image
+						src="../assets/point-light.png"
 						alt=""
-						class="h-12"
+						width={48}
+						height={48}
 					/>
 				</div>
 			</div>

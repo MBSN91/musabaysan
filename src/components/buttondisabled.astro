@@ -1,4 +1,6 @@
 ---
+import {Image} from "@astrojs/image/components";
+
 export interface Props {
 	title: string;
 }
@@ -11,9 +13,12 @@ const { title } = Astro.props;
 	<div class="font-button uppercase tracking-widest text-lg whitespace-nowrap">
 		{title}
 	</div>
-	<img
-		src="../../public/assets/arrow-dark.svg"
+	<Image
+		src="../assets/button/chevron-dark.png"
 		alt="arrow pointing right"
-		class="transition-width duration-500 ease-in-out w-0 overflow-hidden group-hover:w-4"
+		width={48}
+		height={48}
 	/>
 </button>
+
+<!-- class="transition-width duration-500 ease-in-out w-0 overflow-hidden group-hover:w-4" -->
