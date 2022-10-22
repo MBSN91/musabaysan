@@ -1,10 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/button.astro';
-import Logo from '../../public/assets/logo.svg';
-import LogoLight from '../../public/assets/logolight.svg';
-import Arrow from '../../public/assets/point.svg';
-import ArrowLight from '../../public/assets/pointlight.svg';
 import Navigation from '../components/navigation.astro';
 import ThemeToggle from '../components/ThemeToggleButton';
 ---
@@ -46,12 +42,12 @@ import ThemeToggle from '../components/ThemeToggleButton';
 			</div>
 			<div>
 				<img
-					src={Logo}
+					src="../../public/assets/logo.svg"
 					alt="musa baysan logo"
 					class="relative w-64 dark:hidden"
 				/>
 				<img
-					src={LogoLight}
+					src="../../public/assets/logolight.svg"
 					alt="musa baysan logo"
 					class="hidden relative w-64 dark:block"
 				/>
@@ -72,14 +68,14 @@ import ThemeToggle from '../components/ThemeToggleButton';
 				old portfolio website is still online!
 				<div class="absolute -right-10 -top-11 dark:hidden">
 					<img
-						src={Arrow}
+						src="../../public/assets/point.svg"
 						alt=""
 						class="h-12"
 					/>
 				</div>
 				<div class="hidden absolute -right-10 -top-11 dark:block">
 					<img
-						src={ArrowLight}
+						src="../../public/assets/pointlight.svg"
 						alt=""
 						class="h-12"
 					/>

@@ -1,6 +1,4 @@
 ---
-import arrow from '../../public/assets/arrow-dark.svg';
-
 export interface Props {
 	title: string;
 }
@@ -14,7 +12,7 @@ const { title } = Astro.props;
 		{title}
 	</div>
 	<img
-		src={arrow}
+		src="../../public/assets/arrow-dark.svg"
 		alt="arrow pointing right"
 		class="transition-width duration-500 ease-in-out w-0 overflow-hidden group-hover:w-4"
 	/>

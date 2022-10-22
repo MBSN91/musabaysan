@@ -1,28 +1,8 @@
 ---
-import { Image } from '@astrojs/image/components';
-
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/navigation.astro';
-import Case from '../components/cases.astro';
-
-import Musa from '../../public/assets/musa.png';
-import MusaDark from '../../public/assets/musa-dark.png';
-import MusaMouse from '../../public/assets/indicate.svg';
-import AdidasLight from '../../public/assets/clientele/adi.svg';
-import HappyLight from '../../public/assets/clientele/HMG.svg';
-import HansLight from '../../public/assets/clientele/HansAnders.svg';
-import IngLight from '../../public/assets/clientele/ing.svg';
-import AdidasDark from '../../public/assets/clientele/dark/adi.svg';
-import HappyDark from '../../public/assets/clientele/dark/HMG.svg';
-import HansDark from '../../public/assets/clientele/dark/HansAnders.svg';
-import IngDark from '../../public/assets/clientele/dark/ing.svg';
-
+import {Image} from "@astrojs/image/components";
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/navigation.astro";
 import Buttondisabled from '../components/buttondisabled.astro';
-
-import Case1 from '../../public/assets/cases/case-happy.png';
-import Case2 from '../../public/assets/cases/adidas-sam.png';
-import Case3 from '../../public/assets/cases/opmaat.png';
-import Case4 from '../../public/assets/cases/barber.png';
 ---
 
 <Layout title="Freelance UX designer | Musa Baysan">
@@ -51,17 +31,17 @@ import Case4 from '../../public/assets/cases/barber.png';
 			<div
 				class="relative flex flex-col md:flex-row h-28 md:h-full flex-wrap w-full md:w-1/2 justify-center md:justify-center items-center">
 				<img
-					src={MusaMouse}
+					src="../../public/assets/indicate.svg"
 					alt=""
 					class="mouse hidden md:block pointer-events-none h-12 bottom-1/4 left-8 z-10 relative md:absolute md:animate-floating2"
 				/>
 				<Image
-					src={Musa}
+					src="../../public/assets/musa.png"
 					alt="musa portrait"
 					class="w-28 pointer-events-none md:w-48 absolute md:animate-floating opacity-0 dark:opacity-100"
 				/>
 				<Image
-					src={MusaDark}
+					src="../../public/assets/musa-dark.png"
 					alt="musa portrait"
 					class="w-28 pointer-events-none md:w-48 absolute md:animate-floating opacity-100 dark:opacity-0"
 				/>
@@ -83,12 +63,12 @@ import Case4 from '../../public/assets/cases/barber.png';
 					<!-- client 1 -->
 					<div class="w-1/4 h-16 flex justify-center">
 						<img
-							src={AdidasLight}
+							src="../../public/assets/clientele/adi.svg"
 							alt="adidas logo"
 							class="w-24 hidden dark:block opacity-30 hover:opacity-100"
 						/>
 						<img
-							src={AdidasDark}
+							src="../../public/assets/clientele/dark/adi.svg"
 							alt="adidas logo"
 							class="w-24 dark:hidden block opacity-30 hover:opacity-100"
 						/>
@@ -97,12 +77,12 @@ import Case4 from '../../public/assets/cases/barber.png';
 					<!-- client 2 -->
 					<div class="w-1/4 h-16 flex justify-center">
 						<img
-							src={HappyLight}
+							src="../../public/assets/clientele/HMG.svg"
 							alt="happy italy logo"
 							class="w-24 opacity-30 hidden dark:block hover:opacity-100"
 						/>
 						<img
-							src={HappyDark}
+							src="../../public/assets/clientele/dark/HMG.svg"
 							alt="happy italy logo"
 							class="w-24 dark:hidden block opacity-30 hover:opacity-100"
 						/>
@@ -111,12 +91,12 @@ import Case4 from '../../public/assets/cases/barber.png';
 					<!-- client 3 -->
 					<div class="w-1/4 h-16 flex justify-center">
 						<img
-							src={HansLight}
+							src="../../public/assets/clientele/HansAnders.svg"
 							alt="hans anders logo"
 							class="w-24 opacity-30 hidden dark:block hover:opacity-100"
 						/>
 						<img
-							src={HansDark}
+							src="../../public/assets/clientele/dark/HansAnders.svg"
 							alt="hans anders logo"
 							class="w-24 dark:hidden block opacity-30 hover:opacity-100"
 						/>
@@ -125,12 +105,12 @@ import Case4 from '../../public/assets/cases/barber.png';
 					<!-- client 4 -->
 					<div class="w-1/4 h-16 flex justify-center">
 						<img
-							src={IngLight}
+							src="../../public/assets/clientele/ing.svg"
 							alt="ing logo"
 							class="w-24 opacity-30 hidden dark:block hover:opacity-100"
 						/>
 						<img
-							src={IngDark}
+							src="../../public/assets/clientele/dark/ing.svg"
 							alt="ing logo"
 							class="w-24 dark:hidden block opacity-30 hover:opacity-100"
 						/>
@@ -149,7 +129,7 @@ import Case4 from '../../public/assets/cases/barber.png';
 				<div
 					class="md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap">
 					<Image
-						src={Case1}
+						src="../../public/assets/cases/case-happy.png"
 						alt="caseimg"
 					/>
 					<div
@@ -163,7 +143,7 @@ import Case4 from '../../public/assets/cases/barber.png';
 				<div
 					class="md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap">
 					<Image
-						src={Case2}
+						src="../../public/assets/cases/adidas-sam.png"
 						alt="caseimg"
 					/>
 					<div
@@ -177,7 +157,7 @@ import Case4 from '../../public/assets/cases/barber.png';
 				<div
 					class="md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap">
 					<Image
-						src={Case3}
+						src="../../public/assets/cases/opmaat.png"
 						alt="caseimg"
 					/>
 					<div
@@ -191,7 +171,7 @@ import Case4 from '../../public/assets/cases/barber.png';
 				<div
 					class="md:w-1/2 w-full p-4 flex flex-col items-center align-middle flex-wrap">
 					<Image
-						src={Case4}
+						src="../../public/assets/cases/barber.png"
 						alt="caseimg"
 					/>
 					<div
