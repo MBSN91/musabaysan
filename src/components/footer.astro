@@ -1,0 +1,32 @@
+---
+import Musa from '../assets/musa.png';
+import MusaDark from '../assets/musa-dark.png';
+---
+
+<footer class="w-full h-80 px-8 py-0 bg-background-100 dark:bg-dark-100">
+    <div class="w-full max-6xl flex items-center justify-center align-middle">
+        <div class="flex flex-col sm:flex-row z-30 -mt-16 max-w-xs sm:max-w-xl rounded-3xl bg-primary dark:bg-background justify-center align-middle items-center w-full mb-8">
+            <div class="sm:w-1/2 w-full p-4 flex flex-col my-8 md:my-8">
+                <p class="text-l text-background dark:text-primary font-bold font-button">Musa Baysan</p>
+                <p class="text-m text-background dark:text-primary font-medium font-body mb-4">UX designer</p>
+                <p class="text-m text-background dark:text-primary font-medium font-body">+31 6 52 72 69 67</p>
+                <p class="text-m text-background dark:text-primary font-medium font-body">hello@musabaysan.nl</p>
+                <p class="text-m text-background dark:text-primary font-medium font-body">LinkedIN</p>
+            </div>
+            <div class="sm:w-1/2 w-full sm:pl-2 sm:pl-o flex flex-col justify-center align-middle items-center">
+                <img
+                src={Musa}
+                alt="musa portrait"
+                class="w-full pointer-events-none opacity-0 hidden dark:block dark:opacity-100"
+            />
+            <img
+                src={MusaDark}
+                alt="musa portrait"
+                class="w-full pointer-events-none opacity-100 block dark:hidden dark:opacity-0"
+            />
+            </div>
+        </div>
+
+    </div>
+    
+</footer>

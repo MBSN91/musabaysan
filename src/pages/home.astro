@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/footer.astro';
 import Navigation from '../components/navigation.astro';
 import Case from '../components/cases.astro';
 import Buttondisabled from '../components/buttondisabled.astro';
@@ -36,7 +37,7 @@ import Case4 from '../assets/cases/barber.png';
 					👋🏼 Hi, I am Musa Baysan
 				</h3>
 				<h1 class="font-title text-xl font-bold leading-10 text-secondary">
-					Freelance UX designer, with passion for design and motion
+					Freelance UX designer<p class="hidden md:block">, with passion for design and motion</p>
 				</h1>
 				<p
 					class="py-4 font-body font-medium text-primary dark:text-background text-m">
@@ -68,7 +69,7 @@ import Case4 from '../assets/cases/barber.png';
 
 	<!-- divider disguised as clients i've worked with in the past -->
 	<div
-		class="relative bg-background-100 dark:bg-dark-200 mt-32 flex flex-col justify-center items-center self-center px-8 py-8 w-full">
+		class="relative bg-background-100 dark:bg-dark-200 mt-32 flex flex-col justify-center pb-32 items-center self-center px-8 py-8 w-full">
 		<div
 			class="flex -mt-24 bg-background-100 dark:bg-dark-200 flex-col max-w-6xl w-full">
 			<div
@@ -203,4 +204,5 @@ import Case4 from '../assets/cases/barber.png';
 			</div>
 		</div>
 	</div>
+	<Footer />
 </Layout>
