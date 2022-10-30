@@ -37,7 +37,7 @@ import Case4 from '../assets/cases/barber.png';
 					👋🏼 Hi, I am Musa Baysan
 				</h3>
 				<h1 class="font-title text-xl font-bold leading-10 text-secondary">
-					Freelance UX designer<p class="hidden md:block">, with passion for design and motion</p>
+					Freelance UX designer<span class="hidden md:block">, with passion for design and motion</span>
 				</h1>
 				<p
 					class="py-4 font-body font-medium text-primary dark:text-background text-m">
@@ -78,36 +78,38 @@ import Case4 from '../assets/cases/barber.png';
 					formerly worked with
 				</p>
 				<div class="flex flex-row">
+					<div class="flex flex-col w-full md:flex-row">
 					<!-- client 1 -->
-					<div class="w-1/4 h-16 flex justify-center">
-						<img
-							src={AdidasLight}
-							alt="adidas logo"
-							class="w-24 hidden dark:block opacity-30 hover:opacity-100"
-						/>
-						<img
-							src={AdidasDark}
-							alt="adidas logo"
-							class="w-24 dark:hidden block opacity-30 hover:opacity-100"
-						/>
-					</div>
+						<div class="w-full md:w-1/2 h-16 flex justify-center">
+							<img
+								src={AdidasLight}
+								alt="adidas logo"
+								class="w-24 hidden dark:block opacity-30 hover:opacity-100"
+							/>
+							<img
+								src={AdidasDark}
+								alt="adidas logo"
+								class="w-24 dark:hidden block opacity-30 hover:opacity-100"
+							/>
+						</div>
 
 					<!-- client 2 -->
-					<div class="w-1/4 h-16 flex justify-center">
-						<img
-							src={HappyLight}
-							alt="happy italy logo"
-							class="w-24 opacity-30 hidden dark:block hover:opacity-100"
-						/>
-						<img
-							src={HappyDark}
-							alt="happy italy logo"
-							class="w-24 dark:hidden block opacity-30 hover:opacity-100"
-						/>
-					</div>
-
+						<div class="w-full md:w-1/2 h-16 flex justify-center">
+							<img
+								src={HappyLight}
+								alt="happy italy logo"
+								class="w-24 opacity-30 hidden dark:block hover:opacity-100"
+							/>
+							<img
+								src={HappyDark}
+								alt="happy italy logo"
+								class="w-24 dark:hidden block opacity-30 hover:opacity-100"
+							/>
+						</div>
+				</div>
+				<div class="flex flex-col w-full md:flex-row">
 					<!-- client 3 -->
-					<div class="w-1/4 h-16 flex justify-center">
+					<div class="w-full md:w-1/2 h-16 flex justify-center">
 						<img
 							src={HansLight}
 							alt="hans anders logo"
@@ -121,7 +123,7 @@ import Case4 from '../assets/cases/barber.png';
 					</div>
 
 					<!-- client 4 -->
-					<div class="w-1/4 h-16 flex justify-center">
+					<div class="w-full md:w-1/2 h-16 flex justify-center">
 						<img
 							src={IngLight}
 							alt="ing logo"
@@ -135,7 +137,8 @@ import Case4 from '../assets/cases/barber.png';
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-row w-full">
+			</div>
+			<div class="flex mt-16 flex-row w-full">
 				<h2
 					class="font-button text-xl uppercase text-primary dark:text-background">
 					My work
