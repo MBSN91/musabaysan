@@ -1,6 +1,5 @@
 ---
-import Logo from '../assets/brand/logo-dark.svg';
-import LogoLight from '../assets/brand/logo-light.svg';
+
 
 import Button from './button.astro';
 import Mobilenav from './Mobilenav';
@@ -11,16 +10,7 @@ import ThemeToggle from './ThemeToggleButton';
 	<div
 		class="transition ease-in-out duration-300 flex flex-col justify-center w-full max-w-6xl border border-solid border-primary bg-background dark:bg-dark-100 dark:border-background">
 		<div class="flex flex-row w-full max-w-6xl justify-between items-center">
-			<img
-				src={Logo}
-				alt="logo"
-				class="h-8 md:relative md:mx-5 md:w-auto absolute inset-x-auto w-full -ml-8 dark:hidden"
-			/>
-			<img
-				src={LogoLight}
-				alt="logo"
-				class="h-8 hidden md:relative md:mx-5 md:w-auto absolute inset-x-auto -ml-8 text-center w-full dark:block"
-			/>
+			
 			<div class="hidden md:block self-center">
 				<ul class="flex flex-row items-center list-none">
 					<li
