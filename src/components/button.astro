@@ -1,5 +1,5 @@
 ---
-import arrow from '../assets/arrow-dark.svg';
+import { Icon } from 'astro-icon';
 
 export interface Props {
 	title: string;
@@ -11,16 +11,10 @@ const { link } = Astro.props;
 ---
 
 <a href={link}>
-	<button
-		class="flex z-10 justify-center items-center space-x-2 p-2 border-solid border-3 text-background bg-secondary hover:bg-secondary-100 dark:hover:bg-secondary-100 border-secondary dark:hover:border-secondary-100 hover:border-secondary-100 rounded-md h-fit transition-width duration-350 ease-in-out group">
-		<div
-			class="font-button uppercase tracking-widest text-lg whitespace-nowrap">
+	<button class="flex z-10 justify-center items-center space-x-2 p-2 border-solid border-3 text-background bg-secondary hover:bg-secondary-100 dark:hover:bg-secondary-100 border-secondary dark:hover:border-secondary-100 hover:border-secondary-100 rounded-md h-fit transition-width duration-350 ease-in-out group">
+		<div class="font-button uppercase tracking-widest text-lg whitespace-nowrap">
 			{title}
 		</div>
-		<img
-			src={arrow}
-			alt="arrow pointing right"
-			class="transition-width duration-500 ease-in-out w-0 overflow-hidden group-hover:w-4"
-		/>
+		<Icon name="arrow" class="transition-width duration-500 ease-in-out w-0 overflow-hidden group-hover:w-4"/>
 	</button>
 </a>

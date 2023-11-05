@@ -5,6 +5,12 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      backgroundImage: {
+        'musa-light': "url('/src/assets/musa.png')",
+        'musa-dark': "url('/src/assets/musa-dark.png')",
+        'musa-casual': "url('/src/assets/musa-casual.jpeg')"
+      },
+
       animation: {
         aniheight: 'aniheight 1s ease-in-out',
         floating: 'float 30s ease-in-out infinite',

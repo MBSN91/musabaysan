@@ -1,12 +1,10 @@
 import React from 'react';
 import { Popover } from '@headlessui/react';
-import Hamburger from '../assets/lottie/hamburger/Hamburger';
 
 function Mobilenav() {
 	return (
 		<Popover className="relative flex z-50">
 			<Popover.Button as="div">
-				<Hamburger />
 			</Popover.Button>
 
 			<Popover.Panel className="relative flex flex-col z-50">

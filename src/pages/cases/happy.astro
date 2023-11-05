@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/footer.astro';
-import Navigation from '../components/navigation.astro';
-import Case from '../components/cases.astro';
-import Buttondisabled from '../components/buttondisabled.astro';
-import Button from '../components/button.astro';
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/footer.astro';
+import Navigation from '../../components/navigation.astro';
+import Case from '../../components/cases.astro';
+import Buttondisabled from '../../components/buttondisabled.astro';
+import Button from '../../components/button.astro';
 
 import Musa from '../assets/musa.png';
 import MusaDark from '../assets/musa-dark.png';
@@ -18,11 +18,12 @@ import HappyDark from '../assets/clientele/dark/happy.svg';
 import HansDark from '../assets/clientele/dark/hans.svg';
 import IngDark from '../assets/clientele/dark/ing.svg';
 
-import Case1 from '../assets/cases/case-happy.png';
+import Case1 from '../../assets/cases/case-happy.png';
 import Case2 from '../assets/cases/adidas-sam.png';
 import Case3 from '../assets/cases/opmaat.png';
 import Case4 from '../assets/cases/barber.png';
 
+import Test from '../../components/spline2.astro';
 ---
 
 <Layout title="Freelance UX designer | Musa Baysan">
@@ -30,38 +31,11 @@ import Case4 from '../assets/cases/barber.png';
 
 	<!-- the start of it all, get them recruiters and hiring managers hyped up yo! 🔥 -->
 	<main
-		class="relative min-h-[80vh] md:min-h-[70vh] flex flex-col md:flex-row justify-center px-8 py-0 md:py-8 w-full top-24 mb-8">
+		class="relative flex flex-col md:flex-row justify-center px-8 py-0 md:py-8 w-full top-24 mb-8">
 		<div
-			class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-col-reverse px-5 md:flex-row max-w-6xl w-full">
-			<div
-				class="relative flex flex-col md:flex-row self-center flex-wrap w-full">
-				<h1
-					class="font-button text-xl font-bold leading-10 text-secondary tracking-wide">
-					Product designer
-				</h1>
-				<p
-					class="py-4 font-body font-medium text-primary dark:text-background text-m">
-					Leveraging 6+ years of experience building User-friendly interfaces
-					with research-backed designs. Let's team up for success!
-				</p>
-			</div>
-			<div
-				class="relative flex flex-col md:flex-row h-28 md:h-full flex-wrap w-full justify-center md:justify-center items-center">
-				<img
-					src={MusaMouse}
-					alt=""
-					class="mouse hidden md:block pointer-events-none h-12 bottom-1/4 left-8 z-10 relative md:absolute md:animate-floating2"
-				/>
-				<img
-					src={Musa}
-					alt="musa portrait"
-					class="w-28 pointer-events-none md:w-48 absolute md:animate-floating opacity-0 dark:opacity-100"
-				/>
-				<img
-					src={MusaDark}
-					alt="musa portrait"
-					class="w-28 pointer-events-none md:w-48 absolute md:animate-floating opacity-100 dark:opacity-0"
-				/>
+			class="grid grid-cols-1 md:grid-cols-1 flex-col-reverse px-5 md:flex-row max-w-6xl w-full">
+			<div class="h-[600px]">
+				<Test />
 			</div>
 		</div>
 	</main>
@@ -136,6 +110,7 @@ import Case4 from '../assets/cases/barber.png';
 					</div>
 				</div>
 			</div>
+
 
 			<div class="flex mt-16 flex-row w-full justify-center">
 				<h2
