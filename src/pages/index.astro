@@ -1,64 +1,185 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/button.astro';
-import Navigation from '../components/navigation.astro';
-import ThemeToggle from '../components/ThemeToggleButton';
+// Holding page for musabaysan.nl (Oct 2026), live until portfolio v1 is ready.
+// The hero is "drawn" once per visit with transitions-ui-generation (/public/js, see TRANSITIONS-LICENSE.txt);
+// the rest of the motion follows Emil Kowalski's design-engineering rules (see src/styles/holding.css).
+// Edit the copy below; every claim comes from Musa's CV.
+import '../styles/generation.css';
+import '../styles/holding.css';
 
-import { Icon } from 'astro-icon';
+export const prerender = true;
 
+const title = 'Musa Baysan · UX designer';
+const description = 'UX designer in Breda. I design apps from research to release, and build them too. Since 2013 for startups, agencies and global brands, today at adidas.';
+const linkedin = 'https://www.linkedin.com/in/musabaysan';
+const email = 'hello@musabaysan.nl';
+
+const work = [
+	{
+		title: 'adidas store app',
+		text: 'The app 30,000+ store employees use daily. Testing with markets uncovered a scanning workaround; the native bulk scanning I pushed for took about 1.5 minutes instead of 5 to 8 in tests. Journey mapping in stores got broken membership steps fixed within weeks.',
+		tags: ['Enterprise', 'iPhone and iPad', 'Research'],
+	},
+	{
+		title: 'ATHLIQ',
+		text: 'A coaching app for personal trainers and their clients, from onboarding to live workout tracking. Designed and built end to end, now in alpha with 20 active users.',
+		tags: ['Own product', 'Design and code', 'Mobile app'],
+	},
+	{
+		title: 'Happy Italy',
+		text: 'A food-delivery app with a built-in loyalty system, plus a redesigned website. User research and usability tests shaped the ordering journey, and I set up the design system with the external developers.',
+		tags: ['Consumer app', 'Research', 'Design system'],
+	},
+	{
+		title: 'Bayee.nl',
+		text: 'An online store designed and built end to end on a headless CMS: navigation, product discovery, product pages, cart and checkout as reusable components.',
+		tags: ['E-commerce', 'Design and code', 'Payload CMS'],
+	},
+];
 ---
 
-<Layout title="Freelance UX designer | Musa Baysan">
-	<div class="opacity-0">
-		<Navigation />
-	</div>
-	<main class="relative flex flex-col z-10 justify-center items-center text-center h-screen px-8">
-		<div class="fixed top-8">
-			<ThemeToggle client:load />
+<!doctype html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="I design apps from research to release, and build them too." />
+		<meta property="og:url" content="https://www.musabaysan.nl/" />
+		<link rel="canonical" href="https://www.musabaysan.nl/" />
+		<link rel="icon" type="image/svg+xml" href="/favicon-m.svg" />
+		<link rel="preload" href="/fonts/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/Geist-Medium.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/Geist-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="modulepreload" href="/js/ui-generation.js" />
+		<link rel="modulepreload" href="/js/text-image-generation.js" />
+		<script is:inline async src="https://cdn.seline.so/seline.js" data-token="5729609278daf4f"></script>
+		<script is:inline>
+			/* First visit per session with motion allowed: hide the hero and work rows until their reveal
+			   runs. The failsafe only counts time while the page is visible (background tabs pause). */
+			(function () {
+				var root = document.documentElement, k = 'mb-gen-v2', seen = null, reduced = false;
+				try { seen = sessionStorage.getItem(k); } catch (e) {}
+				try { reduced = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+				if (seen || reduced) return;
+				root.classList.add('gen-pending', 'reveal-rows');
+				var arm = function () {
+					setTimeout(function () { if (!window.__genStarted) root.classList.remove('gen-pending', 'reveal-rows'); }, 2500);
+				};
+				if (document.visibilityState === 'visible') arm();
+				else document.addEventListener('visibilitychange', function h() {
+					if (document.visibilityState !== 'visible') return;
+					document.removeEventListener('visibilitychange', h);
+					arm();
+				});
+			})();
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="top">
+				<a class="mark" href="/">Musa Baysan</a>
+				<nav class="nav" aria-label="Contact">
+					<a href={linkedin} rel="noopener" target="_blank">LinkedIn</a>
+					<a href={`mailto:${email}`}>Email</a>
+				</nav>
+			</header>
+			<main>
+				<section class="hero">
+					<p class="mono" data-gen="eyebrow">UX designer · Breda, NL</p>
+					<h1 data-gen="title">I design apps from research to release, and build them too.</h1>
+					<p class="intro" data-gen="intro">Since 2013 I’ve designed websites and apps for startups, agencies and global brands. These days I design the app 30,000+ adidas store employees use, and build my own apps, like ATHLIQ.</p>
+				</section>
+				<section class="work" aria-labelledby="work-label">
+					<p class="mono" id="work-label">Selected work</p>
+					<ol class="rows" data-reveal>
+						{work.map((item, i) => (
+							<li class="row">
+								<span class="num mono">{String(i + 1).padStart(2, '0')}</span>
+								<h2>{item.title}</h2>
+								<div>
+									<p>{item.text}</p>
+									<p class="tags mono">{item.tags.join(' · ')}</p>
+								</div>
+							</li>
+						))}
+					</ol>
+					<p class="note">Case studies on request. Much of my adidas work is confidential, so I walk people through it in a call.</p>
+				</section>
+				<section class="contact" aria-labelledby="contact-label">
+					<p class="mono" id="contact-label">Get in touch</p>
+					<a class="email" href={`mailto:${email}`}>{email}</a>
+					<p class="also">Or find me on <a href={linkedin} rel="noopener" target="_blank">LinkedIn</a>.</p>
+				</section>
+			</main>
+			<footer class="site-footer"><span>© 2026 Musa Baysan</span><span>Breda, NL</span></footer>
 		</div>
-		<div
-			class="relative flex flex-col items-center text-center p-8 w-full max-w-6xl space-y-4 outline outline-1 outline-secondary outline-offset-0.5">
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -top-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 top-36">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -top-6">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -top-6">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -bottom-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 top-36">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -bottom-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -bottom-2">
-			</div>
-			<div>
-				<Icon name="logo" class="relative w-64 text-primary dark:text-background"/>
-				<h1 class="font-button text-l font-bold leading-10 text-secondary tracking-wide">
-					UX designer
-				</h1>
-			</div>
-			<div>
-				<p class="font-body text-lg dark:text-background">
-					The portfolio is being rebuilt from scratch with captivating case studies, beautiful features, and a high-performing website.
-					<br /><b>Q4 2025</b>
-				</p>
-			</div>
-			<Button
-				
-				title="visit previous portfolio"
-				link="https://mbsn.webflow.io/"
-			/>
-		</div>
-	</main>
-</Layout>
+		<script is:inline type="module">
+			const KEY = 'mb-gen-v2';
+			const root = document.documentElement;
+			const el = (k) => document.querySelector(`[data-gen="${k}"]`);
+			const rows = document.querySelector('[data-reveal]');
+			const showRows = () => rows && [...rows.children].forEach((r) => r.classList.add('in'));
+
+			const whenVisible = () => new Promise((resolve) => {
+				if (document.visibilityState === 'visible') return resolve();
+				const h = () => {
+					if (document.visibilityState !== 'visible') return;
+					document.removeEventListener('visibilitychange', h);
+					resolve();
+				};
+				document.addEventListener('visibilitychange', h);
+			});
+
+			// Each row fades up once it scrolls into view; rows arriving together stagger 60 ms apart.
+			function revealRowsOnScroll() {
+				if (!rows || !root.classList.contains('reveal-rows')) return () => {};
+				const io = new IntersectionObserver((entries) => {
+					let k = 0;
+					for (const e of entries) {
+						if (!e.isIntersecting) continue;
+						io.unobserve(e.target);
+						e.target.style.transitionDelay = `${k++ * 60}ms`;
+						e.target.classList.add('in');
+					}
+				}, { rootMargin: '0px 0px -10% 0px' });
+				[...rows.children].forEach((r) => io.observe(r));
+				return () => { io.disconnect(); showRows(); };
+			}
+
+			async function play() {
+				const [{ generate }] = await Promise.all([import('/js/ui-generation.js'), document.fonts.ready]);
+				await whenVisible();                                   // in a background tab every delay would fire at once
+				if (!root.classList.contains('gen-pending')) return;   // the failsafe already showed the page
+				window.__genStarted = true;
+				const line = { variant: 'small-text', fadeBy: 'gradient', fadeStagger: null, fadeDelay: 0, fade: 260 };
+				const runs = [
+					generate(el('eyebrow'), { ...line, duration: 800 }),
+					generate(el('title'), { variant: 'text', duration: 1900, delay: 100, fadeStagger: null, fadeDelay: 30, fade: 170 }),
+					generate(el('intro'), { ...line, duration: 1300, delay: 1100 }),
+				];
+				root.classList.remove('gen-pending');
+				// Rows already in view wait for the headline, so two motions never compete; a scroll arms them at once.
+				let finishRows = null;
+				const armRows = () => { if (!finishRows) finishRows = revealRowsOnScroll(); };
+				runs[1].finished.then(armRows);
+				addEventListener('scroll', armRows, { once: true, passive: true });
+				const skip = () => {
+					removeEventListener('pointerdown', skip);
+					removeEventListener('keydown', skip);
+					runs.forEach((r) => r.cancel());
+					armRows();
+					finishRows();
+				};
+				addEventListener('pointerdown', skip);
+				addEventListener('keydown', skip);
+				try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+			}
+
+			if (root.classList.contains('gen-pending')) play().catch(() => { root.classList.remove('gen-pending'); showRows(); });
+		</script>
+	</body>
+</html>
