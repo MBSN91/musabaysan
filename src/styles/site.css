@@ -1,0 +1,222 @@
+/* musabaysan.nl. Direction: taste-skill v2 "split stage", palette "charcoal and sage", type Schibsted Grotesk.
+   Motion follows Emil Kowalski: one ease-out curve, transform and opacity only, hover gated to fine pointers,
+   press feedback, nothing moves under reduced motion. Selectors carry html.motion or body to beat Tailwind. */
+
+@font-face { font-family: "Schibsted Grotesk"; src: url("/fonts/schibsted-grotesk-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Schibsted Grotesk"; src: url("/fonts/schibsted-grotesk-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Schibsted Grotesk"; src: url("/fonts/schibsted-grotesk-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+
+:root {
+	--bg: #1c1c1c;
+	--surface: #262626;
+	--ink: #f1f1ef;
+	--muted: #a3a49f;
+	--accent: #8fa68e;
+	--accent-ink: #1c1c1c;
+	--field: #c8c5ba;
+	--field-ink: #1c1c1c;
+	--field-muted: #4a4a46;
+
+	--step-small: 0.875rem;                               /* 14 */
+	--step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem); /* 17-19 */
+	--step-lead: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);   /* 20-24 */
+	--step-head: clamp(2.25rem, 1.4rem + 3.4vw, 4.5rem);   /* 36-72 */
+	--step-display: clamp(2.75rem, 1rem + 4.7vw, 5.25rem); /* 44-84 */
+
+	--gap: 12px;
+	--pad: 22px;
+	--inset: calc(var(--gap) + var(--pad)); /* 34px: every text edge on the page sits on this line */
+	--radius: 16px;
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+	--gen-font: "Schibsted Grotesk", system-ui, sans-serif;
+	color-scheme: dark;
+}
+
+html { background: var(--bg); scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font-family: "Schibsted Grotesk", system-ui, sans-serif;
+	font-size: var(--step-body);
+	line-height: 1.55;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+body * { box-sizing: border-box; }
+body img { display: block; max-width: 100%; height: auto; }
+body p, body h1, body h2, body h3, body figure, body dl, body dd, body ul { margin: 0; padding: 0; }
+body ul { list-style: none; }
+body h1, body h2, body h3 { font-weight: 800; letter-spacing: -0.045em; line-height: 0.95; text-wrap: balance; }
+body p { text-wrap: pretty; }
+body a { color: inherit; text-decoration: none; }
+body :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- The split: reading column left, fixed stage right ---------- */
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap); padding: var(--gap); }
+.read { padding: 0 var(--pad); background: #212121; border-radius: var(--radius); }
+.stage { position: sticky; top: var(--gap); height: calc(100svh - 2 * var(--gap)); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+
+.top { display: flex; justify-content: space-between; align-items: center; height: 88px; }
+.mark { font-weight: 800; letter-spacing: -0.03em; font-size: var(--step-lead); }
+.top nav { display: flex; gap: 28px; font-size: var(--step-body); }
+
+.hero { min-height: calc(100svh - 88px - 2 * var(--gap)); display: flex; flex-direction: column; justify-content: center; padding-bottom: 88px; }
+.hero h1 { font-size: var(--step-display); max-width: 8em; }
+.hero .lead { margin-top: 36px; font-size: var(--step-lead); line-height: 1.4; max-width: 30ch; }
+.actions { margin-top: 40px; display: flex; align-items: center; gap: 28px; }
+
+.button {
+	display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px;
+	background: var(--accent); color: var(--accent-ink); font-weight: 600;
+	transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+.button:active { transform: scale(0.97); }
+.link { position: relative; display: inline-block; }
+.link::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 0.08em; background: currentColor; transform-origin: right; transition: transform 150ms var(--ease-out); } /* taste-skill-ignore: a text underline, not a divider */
+
+/* ---------- Work ---------- */
+.work { padding-top: 160px; }
+.work h2 { font-size: var(--step-head); }
+.ledger { margin-top: 40px; }
+.ledger a { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 16px; align-items: baseline; padding: 14px 0; transition: opacity 200ms var(--ease-out); }
+.ledger .name { font-weight: 600; font-size: var(--step-lead); letter-spacing: -0.02em; }
+.ledger .kind, .ledger .years { color: var(--muted); font-size: var(--step-body); }
+.ledger .years { font-variant-numeric: tabular-nums; }
+
+.project { padding-top: 200px; max-width: 34em; }
+.project h3 { font-size: var(--step-head); }
+.project .meta { margin-top: 16px; color: var(--muted); }
+.project p + p { margin-top: 20px; }
+.project .meta + p { margin-top: 32px; }
+.project .facts { margin-top: 28px; color: var(--muted); font-size: var(--step-body); }
+.project:last-child { padding-bottom: 200px; }
+
+/* Inline pictures are the phone composition; the desktop shows them on the stage instead. */
+.inline { display: none; }
+
+/* ---------- Stage layers ---------- */
+.layer { position: absolute; inset: 0; opacity: 0; transition: opacity 700ms var(--ease-out); }
+.layer.on { opacity: 1; }
+.field { position: absolute; inset: 0 0 56px 0; overflow: hidden; }
+.bar {
+	position: absolute; left: 0; right: 0; bottom: 0; height: 56px; padding: 0 22px;
+	display: flex; justify-content: space-between; align-items: center; gap: 16px;
+	background: var(--surface); color: var(--ink); font-size: var(--step-small);
+}
+.bar span + span { color: var(--muted); text-align: right; }
+
+.layer.phones .field { background: var(--accent); display: flex; justify-content: center; align-items: center; padding: 0 4%; }
+.layer.phones img { width: 37%; max-height: 86%; object-fit: contain; border-radius: 26px; }
+.layer.phones img:nth-child(1) { margin-right: -7%; transform: translateY(5%); }
+.layer.phones img:nth-child(2) { position: relative; z-index: 1; width: 42%; }
+.layer.phones img:nth-child(3) { margin-left: -7%; transform: translateY(5%); }
+.layer.photo img { width: 100%; height: 100%; object-fit: cover; }
+.layer.pair .field { display: grid; grid-template-rows: 1fr 1fr; }
+.layer.pair img { width: 100%; height: 100%; object-fit: cover; }
+
+/* One moving picture: the visible layer drifts slowly. */
+@keyframes drift { from { transform: scale(1); } to { transform: scale(1.06); } }
+html.motion .layer.on.photo img, html.motion .layer.on.pair img { animation: drift 16s var(--ease-out) both; }
+html.motion .layer.on.phones .field { animation: drift 16s var(--ease-out) both; }
+html.paused .layer img, html.paused .layer .field { animation-play-state: paused; }
+
+/* ---------- About: breaks the split, runs full width on the concrete field ---------- */
+.about {
+	margin: calc(240px - var(--gap)) var(--gap) 0; border-radius: var(--radius);
+	background: var(--field); color: var(--field-ink);
+	display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap);
+}
+.letter { padding: 120px var(--pad); max-width: 40em; }
+.letter h2 { font-size: var(--step-head); margin-bottom: 40px; }
+.letter p + p { margin-top: 20px; }
+.letter .sign { margin-top: 40px; font-weight: 600; font-size: var(--step-lead); }
+.letter .sign span { display: block; font-weight: 400; font-size: var(--step-body); color: var(--field-muted); }
+.portrait { padding: var(--gap); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; border-radius: calc(var(--radius) - 6px); }
+
+/* ---------- Contact ---------- */
+.contact {
+	display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap);
+	padding: 240px var(--inset) 200px;
+}
+.contact h2 { font-size: var(--step-head); padding-right: var(--pad); }
+.contact h2 span { color: var(--muted); }
+.reach { padding-left: var(--pad); max-width: 600px; }
+.field-form { position: relative; }
+.field-form input[type="text"] {
+	width: 100%; height: 64px; border: 0; border-radius: var(--radius); padding: 0 76px 0 22px;
+	background: var(--ink); color: var(--bg); font: inherit; font-size: var(--step-body);
+}
+.field-form input[type="text"]::placeholder { color: #6b6b67; }
+.field-form input[type="text"]:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+.field-form button {
+	position: absolute; right: 10px; top: 10px; width: 44px; height: 44px; border: 0; border-radius: 999px;
+	background: var(--bg); color: var(--ink); display: grid; place-items: center; cursor: pointer;
+	transition: transform 160ms var(--ease-out);
+}
+.field-form button:active { transform: scale(0.94); }
+.hint { margin-top: 14px; font-size: var(--step-small); color: var(--muted); }
+.ways { margin-top: 72px; display: grid; gap: 14px; }
+.ways div { display: grid; grid-template-columns: 7em 1fr; gap: 16px; }
+.ways dt { color: var(--muted); }
+
+/* ---------- Ending: the name at full width ---------- */
+.end { padding: 0 var(--inset) 34px; }
+.end .name { font-weight: 800; letter-spacing: -0.05em; line-height: 0.85; white-space: nowrap; color: var(--accent); }
+.end .name span { display: inline-block; font-size: 15vw; }
+.end .small { margin-top: 28px; font-size: var(--step-small); color: var(--muted); max-width: 70ch; }
+
+/* ---------- Hover and feedback, fine pointers only ---------- */
+@media (hover: hover) and (pointer: fine) {
+	.button:hover { background: #a4b9a3; }
+	.top nav a, .ledger a { transition: opacity 200ms var(--ease-out); }
+	.top nav:hover a:not(:hover) { opacity: 0.55; }
+	.ledger:hover a:not(:hover) { opacity: 0.4; }
+	.link:hover::after { transform: scaleX(0); transition-duration: 250ms; }
+	.field-form button:hover { background: #000; }
+}
+
+/* ---------- Entrances (set by script; content is visible without it) ---------- */
+html.gen-pending [data-gen] { opacity: 0; }
+html.motion [data-in] { opacity: 0; transform: translateY(20px); }
+html.motion [data-in].in { opacity: 1; transform: none; transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out); }
+
+/* ---------- Tablet and phone: one column, pictures inline ---------- */
+@media (max-width: 900px) {
+	.split { display: block; padding: 0; }
+	.stage { display: none; }
+	.read { padding: 0 20px; background: none; border-radius: 0; }
+	.top { height: 72px; }
+	.top nav { gap: 20px; }
+	.hero { min-height: 0; padding: 48px 0 0; }
+	.hero .lead { margin-top: 24px; }
+	.actions { margin-top: 32px; }
+	.inline { display: flex; gap: 12px; margin-top: 48px; border-radius: var(--radius); overflow: hidden; }
+	.inline.phones { background: var(--accent); justify-content: center; padding: 28px 16px; }
+	.inline.phones img { width: 44%; border-radius: 18px; }
+	.inline.photo img, .inline.pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+	.project .inline { margin: 0 0 32px; }
+	.work { padding-top: 112px; }
+	.project { padding-top: 112px; }
+	.project:last-child { padding-bottom: 112px; }
+	.ledger a { grid-template-columns: 1fr auto; padding: 12px 0; }
+	.ledger .kind { display: none; }
+	.about { display: block; margin: 0 12px; }
+	.letter { padding: 72px 20px 32px; }
+	.portrait { padding: 0 12px 12px; }
+	.portrait img { aspect-ratio: 1; }
+	.contact { display: block; padding: 112px 20px 160px; }
+	.contact h2 { padding: 0 0 40px; }
+	.reach { padding: 0; }
+	.ways { margin-top: 48px; }
+	.ways div { grid-template-columns: 1fr; gap: 2px; }
+	.end { padding: 0 20px 32px; }
+}
+@media (max-width: 480px) {
+	.top nav a[href="#about"] { display: none; }
+}
