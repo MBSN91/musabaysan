@@ -23,7 +23,7 @@ export const cases: Case[] = [
 		name: 'adidas store app',
 		title: '1.5 minutes instead of 5 to 8',
 		summary: 'The app 30,000+ adidas store employees work with every day. Testing on the shop floor found a workaround nobody upstream knew about; the native flow I pushed for cut the task to about 1.5 minutes in tests.',
-		field: '#121212',
+		field: 'var(--adi-field)',
 		ink: '#f9f4f0',
 		facts: [
 			['Role', 'UX designer, Manager UX Design from 2022, now Digital Experience Designer'],
@@ -39,7 +39,7 @@ export const cases: Case[] = [
 					'Store employees used separate apps for stock, orders, membership and tasks. The store app brings them together for 30,000+ employees on iPhone and iPad.',
 					'I built its design system and components together with the developers and the retail UX designers, so new features land in one consistent app.',
 				],
-				shot: { kind: 'slot', label: 'Design system components', spec: '16:10, 2880 × 1800, labels blurred', ratio: '16 / 10', blur: true },
+				shot: { kind: 'slot', label: 'Design system, rebuilt', spec: '16:10, 2880 × 1800, components redrawn as greyscale wireframes, no real UI', ratio: '16 / 10' },
 			},
 			{
 				heading: 'The workaround on the shop floor',
@@ -55,7 +55,7 @@ export const cases: Case[] = [
 					'Mapping the in-store membership journey uncovered broken steps and incorrect emails. The scope changed from a screen to the whole journey.',
 					'I brought business, privacy, legal, the product owner, the flagship app and CRM teams together. The fixes shipped within weeks, with wording aligned to what markets expect and what the law requires.',
 				],
-				shot: { kind: 'slot', label: 'Journey map wall', spec: '3:2, 3000 px wide, sticky-note text blurred', ratio: '3 / 2', blur: true },
+				shot: { kind: 'slot', label: 'Journey map, anonymised', spec: '3:2, 3000 px wide, redrawn steps only, no real text', ratio: '3 / 2' },
 			},
 		],
 	},

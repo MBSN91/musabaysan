@@ -78,7 +78,7 @@ const mm = gsap.matchMedia();
 mm.add({ motion: '(prefers-reduced-motion: no-preference)', reduce: '(prefers-reduced-motion: reduce)' }, (ctx) => {
 	const { motion } = ctx.conditions as { motion: boolean };
 	if (!motion) {
-		plots.forEach((p) => setState(p, 'shipped'));
+		plots.forEach((p) => { if (!p.el.hasAttribute('data-sketch-only')) setState(p, 'shipped'); });
 		return;
 	}
 	plots.forEach((p) => build(p, p.el.id === 'hero-device' ? 'load' : 'scroll'));
