@@ -1,0 +1,31 @@
+---
+// A phone that exists twice: the dotted wireframe derived from the real screen, and the shipped screen.
+// Without script or with reduced motion it shows the shipped screen; the buttons flip between the two.
+interface Props { wire: string; img?: string; alt: string; caption?: string; eager?: boolean; notes?: { text: string; x: number; y: number; side: 'l' | 'r' }[]; id?: string }
+const { wire, img, alt, caption, eager = false, notes = [], id } = Astro.props;
+const sketchOnly = !img;
+const wires = import.meta.glob('../wire/*.svg', { as: 'raw', eager: true });
+const svg = (wires[`../wire/${wire}.svg`] as string) ?? '';
+const uid = id ?? `d-${wire}`;
+---
+<figure class:list={["device", { "device--sketch": sketchOnly }]} data-plot data-state={sketchOnly ? "sketch" : "shipped"} data-sketch-only={sketchOnly ? "" : undefined} id={uid} role={sketchOnly ? "img" : undefined} aria-label={sketchOnly ? alt : undefined}>
+	<div class="device__body">
+		<div class="device__bezel"><div class="device__screen">
+			{img && <img class="device__shot" src={img} alt={alt} width="640" height="1138" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" />}
+			<div class="device__wire" set:html={svg} />
+			<span class="device__scan" aria-hidden="true"></span>
+		</div></div>
+		{notes.map((n) => (
+			<span class={`note note--${n.side}`} style={`--x:${n.x};--y:${n.y}%`} aria-hidden="true"><span>{n.text}</span></span>
+		))}
+	</div>
+	{sketchOnly ? (
+		<figcaption class="device__note">{caption}</figcaption>
+	) : (
+		<figcaption class="device__switch">
+			<span class="sr">View this screen as</span>
+			<button type="button" data-to="sketch" aria-pressed="false" aria-controls={uid}>Sketch</button>
+			<button type="button" data-to="shipped" aria-pressed="true" aria-controls={uid}>Shipped</button>
+		</figcaption>
+	)}
+</figure>

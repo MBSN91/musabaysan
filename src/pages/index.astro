@@ -1,347 +1,128 @@
 ---
-// musabaysan.nl, holding page until portfolio v1 (Oct 2026).
-// Art direction: taste-skill v2 "split stage" (seed 1695032018, type redrawn to Schibsted Grotesk).
-// Idea: the screens Musa designed and shipped are the fixed stage; it changes with each project.
-// Hero text is drawn once per visit with transitions-ui-generation (/public/js, see TRANSITIONS-LICENSE.txt);
-// all other motion follows Emil Kowalski's rules (see src/styles/site.css). Every claim comes from Musa's CV.
-import '../styles/generation.css';
-import '../styles/site.css';
+// musabaysan.nl home. Direction: "From sketch to shipped" (see PRODUCT.md and .impeccable/surfaces).
+// Every fact comes from Musa's CV or facts he confirmed. Slots mark shots Musa still has to make.
+import Site from '../layouts/Site.astro';
+import Device from '../components/Device.astro';
+import Shot from '../components/Shot.astro';
+import { cases, sites } from '../data/work';
 
 export const prerender = true;
 
-const title = 'Musa Baysan, UX designer in Breda';
-const description = 'UX designer in Breda. I design apps and build them. Since 2013 for startups, agencies and global brands, today at adidas.';
-const linkedin = 'https://www.linkedin.com/in/musabaysan';
 const email = 'hello@musabaysan.nl';
+const linkedin = 'https://www.linkedin.com/in/musabaysan';
+const years = cases.map((c) => c.facts.find((f) => f[0] === 'Years')?.[1] ?? '');
 
-const phones = (list: string[], alt: string[]) => list.map((src, i) => ({ src: `/img/${src}.webp`, alt: alt[i], w: 640, h: 1138 }));
-
-const stages: Record<string, { kind: string; caption: [string, string]; items: { src: string; alt: string; w: number; h: number }[] }> = {
-	hero: {
-		kind: 'phones',
-		caption: ['ATHLIQ', 'Designed and built by me'],
-		items: phones(['athliq-today', 'athliq-recovery', 'athliq-workouts'], [
-			'ATHLIQ home screen with a day score of 88 for protein, sleep and steps',
-			'ATHLIQ recovery screen with sleep, day and load scores',
-			'ATHLIQ workouts screen with this week’s training',
-		]),
-	},
-	adidas: {
-		kind: 'photo',
-		caption: ['adidas store, Jakarta', 'Photo: RasyaAbhirama13, CC BY-SA 4.0'],
-		items: [{ src: '/img/adidas-store.webp', alt: 'An adidas store in the Grand Indonesia mall in Jakarta', w: 1600, h: 1200 }],
-	},
-	athliq: {
-		kind: 'phones',
-		caption: ['ATHLIQ', 'Diary, food log and workout player'],
-		items: phones(['athliq-diary', 'athliq-food', 'athliq-player'], [
-			'ATHLIQ diary with calories and macros for the day',
-			'ATHLIQ food search with recently logged products',
-			'ATHLIQ workout player showing a full body exercise',
-		]),
-	},
-	happy: {
-		kind: 'photo',
-		caption: ['Happy Italy app', 'Ordering, coupons and loyalty'],
-		items: [{ src: '/img/happy-italy.webp', alt: 'Five Happy Italy app screens: menu, coupons, loyalty points and ordering', w: 1200, h: 900 }],
-	},
-	sites: {
-		kind: 'pair',
-		caption: ['Websites', 'A barber and a suit maker'],
-		items: [
-			{ src: '/img/site-barber.webp', alt: 'Barber website on laptop, tablet and phone', w: 1200, h: 900 },
-			{ src: '/img/site-suits.webp', alt: 'Made-to-measure wedding suit website on laptop, tablet and phone', w: 1200, h: 900 },
-		],
-	},
-};
-
-const work = [
-	{
-		id: 'adidas',
-		title: 'adidas store app',
-		kind: 'Enterprise app',
-		years: '2021–now',
-		text: [
-			'The app 30,000+ store employees use every day for stock, orders, membership and tasks. Testing with markets uncovered a scanning workaround; the native bulk scanning I pushed for took about 1.5 minutes instead of 5 to 8 in tests.',
-			'Journey mapping in stores got broken membership steps fixed within weeks. The screens are confidential, so I walk people through them in a call.',
-		],
-		facts: 'iPhone and iPad, research, design system',
-	},
-	{
-		id: 'athliq',
-		title: 'ATHLIQ',
-		kind: 'Own product',
-		years: '2025–now',
-		text: [
-			'A coaching app for personal trainers and their clients, from onboarding to live workout tracking. Designed and built end to end in React Native, now in alpha with 20 active users.',
-		],
-		facts: 'iOS and Android, design and code',
-	},
-	{
-		id: 'happy',
-		title: 'Happy Italy',
-		kind: 'Consumer app',
-		years: '2020–2021',
-		text: [
-			'A food-delivery app with a built-in loyalty system, plus a redesigned website. User research and usability tests shaped the ordering journey, and I set up the design system with the external developers.',
-		],
-		facts: 'Research, usability tests, design system',
-	},
-	{
-		id: 'sites',
-		title: 'Websites',
-		kind: 'Own studio',
-		years: '2014–now',
-		text: [
-			'Before adidas I ran my own studio: research, UX and UI for small businesses. A barber with online booking, a made-to-measure suit maker, a maker of high-end chairs. Most recently the Bayee.nl web shop, designed and built on a headless CMS.',
-		],
-		facts: 'Research, design, front-end code',
-	},
+const timeline = [
+	{ year: '2013', title: 'Digital designer', text: 'Campaigns, print, social and motion, after studying Communication & Multimedia Design.' },
+	{ year: '2014', title: 'Own studio', text: 'Research, UX and UI for small businesses, and the front-end code to go with it.' },
+	{ year: '2020', title: 'Happy Italy', text: 'UX designer for the guest app and website: research, usability tests, design system.' },
+	{ year: '2021', title: 'adidas, store app', text: 'Started as a contractor on the app store employees work with.' },
+	{ year: '2022', title: 'Manager UX Design', text: 'Joined adidas in-house, leading the UX of the store app.' },
+	{ year: '2025', title: 'ATHLIQ', text: 'My own coaching app, designed and built end to end.' },
+	{ year: 'Now', title: 'Digital Experience Designer', text: 'Still on the store app at adidas, and still building.' },
 ];
 ---
-
-<!doctype html>
-<html lang="en" data-theme="dark">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<meta name="theme-color" content="#1c1c1c" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content="I design apps and build them." />
-		<meta property="og:url" content="https://www.musabaysan.nl/" />
-		<link rel="canonical" href="https://www.musabaysan.nl/" />
-		<link rel="icon" type="image/svg+xml" href="/favicon-m.svg" />
-		<link rel="preload" href="/fonts/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="modulepreload" href="/js/ui-generation.js" />
-		<link rel="modulepreload" href="/js/text-image-generation.js" />
-		<script is:inline async src="https://cdn.seline.so/seline.js" data-token="5729609278daf4f"></script>
-		<script is:inline>
-			/* Motion is opt-in: without script or with reduced motion, everything is simply there.
-			   The hero is drawn once per session; the failsafe only counts time while the tab is visible. */
-			(function () {
-				var root = document.documentElement, k = 'mb-gen-v3', seen = null, reduced = false;
-				try { reduced = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-				if (reduced) return;
-				root.classList.add('motion');
-				try { seen = sessionStorage.getItem(k); } catch (e) {}
-				if (seen) return;
-				root.classList.add('gen-pending');
-				var arm = function () { setTimeout(function () { if (!window.__genStarted) root.classList.remove('gen-pending'); }, 2500); };
-				if (document.visibilityState === 'visible') arm();
-				else document.addEventListener('visibilitychange', function h() {
-					if (document.visibilityState !== 'visible') return;
-					document.removeEventListener('visibilitychange', h);
-					arm();
-				});
-			})();
-		</script>
-	</head>
-	<body>
-		<div class="split">
-			<div class="read">
-				<header class="top">
-					<a class="mark" href="/">Musa Baysan</a>
-					<nav aria-label="Sections">
-						<a href="#work">Work</a>
-						<a href="#about">About</a>
-						<a href="#contact">Contact</a>
-					</nav>
-				</header>
-
-				<section class="hero" data-stage="hero">
-					<h1 data-gen="title">I design apps and build&nbsp;them</h1>
-					<p class="lead" data-gen="intro">Musa Baysan, UX designer in Breda. Since 2013 I’ve designed apps and websites for startups, agencies and global brands.</p>
-					<div class="actions" data-gen="actions">
-						<a class="button" href={`mailto:${email}`}>Email me</a>
-						<a class="link" href={linkedin} rel="noopener" target="_blank">LinkedIn</a>
-					</div>
-					<figure class="inline phones" aria-hidden="true">
-						{stages.hero.items.slice(0, 2).map((p) => <img data-ui src={p.src} alt="" width={p.w} height={p.h} />)}
-					</figure>
-				</section>
-
-				<section class="work" id="work" aria-labelledby="work-title">
-					<h2 id="work-title" data-in>Work</h2>
-					<ul class="ledger" data-in>
-						{work.map((w) => (
-							<li>
-								<a href={`#${w.id}`} data-show={w.id}>
-									<span class="name">{w.title}</span>
-									<span class="kind">{w.kind}</span>
-									<span class="years">{w.years}</span>
-								</a>
-							</li>
-						))}
-					</ul>
-
-					{work.map((w) => {
-						const s = stages[w.id];
-						return (
-							<article class="project" id={w.id} data-stage={w.id} aria-labelledby={`${w.id}-title`}>
-								<figure class={`inline ${s.kind}`} data-in>
-									{s.kind === 'phones'
-										? s.items.slice(0, 2).map((p) => <img data-ui src={p.src} alt={p.alt} width={p.w} height={p.h} loading="lazy" />)
-										: <img src={s.items[0].src} alt={s.items[0].alt} width={s.items[0].w} height={s.items[0].h} loading="lazy" />}
-								</figure>
-								<h3 id={`${w.id}-title`} data-in>{w.title}</h3>
-								<p class="meta" data-in>{w.kind}, {w.years}</p>
-								{w.text.map((t) => <p data-in>{t}</p>)}
-								<p class="facts" data-in>{w.facts}</p>
-							</article>
-						);
-					})}
-				</section>
+<Site title="Musa Baysan, UX designer in Breda" description="UX designer in Breda. I design apps and build them. Since 2013 for startups, agencies and global brands, today at adidas.">
+	<section class="hero">
+		<div class="hero__text">
+			<h1>I design apps and build&nbsp;them.</h1>
+			<p class="lead">Musa Baysan, UX designer in Breda. Since 2013 for startups, agencies and global brands. Today I design the app 30,000+ adidas store employees work with.</p>
+			<div class="actions">
+				<a class="btn" href={`mailto:${email}`}>Email me</a>
+				<a class="u" href={linkedin} rel="noopener" target="_blank">LinkedIn</a>
 			</div>
-
-			<aside class="stage" aria-label="Project pictures">
-				{Object.entries(stages).map(([key, s], i) => (
-					<figure class={`layer ${s.kind}`} data-layer={key} aria-hidden={i === 0 ? 'false' : 'true'}>
-						<div class="field">
-							{s.items.map((p, j) => (
-								<img data-ui={s.kind === 'phones' ? '' : undefined} src={p.src} alt={p.alt} width={p.w} height={p.h} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 && j === 0 ? 'high' : 'auto'} />
-							))}
-						</div>
-						<figcaption class="bar"><span>{s.caption[0]}</span><span>{s.caption[1]}</span></figcaption>
-					</figure>
-				))}
-			</aside>
 		</div>
+		<div class="hero__device">
+			<Device id="hero-device" wire="athliq-today" img="/img/athliq-today.webp" alt="ATHLIQ home screen with a day score of 88 built from protein, sleep and steps" eager
+				notes={[
+					{ text: 'One score for the day', x: 50, y: 41, side: 'r' },
+					{ text: 'Protein, sleep, steps', x: 70, y: 62, side: 'r' },
+					{ text: 'Today’s workout, one tap', x: 85, y: 80, side: 'r' },
+				]} />
+			<p class="hero__caption">ATHLIQ, my own app. Sketched in Figma, shipped in React Native.</p>
+		</div>
+	</section>
 
-		<section class="about" id="about" aria-labelledby="about-title">
-			<div class="letter">
-				<h2 id="about-title" data-in>About</h2>
-				<p data-in>I studied Communication & Multimedia Design and started as a digital designer: campaigns, print, social and motion, in Adobe’s tools.</p>
-				<p data-in>From 2014 I ran my own studio, doing research, UX and UI for small businesses. In 2020 I joined Happy Italy. Since 2021 I’ve been at adidas, where I design the app store employees work with every day.</p>
-				<p data-in>I work close to the code. I prototype in it, and I build my own products, like ATHLIQ, from the first sketch to release.</p>
-				<p data-in>My best insights come from the shop floor. Watching employees work around a slow flow told us more than any dashboard did.</p>
-				<p class="sign" data-in>Musa Baysan<span>UX designer, Breda</span></p>
+	<section class="work" id="work" aria-labelledby="work-title">
+		<h2 id="work-title" class="work__title">Selected work</h2>
+		{cases.map((c, i) => (
+			<article class="case" style={`--field:${c.field};--on-field:${c.ink}`} aria-labelledby={`case-${c.slug}`}>
+				<div class="case__text">
+					<h3 id={`case-${c.slug}`}><a href={`/work/${c.slug}/`}>{c.title}</a></h3>
+					<p class="case__meta">{c.name}, {years[i]}</p>
+					<p>{c.summary}</p>
+					<a class="u case__more" href={`/work/${c.slug}/`} aria-label={`Read the ${c.name} case`}>Read the case</a>
+				</div>
+				<div class="case__field">
+					{c.slug === 'adidas-store-app' ? (
+						<div class="adi">
+							<div class="metric" data-metric>
+								<p class="metric__from"><s>5 to 8</s> min</p>
+								<p class="metric__to"><span data-count="1.5">1.5</span> min</p>
+								<p class="metric__note">Bulk scanning in store tests, before and after</p>
+							</div>
+							<Device wire="adidas-bulkscan" alt="Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button" caption="Redrawn as a wireframe. The real screens are confidential." />
+						</div>
+					) : (
+						<Shot shot={c.cover} />
+					)}
+				</div>
+			</article>
+		))}
+
+		<article class="sites" aria-labelledby="sites-title">
+			<div class="sites__text">
+				<h3 id="sites-title">Websites for small businesses</h3>
+				<p>From my own studio: research, design and the front-end code. A barber with online booking, a made-to-measure suit maker, a maker of high-end chairs, and the Bayee web shop on a headless CMS.</p>
 			</div>
-			<figure class="portrait" data-in>
-				<img src="/img/musa.webp" alt="Musa Baysan in a white T-shirt, outdoors in evening sun" width="900" height="900" loading="lazy" />
-			</figure>
-		</section>
+			{sites.map((s) => (
+				<figure class="sites__pic"><img src={s.img} alt={s.alt} width="1200" height="900" loading="lazy" decoding="async" /><figcaption>{s.name}</figcaption></figure>
+			))}
+		</article>
+	</section>
 
-		<section class="contact" id="contact" aria-labelledby="contact-title">
-			<h2 id="contact-title" data-in>Got a role or a project?</h2>
-			<div class="reach">
-				<form class="field-form" action={`mailto:${email}`} method="get" enctype="text/plain" data-in>
-					<label class="sr" for="msg">Your message</label>
-					<input id="msg" name="body" type="text" placeholder="Hi Musa, …" autocomplete="off" />
-					<input type="hidden" name="subject" value="Hello from musabaysan.nl" />
-					<button type="submit" aria-label="Send by email">
-						<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-					</button>
-				</form>
-				<p class="hint" data-in>Opens your email app with the message filled in.</p>
-				<dl class="ways" data-in>
-					<div><dt>Email</dt><dd><a class="link" href={`mailto:${email}`}>{email}</a></dd></div>
-					<div><dt>LinkedIn</dt><dd><a class="link" href={linkedin} rel="noopener" target="_blank">linkedin.com/in/musabaysan</a></dd></div>
-					<div><dt>Based in</dt><dd>Breda, the Netherlands</dd></div>
-				</dl>
+	<section class="how" id="how" aria-labelledby="how-title">
+		<h2 id="how-title">How I work</h2>
+		<div class="how__cols">
+			<div class="how__col">
+				<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'You on the shop floor', spec: '4:5, 2400 × 3000, daylight, phone in hand', ratio: '4 / 5' }} /></div>
+				<h3>On the shop floor</h3>
+				<p>I test with the people who use the app, where they use it. Watching employees work around a slow flow told us more than any dashboard did.</p>
 			</div>
-		</section>
+			<div class="how__col">
+				<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'A flow in Figma', spec: '4:5, 2400 × 3000, screen capture, real but blurred labels', ratio: '4 / 5', blur: true }} /></div>
+				<h3>In Figma</h3>
+				<p>Journeys, flows and design systems, from the first sketch to the developer handoff. iPhone, iPad and web.</p>
+			</div>
+			<div class="how__col">
+				<div class="how__visual how__visual--device"><Device wire="athliq-diary" img="/img/athliq-diary.webp" alt="ATHLIQ diary with calories and macros for the day" /></div>
+				<h3>In code</h3>
+				<p>I build what I design: ATHLIQ in React Native, this site in Astro, prototypes in the real codebase so teams can test the actual thing.</p>
+			</div>
+		</div>
+	</section>
 
-		<footer class="end">
-			<p class="name" aria-hidden="true"><span data-fit>Musa Baysan</span></p>
-			<p class="small">© 2026 Musa Baysan. Store photo: “Adidas Store in Grand Indonesia, Jakarta” by RasyaAbhirama13, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener" target="_blank">CC BY-SA 4.0</a>, via <a class="link" href="https://commons.wikimedia.org/wiki/File:Adidas_Store_in_Grand_Indonesia,_Jakarta.jpg" rel="noopener" target="_blank">Wikimedia Commons</a>.</p>
-		</footer>
+	<section class="years" id="years" aria-labelledby="years-title">
+		<h2 id="years-title">2013 to now</h2>
+		<div class="years__frame" data-track-frame>
+			<ol class="years__track" data-track>
+				{timeline.map((t) => (
+					<li><span class="years__year">{t.year}</span><h3>{t.title}</h3><p>{t.text}</p></li>
+				))}
+			</ol>
+		</div>
+	</section>
 
-		<script is:inline type="module">
-			const root = document.documentElement;
-			const motion = root.classList.contains('motion');
-
-			// Footer name fills the width exactly, measured rather than guessed.
-			const fit = document.querySelector('[data-fit]');
-			const fitName = () => {
-				fit.style.fontSize = '100px';
-				const w = fit.parentElement.clientWidth;
-				fit.style.fontSize = `${Math.floor((100 * w) / fit.scrollWidth * 10) / 10}px`;
-			};
-			document.fonts.ready.then(fitName);
-			addEventListener('resize', fitName, { passive: true });
-
-			// The stage: one layer shows at a time, picked by the section in view or a hovered ledger row.
-			const layers = new Map([...document.querySelectorAll('[data-layer]')].map((l) => [l.dataset.layer, l]));
-			let current = 'hero', fromScroll = 'hero', pinned = null;
-			const show = (key) => {
-				if (!layers.has(key) || key === current) return;
-				layers.get(current).classList.remove('on');
-				layers.get(current).setAttribute('aria-hidden', 'true');
-				layers.get(key).classList.add('on');
-				layers.get(key).setAttribute('aria-hidden', 'false');
-				current = key;
-			};
-			layers.get('hero').classList.add('on');
-			// The stage follows the last section whose top has passed the middle of the screen.
-			const sections = [...document.querySelectorAll('[data-stage]')];
-			let ticking = false;
-			const follow = () => {
-				ticking = false;
-				const mid = innerHeight / 2;
-				let key = 'hero';
-				for (const s of sections) if (s.getBoundingClientRect().top < mid) key = s.dataset.stage;
-				fromScroll = key;
-				if (!pinned) show(key);
-			};
-			addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(follow); } }, { passive: true });
-			follow();
-			document.querySelectorAll('[data-show]').forEach((a) => {
-				const on = () => { pinned = a.dataset.show; show(pinned); };
-				const off = () => { pinned = null; show(fromScroll); };
-				a.addEventListener('pointerenter', on);
-				a.addEventListener('focus', on);
-				a.addEventListener('pointerleave', off);
-				a.addEventListener('blur', off);
-			});
-			document.addEventListener('visibilitychange', () => root.classList.toggle('paused', document.hidden));
-
-			// Entrances: each section's parts rise in once, 70 ms apart, as they arrive.
-			if (motion) {
-				const io = new IntersectionObserver((entries) => {
-					let k = 0;
-					for (const e of entries) {
-						if (!e.isIntersecting) continue;
-						io.unobserve(e.target);
-						e.target.style.transitionDelay = `${Math.min(k++, 5) * 70}ms`;
-						e.target.classList.add('in');
-					}
-				}, { rootMargin: '0px 0px -8% 0px' });
-				document.querySelectorAll('[data-in]').forEach((n) => io.observe(n));
-			}
-
-			// Hero: drawn once per session with transitions-ui-generation. Any click or key skips it.
-			const whenVisible = () => new Promise((resolve) => {
-				if (document.visibilityState === 'visible') return resolve();
-				const h = () => { if (document.visibilityState !== 'visible') return; document.removeEventListener('visibilitychange', h); resolve(); };
-				document.addEventListener('visibilitychange', h);
-			});
-			async function play() {
-				const [{ generate }] = await Promise.all([import('/js/ui-generation.js'), document.fonts.ready]);
-				await whenVisible();
-				if (!root.classList.contains('gen-pending')) return;
-				window.__genStarted = true;
-				const el = (k) => document.querySelector(`[data-gen="${k}"]`);
-				const line = { variant: 'small-text', fadeBy: 'gradient', fadeStagger: null, fadeDelay: 0, fade: 260 };
-				const runs = [
-					generate(el('title'), { variant: 'text', duration: 1700, delay: 100, fadeStagger: null, fadeDelay: 30, fade: 170 }),
-					generate(el('intro'), { ...line, duration: 1200, delay: 900 }),
-					generate(el('actions'), { ...line, duration: 700, delay: 1500 }),
-				];
-				root.classList.remove('gen-pending');
-				const skip = () => {
-					removeEventListener('pointerdown', skip);
-					removeEventListener('keydown', skip);
-					runs.forEach((r) => r.cancel());
-				};
-				addEventListener('pointerdown', skip);
-				addEventListener('keydown', skip);
-				try { sessionStorage.setItem('mb-gen-v3', '1'); } catch (e) {}
-			}
-			if (root.classList.contains('gen-pending')) play().catch(() => root.classList.remove('gen-pending'));
-		</script>
-	</body>
-</html>
+	<section class="about" id="about" aria-labelledby="about-title">
+		<figure class="about__portrait">
+			<img src="/img/musa.webp" alt="Musa Baysan in a white T-shirt, outdoors in evening sun" width="900" height="900" loading="lazy" decoding="async" />
+		</figure>
+		<div class="about__letter">
+			<h2 id="about-title">About</h2>
+			<p>I studied Communication & Multimedia Design and started as a digital designer. From 2014 I ran my own studio, doing research, UX and UI for small businesses. Since 2021 I have been at adidas, where I design the app store employees work with every day.</p>
+			<p>I work close to the code. I prototype in it, and I build my own products, like ATHLIQ, from the first sketch to release.</p>
+			<p>My best insights come from the shop floor.</p>
+			<Shot shot={{ kind: 'slot', label: 'Me in a minute', spec: 'Video, 16:9, 45 to 60 s, captions burned in, click to play', ratio: '16 / 9' }} />
+		</div>
+	</section>
+</Site>

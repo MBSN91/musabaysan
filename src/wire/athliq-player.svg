@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1138" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<rect x="6" y="6" width="628" height="1126" rx="44"/>
+<rect x="108" y="92" width="380" height="232" rx="22"/>
+<rect x="264" y="512" width="112" height="216" rx="22"/>
+<rect x="92" y="856" width="12" height="152" rx="6"/>
+<rect x="128" y="876" width="56" height="56" rx="22"/>
+<rect x="108" y="952" width="436" height="56" rx="22"/>
+<rect x="92" y="1016" width="456" height="72" rx="22"/>
+<path d="M508 14H536" class="t" style="stroke-width:6px"/>
+<path d="M88 58H108" class="t" style="stroke-width:10px"/>
+<path d="M160 366H480" class="t" style="stroke-width:14px"/>
+<path d="M144 452H184" class="t" style="stroke-width:8px"/>
+<path d="M292 452H348" class="t" style="stroke-width:8px"/>
+<path d="M452 452H500" class="t" style="stroke-width:8px"/>
+<path d="M84 792H196" class="t" style="stroke-width:12px"/>
+<path d="M96 842H284" class="t" style="stroke-width:10px"/>
+<path d="M200 898H316" class="t" style="stroke-width:10px"/>
+<path d="M476 898H528" class="t" style="stroke-width:10px"/>
+<path d="M492 898H504" class="t" style="stroke-width:6px"/>
+<path d="M200 922H260" class="t" style="stroke-width:6px"/>
+<path d="M496 924H528" class="t" style="stroke-width:8px"/>
+<path d="M252 1122H388" class="t" style="stroke-width:6px"/>
+</svg>
