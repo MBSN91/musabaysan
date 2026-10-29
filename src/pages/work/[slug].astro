@@ -1,0 +1,66 @@
+---
+import Site from '../../layouts/Site.astro';
+import Shot from '../../components/Shot.astro';
+import Device from '../../components/Device.astro';
+import { cases } from '../../data/work';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+	return cases.map((c, i) => ({ params: { slug: c.slug }, props: { c, next: cases[(i + 1) % cases.length] } }));
+}
+const { c, next } = Astro.props;
+---
+<Site title={`${c.name}: ${c.title} · Musa Baysan`} description={c.summary} path={`/work/${c.slug}/`}>
+	<article class="cs" style={`--field:${c.field};--on-field:${c.ink}`}>
+		<header class="cs__head">
+			<h1>{c.title}</h1>
+			<p class="cs__name">{c.name}</p>
+			<p class="lead">{c.summary}</p>
+			<dl class="cs__facts">
+				{c.facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+			</dl>
+		</header>
+
+		<div class="cs__cover">
+			{c.slug === 'adidas-store-app' ? (
+				<div class="adi">
+					<div class="metric metric--big" data-metric>
+						<p class="metric__from"><s>5 to 8</s> min</p>
+						<p class="metric__to"><span data-count="1.5">1.5</span> min</p>
+						<p class="metric__note">Bulk scanning in store tests, before and after</p>
+					</div>
+					<Device wire="adidas-bulkscan" id="cs-bulkscan" alt="Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button" caption="Redrawn as a wireframe. The real screens are confidential." />
+				</div>
+			) : <Shot shot={c.cover} eager />}
+		</div>
+
+		{c.sections.map((s, i) => (
+			<section class={`cs__part ${i % 2 ? 'cs__part--flip' : ''}`}>
+				<div class="cs__copy">
+					<h2>{s.heading}</h2>
+					{s.body.map((p) => <p>{p}</p>)}
+				</div>
+				{s.shot && <div class="cs__shot"><Shot shot={s.shot} /></div>}
+			</section>
+		))}
+
+		{c.slug === 'adidas-store-app' && (
+			<section class="cs__part">
+				<div class="cs__copy">
+					<h2>What I can show in a call</h2>
+					<p>The screens are confidential. In a call I walk you through the flows, the research and the decisions behind them.</p>
+				</div>
+				<div class="cs__shot"><Shot shot={c.cover} /></div>
+			</section>
+		)}
+
+		<nav class="cs__next" aria-label="More work">
+			<a href={`/work/${next.slug}/`}>
+				<span>Next case</span>
+				<strong>{next.title}</strong>
+			</a>
+			<p class="cs__all"><a class="u" href="/#work">All work</a></p>
+		</nav>
+	</article>
+</Site>

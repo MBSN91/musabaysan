@@ -1,64 +1,128 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/button.astro';
-import Navigation from '../components/navigation.astro';
-import ThemeToggle from '../components/ThemeToggleButton';
+// musabaysan.nl home. Direction: "From sketch to shipped" (see PRODUCT.md and .impeccable/surfaces).
+// Every fact comes from Musa's CV or facts he confirmed. Slots mark shots Musa still has to make.
+import Site from '../layouts/Site.astro';
+import Device from '../components/Device.astro';
+import Shot from '../components/Shot.astro';
+import { cases, sites } from '../data/work';
 
-import { Icon } from 'astro-icon';
+export const prerender = true;
 
+const email = 'hello@musabaysan.nl';
+const linkedin = 'https://www.linkedin.com/in/musabaysan';
+const years = cases.map((c) => c.facts.find((f) => f[0] === 'Years')?.[1] ?? '');
+
+const timeline = [
+	{ year: '2013', title: 'Digital designer', text: 'Campaigns, print, social and motion, after studying Communication & Multimedia Design.' },
+	{ year: '2014', title: 'Own studio', text: 'Research, UX and UI for small businesses, and the front-end code to go with it.' },
+	{ year: '2020', title: 'Happy Italy', text: 'UX designer for the guest app and website: research, usability tests, design system.' },
+	{ year: '2021', title: 'adidas, store app', text: 'Started as a contractor on the app store employees work with.' },
+	{ year: '2022', title: 'Manager UX Design', text: 'Joined adidas in-house, leading the UX of the store app.' },
+	{ year: '2025', title: 'ATHLIQ', text: 'My own coaching app, designed and built end to end.' },
+	{ year: 'Now', title: 'Digital Experience Designer', text: 'Still on the store app at adidas, and still building.' },
+];
 ---
+<Site title="Musa Baysan, UX designer in Breda" description="UX designer in Breda. I design apps and build them. Since 2013 for startups, agencies and global brands, today at adidas.">
+	<section class="hero">
+		<div class="hero__text">
+			<h1>I design apps and build&nbsp;them.</h1>
+			<p class="lead">Musa Baysan, UX designer in Breda. Since 2013 for startups, agencies and global brands. Today I design the app 30,000+ adidas store employees work with.</p>
+			<div class="actions">
+				<a class="btn" href={`mailto:${email}`}>Email me</a>
+				<a class="u" href={linkedin} rel="noopener" target="_blank">LinkedIn</a>
+			</div>
+		</div>
+		<div class="hero__device">
+			<Device id="hero-device" wire="athliq-today" img="/img/athliq-today.webp" alt="ATHLIQ home screen with a day score of 88 built from protein, sleep and steps" eager
+				notes={[
+					{ text: 'One score for the day', x: 50, y: 41, side: 'r' },
+					{ text: 'Protein, sleep, steps', x: 70, y: 62, side: 'r' },
+					{ text: 'Today’s workout, one tap', x: 85, y: 80, side: 'r' },
+				]} />
+			<p class="hero__caption">ATHLIQ, my own app. Sketched in Figma, shipped in React Native.</p>
+		</div>
+	</section>
 
-<Layout title="Freelance UX designer | Musa Baysan">
-	<div class="opacity-0">
-		<Navigation />
-	</div>
-	<main class="relative flex flex-col z-10 justify-center items-center text-center h-screen px-8">
-		<div class="fixed top-8">
-			<ThemeToggle client:load />
+	<section class="work" id="work" aria-labelledby="work-title">
+		<h2 id="work-title" class="work__title">Selected work</h2>
+		{cases.map((c, i) => (
+			<article class="case" style={`--field:${c.field};--on-field:${c.ink}`} aria-labelledby={`case-${c.slug}`}>
+				<div class="case__text">
+					<h3 id={`case-${c.slug}`}><a href={`/work/${c.slug}/`}>{c.title}</a></h3>
+					<p class="case__meta">{c.name}, {years[i]}</p>
+					<p>{c.summary}</p>
+					<a class="u case__more" href={`/work/${c.slug}/`} aria-label={`Read the ${c.name} case`}>Read the case</a>
+				</div>
+				<div class="case__field">
+					{c.slug === 'adidas-store-app' ? (
+						<div class="adi">
+							<div class="metric" data-metric>
+								<p class="metric__from"><s>5 to 8</s> min</p>
+								<p class="metric__to"><span data-count="1.5">1.5</span> min</p>
+								<p class="metric__note">Bulk scanning in store tests, before and after</p>
+							</div>
+							<Device wire="adidas-bulkscan" alt="Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button" caption="Redrawn as a wireframe. The real screens are confidential." />
+						</div>
+					) : (
+						<Shot shot={c.cover} />
+					)}
+				</div>
+			</article>
+		))}
+
+		<article class="sites" aria-labelledby="sites-title">
+			<div class="sites__text">
+				<h3 id="sites-title">Websites for small businesses</h3>
+				<p>From my own studio: research, design and the front-end code. A barber with online booking, a made-to-measure suit maker, a maker of high-end chairs, and the Bayee web shop on a headless CMS.</p>
+			</div>
+			{sites.map((s) => (
+				<figure class="sites__pic"><img src={s.img} alt={s.alt} width="1200" height="900" loading="lazy" decoding="async" /><figcaption>{s.name}</figcaption></figure>
+			))}
+		</article>
+	</section>
+
+	<section class="how" id="how" aria-labelledby="how-title">
+		<h2 id="how-title">How I work</h2>
+		<div class="how__cols">
+			<div class="how__col">
+				<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'You on the shop floor', spec: '4:5, 2400 × 3000, daylight, phone in hand', ratio: '4 / 5' }} /></div>
+				<h3>On the shop floor</h3>
+				<p>I test with the people who use the app, where they use it. Watching employees work around a slow flow told us more than any dashboard did.</p>
+			</div>
+			<div class="how__col">
+				<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'An ATHLIQ flow in Figma', spec: '4:5, 2400 × 3000, zoomed out to a map of screens', ratio: '4 / 5' }} /></div>
+				<h3>In Figma</h3>
+				<p>Journeys, flows and design systems, from the first sketch to the developer handoff. iPhone, iPad and web.</p>
+			</div>
+			<div class="how__col how__col--lead">
+				<div class="how__visual how__visual--device"><Device wire="athliq-diary" img="/img/athliq-diary.webp" alt="ATHLIQ diary with calories and macros for the day" /></div>
+				<h3>In code</h3>
+				<p>I build what I design: ATHLIQ in React Native, this site in Astro, prototypes in the real codebase so teams can test the actual thing.</p>
+			</div>
 		</div>
-		<div
-			class="relative flex flex-col items-center text-center p-8 w-full max-w-6xl space-y-4 outline outline-1 outline-secondary outline-offset-0.5">
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -top-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 top-36">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -top-6">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -top-6">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -bottom-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 top-36">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -bottom-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -bottom-2">
-			</div>
-			<div>
-				<Icon name="logo" class="relative w-64 text-primary dark:text-background"/>
-				<h1 class="font-button text-l font-bold leading-10 text-secondary tracking-wide">
-					UX designer
-				</h1>
-			</div>
-			<div>
-				<p class="font-body text-lg dark:text-background">
-					The portfolio is being rebuilt from scratch with captivating case studies, beautiful features, and a high-performing website.
-					<br /><b>Q4 2025</b>
-				</p>
-			</div>
-			<Button
-				
-				title="visit previous portfolio"
-				link="https://mbsn.webflow.io/"
-			/>
+	</section>
+
+	<section class="years" id="years" aria-labelledby="years-title">
+		<h2 id="years-title">2013 to now</h2>
+		<div class="years__frame" data-track-frame>
+			<ol class="years__track" data-track>
+				{timeline.map((t) => (
+					<li><span class="years__year">{t.year}</span><h3>{t.title}</h3><p>{t.text}</p></li>
+				))}
+			</ol>
 		</div>
-	</main>
-</Layout>
+	</section>
+
+	<section class="about" id="about" aria-labelledby="about-title">
+		<figure class="about__portrait">
+			<img src="/img/musa.webp" alt="Musa Baysan in a white T-shirt, outdoors in evening sun" width="900" height="900" loading="lazy" decoding="async" />
+		</figure>
+		<div class="about__letter">
+			<h2 id="about-title">About</h2>
+			<p>I studied Communication & Multimedia Design and started as a digital designer. From 2014 I ran my own studio, doing research, UX and UI for small businesses. Since 2021 I have been at adidas, where I design the app store employees work with every day.</p>
+			<p>I work close to the code. I prototype in it, and I build my own products, like ATHLIQ, from the first sketch to release.</p>
+			<p>My best insights come from the shop floor.</p>
+			<Shot shot={{ kind: 'slot', label: 'Me in a minute', spec: 'Video, 16:9, 45 to 60 s, captions burned in, click to play', ratio: '16 / 9' }} />
+		</div>
+	</section>
+</Site>
