@@ -7,15 +7,15 @@ related_targets: ["src/pages/work"]
 
 # Surface: home and case pages
 
-Mode: Experience. Audience: recruiters and design leads skimming for a Senior/Lead UX designer. Action: email Musa. Proof: ATHLIQ real screens and wireframes, adidas numbers, Happy Italy and client site comps.
+Mode: Experience. Audience: recruiters and design leads skimming for a Senior/Lead UX designer. Action: email Musa. Proof: ATHLIQ real screens, adidas outcome and rebuilt wireframe, Happy Italy and client site comps.
 
 ## Direction contract
-THESIS: The page is Musa's drawing board: every project is plotted first as its dotted wireframe, then printed as the shipped screen, so "designs and builds" is shown, not claimed. Refuses the category default of a centred intro over a grid of equal mockup cards.
-OWN-WORLD: Paper ground #f9f4f0 with navy #05192d ink in light, navy ground with paper ink in dark; teal #03B5AA is the plotter (scan line, sketch strokes, "shipped" state); orange #F46036 only on the primary action. Archivo at expanded width for display, normal width for text. Dotted strokes, round caps, redline callouts with one-word labels set like spec annotations.
-STORY: In seconds: UX designer who designs apps and builds them. Then three deep cases with outcome titles, each plotting from sketch to shipped; how he works; 2013 to now; email him.
-FIRST VIEWPORT: Wordmark top-left, three links and theme toggle top-right. Headline at expanded width fills the left two thirds, the ATHLIQ phone at near full viewport height on the right third overlapping the headline baseline, drawn as dotted sketch and plotting to the real screen; orange "Email me" button under the lead line.
-FORM: Drawing board / spec sheet, own list position 1 (pinned by Musa: "sketch to shipped"). seed: none (unavailable)
+THESIS: The home page is a kinetic show reel of Musa's work: type that builds itself and stretches as you scroll, project chapters that take over the whole screen, phones that play their real screens. It refuses the static portfolio of a centred intro above a grid of equal mockup cards. The sketch-to-shipped plotting moves to the case pages, where it explains the work.
+OWN-WORLD: Dark by default: black #000000 and #131313 grounds, white type, lime #E1FB15 for the primary action, highlights and full-screen panels, green #32D583 as the second panel colour. Light theme: white ground, #131313 ink, lime and green only as panels or fills carrying black type. Russo One for every heading, Tomorrow for everything else. Full-bleed square panels, phones tilted in 3D with a soft offset shadow, a lime cursor that grows into a View label over work.
+STORY: In seconds: UX designer who designs apps and builds them. Then a statement that lights up word by word, three project chapters (adidas store app, ATHLIQ, Happy Italy), small-business sites, how he works, 2013 to now, about, say hi.
+FIRST VIEWPORT: Wordmark top-left, Work, About, Contact and the theme toggle top-right. "I design apps and build them." in Russo One across the full width on two lines, building itself letter by letter on load. One intro line and the lime Email me button bottom-left. A ticker of what he does runs along the bottom edge and speeds up with scroll. Scrolling stretches the letters upward and lifts them away.
+FORM: Kinetic show reel, chosen by Musa on 2 Nov 2026 from three proposed directions (kinetic reel, pixels to product, scoreboard). seed: none (unavailable)
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
 ## Open
-Shot-list assets (portrait at work, ATHLIQ recording, adidas rebuilt wireframes, workshop photos) still to be supplied by Musa; slots are drawn as labelled sketches until then.
+Shot-list assets (portrait at work, ATHLIQ recording, adidas rebuilt wireframes, workshop photos, me-in-a-minute video) still to be supplied by Musa; slots are drawn as labelled boxes until then.

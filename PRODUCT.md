@@ -27,7 +27,10 @@ Visitors arrive from CVs, LinkedIn and job applications. adidas can see the site
 - Copy facts come only from Musa's CV or facts he confirmed. No formal people management; no invented metrics.
 
 ## Brand Commitments
-- Colours of the live musabaysan.nl: navy `#05192d`, orange `#F46036`, teal `#03B5AA`, paper `#f9f4f0`, dark `#121212` (Musa, 28 Oct 2026: "leaning to use the colors used on the live version").
+- Palette (Musa, 2 Nov 2026, from his reference image): lime `#E1FB15`, green `#32D583`, white `#FFFFFF`, near-black `#131313`, black `#000000`. Replaces the earlier navy, orange and teal of the live site.
+- Themes: dark by default, plus a white light theme where lime only appears as panels or fills with black type (Musa, 2 Nov 2026).
+- Type: Russo One for headings, Tomorrow for everything else (Musa, 2 Nov 2026, closest free match to his reference).
+- Motion: animation-heavy site built with GSAP (Musa, 2 Nov 2026: "lets use GSAP and make sure we have an animation heavy website").
 - His own wordmark logo (`src/icons/logo.svg`).
 - No em dashes in any copy.
 

@@ -23,8 +23,8 @@ export const cases: Case[] = [
 		name: 'adidas store app',
 		title: '1.5 minutes instead of 5 to 8',
 		summary: 'The app 30,000+ adidas store employees work with every day. Testing on the shop floor found a workaround nobody upstream knew about; the native flow I pushed for cut the task to about 1.5 minutes in tests.',
-		field: 'var(--adi-field)',
-		ink: '#f9f4f0',
+		field: 'var(--lime)',
+		ink: '#000000',
 		facts: [
 			['Role', 'UX designer, Manager UX Design from 2022, now Digital Experience Designer'],
 			['Years', '2021 to now'],
@@ -64,22 +64,22 @@ export const cases: Case[] = [
 		name: 'ATHLIQ',
 		title: 'Designed and built by me',
 		summary: 'For personal trainers and their clients: onboarding, training plans, live workout tracking and one score for the day. React Native, Dutch interface, in alpha with 20 active users.',
-		field: '#03B5AA',
-		ink: '#05192d',
+		field: 'var(--green)',
+		ink: '#000000',
 		facts: [
 			['Role', 'Designer and developer'],
 			['Years', '2025 to now'],
 			['Platform', 'iOS and Android, React Native'],
 			['Status', 'Alpha, 20 active users'],
 		],
-		cover: { kind: 'device', wire: 'athliq-player', img: '/img/athliq-player.webp', alt: 'ATHLIQ workout player for a full body schema with a superset of goblet squats' },
+		cover: { kind: 'device', wire: 'athliq-today', img: '/img/athliq-today.webp', alt: 'ATHLIQ home screen with a day score of 88 built from protein, sleep and steps' },
 		sections: [
 			{
 				heading: 'Made for the gym floor',
 				body: [
 					'Clients use ATHLIQ between sets: one hand, sweaty fingers, half their attention. The workout player keeps the next exercise, the reps and the weight in thumb reach.',
 				],
-				shot: { kind: 'device', wire: 'athliq-today', img: '/img/athliq-today.webp', alt: 'ATHLIQ home screen with a day score of 88 built from protein, sleep and steps' },
+				shot: { kind: 'device', wire: 'athliq-player', img: '/img/athliq-player.webp', alt: 'ATHLIQ workout player for a full body schema with a superset of goblet squats' },
 			},
 			{
 				heading: 'One number for the day',
@@ -102,8 +102,8 @@ export const cases: Case[] = [
 		name: 'Happy Italy',
 		title: 'Ordering and loyalty in one app',
 		summary: 'A guest app for ordering with a built-in loyalty system, plus a redesigned website. Research and usability tests shaped the ordering journey; I set up the design system with the external developers.',
-		field: '#EBD5C2',
-		ink: '#05192d',
+		field: 'var(--panel-3)',
+		ink: 'var(--on-panel-3)',
 		facts: [
 			['Role', 'UX designer'],
 			['Years', '2020 to 2021'],

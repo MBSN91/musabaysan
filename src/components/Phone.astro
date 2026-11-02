@@ -1,0 +1,19 @@
+---
+// A phone tilted in 3D for the home reel. Screens stack in order; scrolling slides each next screen up
+// over the last (scripts/site.ts). Without script the last screen shows. With `wire` the phone holds a
+// dotted wireframe that draws itself: confidential work, no real screen.
+interface Props { screens?: { img: string; alt: string }[]; wire?: string; wireAlt?: string; eager?: boolean }
+const { screens = [], wire, wireAlt = '', eager = false } = Astro.props;
+const wires = import.meta.glob('../wire/*.svg', { as: 'raw', eager: true });
+const svg = wire ? ((wires[`../wire/${wire}.svg`] as string) ?? '') : '';
+---
+<div class="phone" data-phone>
+	<div class="phone__body">
+		<div class:list={['phone__screen', { 'phone__screen--wire': !!wire }]}>
+			{screens.map((s, i) => (
+				<img class="phone__shot" data-shot src={s.img} alt={s.alt} width="640" height="1138" loading={eager && i === 0 ? 'eager' : 'lazy'} decoding="async" />
+			))}
+			{wire && <div class="phone__wire" data-wire role="img" aria-label={wireAlt} set:html={svg} />}
+		</div>
+	</div>
+</div>
