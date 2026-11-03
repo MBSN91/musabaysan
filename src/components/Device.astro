@@ -9,12 +9,12 @@ const wires = import.meta.glob('../wire/*.svg', { as: 'raw', eager: true });
 const svg = (wires[`../wire/${wire}.svg`] as string) ?? '';
 const uid = id ?? `d-${wire}`;
 const img2x = img ? img.replace(/\.webp$/, '@2x.webp') : '';
-const srcset = img && existsSync(`public${img2x}`) ? `${img} 640w, ${img2x} 1280w` : undefined;
+const srcset = img && existsSync(`public${img2x}`) ? `${img} 1x, ${img2x} 2x` : undefined;
 ---
 <figure class:list={["device", { "device--sketch": sketchOnly }]} data-plot data-state={sketchOnly ? "sketch" : "shipped"} data-sketch-only={sketchOnly ? "" : undefined} id={uid} role={sketchOnly ? "img" : undefined} aria-label={sketchOnly ? alt : undefined}>
 	<div class="device__body">
 		<div class="device__bezel"><div class="device__screen">
-			{img && <img class="device__shot" src={img} srcset={srcset} sizes={srcset ? '(max-width: 900px) 80vw, 720px' : undefined} alt={alt} width="640" height="1138" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" />}
+			{img && <img class="device__shot" src={img} srcset={srcset} alt={alt} width="640" height="1422" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" />}
 			<div class="device__wire" set:html={svg} />
 			<span class="device__scan" aria-hidden="true"></span>
 		</div></div>

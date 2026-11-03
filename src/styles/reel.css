@@ -130,7 +130,7 @@ html.arriving .curtain { transform: translateY(0); visibility: visible; }
 .orbit__tile { position: absolute; left: 0; top: 0; margin: 0; opacity: var(--o); transform: translate(-50%, -50%) translate3d(var(--x), var(--y), var(--z)) rotateX(10deg); will-change: transform, opacity; }
 .orbit__face { overflow: hidden; border-radius: 12px; background: var(--night); box-shadow: 0 24px 48px -18px rgb(0 0 0 / 0.6); } /* taste-skill-ignore: tiles float in depth, the shadow places them */
 .orbit__face img, .orbit__face video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.orbit__tile--phone .orbit__face, .orbit__tile--video .orbit__face, .orbit__tile--wire .orbit__face { width: clamp(78px, 7.6vw, 136px); aspect-ratio: 320 / 569; border-radius: clamp(10px, 1vw, 16px); }
+.orbit__tile--phone .orbit__face, .orbit__tile--video .orbit__face, .orbit__tile--wire .orbit__face { width: clamp(78px, 7.6vw, 136px); aspect-ratio: 9 / 20; border-radius: clamp(10px, 1vw, 16px); }
 .orbit__tile--site .orbit__face { width: clamp(140px, 14vw, 250px); aspect-ratio: 16 / 10; border-radius: 8px; }
 .orbit__tile--comp .orbit__face { width: clamp(170px, 17vw, 300px); aspect-ratio: 620 / 361; overflow: visible; background: none; box-shadow: none; filter: drop-shadow(0 20px 28px rgb(0 0 0 / 0.45)); } /* taste-skill-ignore: the transparent comp floats in depth like the other tiles */
 .orbit__wire { width: 100%; height: 100%; background: var(--white); color: rgb(0 0 0 / 0.72); }
@@ -216,10 +216,10 @@ html.motion [data-hero-title] { visibility: hidden; animation: reveal-fallback 0
 .chapter__pic { width: 100%; filter: drop-shadow(24px 40px 36px rgb(0 0 0 / 0.28)); } /* taste-skill-ignore: transparent comp tilted in 3D casts a shadow */
 
 /* phones for the reel */
-.phone { --h: min(74svh, 700px); width: calc(var(--h) * 640 / 1138); transform: rotateY(-14deg) rotateX(6deg) rotateZ(-1.5deg); transform-style: preserve-3d; }
+.phone { --h: min(74svh, 700px); width: calc(var(--h) * 0.45); /* a 9:20 screen, like a current phone */ transform: rotateY(-14deg) rotateX(6deg) rotateZ(-1.5deg); transform-style: preserve-3d; }
 .chapter--flip .phone { transform: rotateY(14deg) rotateX(6deg) rotateZ(1.5deg); }
-.phone__body { padding: 3.2%; background: #0a0a0a; border-radius: 13% / 7%; box-shadow: var(--shadow), inset 0 0 0 1px rgb(255 255 255 / 0.08); } /* taste-skill-ignore: the tilted 3D phone needs its cast shadow (direction contract) */
-.phone__screen { position: relative; overflow: hidden; border-radius: 10% / 5.6%; aspect-ratio: 640 / 1138; background: var(--night); }
+.phone__body { padding: 3.2%; background: #0a0a0a; border-radius: 15% / 6.8%; box-shadow: var(--shadow), inset 0 0 0 1px rgb(255 255 255 / 0.08); } /* taste-skill-ignore: the tilted 3D phone needs its cast shadow (direction contract) */
+.phone__screen { position: relative; overflow: hidden; border-radius: 12% / 5.4%; aspect-ratio: 9 / 20; background: var(--night); }
 .phone__shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .phone__screen--wire { background: var(--white); }
 .phone__wire { position: absolute; inset: 0; color: var(--black); }
@@ -296,7 +296,7 @@ html.motion .years__frame { overflow: hidden; }
 .cover__struck s::after { content: ""; position: absolute; left: -3%; right: -3%; top: 52%; height: 0.1em; background: currentColor; transform: scaleX(var(--strike, 1)); transform-origin: left; }
 .cover__mast { position: relative; z-index: 1; display: block; font-size: calc((100vw - 2 * var(--m)) / var(--fit, 6)); line-height: 0.8; text-transform: uppercase; white-space: nowrap; letter-spacing: -0.01em; }
 html.motion [data-mast] { visibility: hidden; animation: reveal-fallback 0s 2.5s forwards; }
-.cover__star { --star-h: min(54svh, 500px); --star-w: calc(var(--star-h) * 640 / 1138); position: absolute; z-index: 2; top: 31%; left: calc(50% - var(--star-w) * 0.15); perspective: 1600px; }
+.cover__star { --star-h: min(54svh, 500px); --star-w: calc(var(--star-h) * 0.45); position: absolute; z-index: 2; top: 31%; left: calc(50% - var(--star-w) * 0.15); perspective: 1600px; }
 .cover__star .device { --h: var(--star-h); }
 .cover__tilt { transform: rotateY(-16deg) rotateX(8deg) rotateZ(-4deg); transform-style: preserve-3d; }
 .cover--metric .cover__star { --star-h: min(44svh, 400px); top: 40%; left: auto; right: calc(var(--m) + 9vw); }
@@ -305,8 +305,8 @@ html.motion [data-mast] { visibility: hidden; animation: reveal-fallback 0s 2.5s
 .cover--comp .cover__tilt { transform: rotateX(16deg); }
 .cover__comp { width: var(--comp-w); filter: drop-shadow(24px 44px 40px rgb(0 0 0 / 0.28)); } /* taste-skill-ignore: transparent comp lifted off the cover */
 .cover__scan { position: absolute; inset: 0; pointer-events: none; }
-.cover__timer { position: absolute; left: 50%; top: 30.8%; translate: -50% -50%; min-width: 3.2em; padding: 0.15em 0.2em; background: var(--white); color: #000; font-family: var(--head); font-size: calc(var(--star-h) * 0.075); line-height: 1; text-align: center; font-variant-numeric: tabular-nums; }
-.cover__tick { position: absolute; left: 85%; top: calc(56.9% + var(--row) * 9.84%); width: 9%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: #000; }
+.cover__timer { position: absolute; left: 50%; top: 33.4%; translate: -50% -50%; min-width: 3.2em; padding: 0.15em 0.2em; background: var(--white); color: #000; font-family: var(--head); font-size: calc(var(--star-h) * 0.065); line-height: 1; text-align: center; font-variant-numeric: tabular-nums; }
+.cover__tick { position: absolute; left: 87.8%; top: calc(55.97% + var(--row) * 8.51%); width: 9.7%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: #000; }
 .cover__tick::after { content: ""; position: absolute; left: 30%; top: 24%; width: 24%; height: 40%; border: solid var(--lime); border-width: 0 3px 3px 0; rotate: 45deg; }
 .cover__caption { margin-top: 12px; max-width: 34ch; font-size: var(--small); font-weight: 500; }
 .cover .note span { color: var(--on-field); }
@@ -337,10 +337,10 @@ html.motion [data-mast] { visibility: hidden; animation: reveal-fallback 0s 2.5s
 .cs__all { margin-top: 40px; font-weight: 600; }
 
 /* sketch-to-shipped device (case pages) */
-.device { --h: min(70svh, 640px); width: calc(var(--h) * 640 / 1138); margin: 0; }
+.device { --h: min(70svh, 640px); width: calc(var(--h) * 0.45); margin: 0; }
 .device__body { position: relative; }
-.device__bezel { padding: 3.2%; background: #0a0a0a; border-radius: 13% / 7%; box-shadow: var(--shadow); } /* taste-skill-ignore: phone on a colour panel */
-.device__screen { position: relative; overflow: hidden; border-radius: 10% / 5.6%; background: var(--white); aspect-ratio: 640 / 1138; }
+.device__bezel { padding: 3.2%; background: #0a0a0a; border-radius: 15% / 6.8%; box-shadow: var(--shadow); } /* taste-skill-ignore: phone on a colour panel */
+.device__screen { position: relative; overflow: hidden; border-radius: 12% / 5.4%; background: var(--white); aspect-ratio: 9 / 20; }
 .device__shot { width: 100%; height: 100%; object-fit: cover; }
 .device__wire { position: absolute; inset: 0; background: var(--white); color: rgb(0 0 0 / 0.7); }
 .device__scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--black); opacity: 0; pointer-events: none; }

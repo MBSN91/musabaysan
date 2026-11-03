@@ -121,8 +121,8 @@ export const cases: Case[] = [
 				kind: 'device', wire: 'athliq-today', img: '/img/athliq-today.webp', alt: 'ATHLIQ home screen with a day score of 88 built from protein, sleep and steps',
 				notes: [
 					{ text: 'One score for the day', x: 50, y: 41, side: 'r' },
-					{ text: 'Protein, sleep, steps', x: 70, y: 62, side: 'r' },
-					{ text: 'Today’s workout, one tap', x: 85, y: 80, side: 'r' },
+					{ text: 'Protein, sleep, steps', x: 75, y: 62, side: 'r' },
+					{ text: 'Today’s workout, one tap', x: 94, y: 80, side: 'r' },
 				],
 			},
 		},

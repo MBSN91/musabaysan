@@ -11,7 +11,7 @@ const svg = wire ? ((wires[`../wire/${wire}.svg`] as string) ?? '') : '';
 	<div class="phone__body">
 		<div class:list={['phone__screen', { 'phone__screen--wire': !!wire }]}>
 			{screens.map((s, i) => (
-				<img class="phone__shot" data-shot src={s.img} alt={s.alt} width="640" height="1138" loading={eager && i === 0 ? 'eager' : 'lazy'} decoding="async" />
+				<img class="phone__shot" data-shot src={s.img} alt={s.alt} width="640" height="1422" loading={eager && i === 0 ? 'eager' : 'lazy'} decoding="async" />
 			))}
 			{wire && <div class="phone__wire" data-wire role="img" aria-label={wireAlt} set:html={svg} />}
 		</div>
