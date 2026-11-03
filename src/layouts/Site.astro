@@ -2,8 +2,8 @@
 import '../styles/reel.css';
 import logoRaw from '../icons/logo.svg?raw';
 
-interface Props { title: string; description: string; path?: string }
-const { title, description, path = '/' } = Astro.props;
+interface Props { title: string; description: string; path?: string; barInk?: string }
+const { title, description, path = '/', barInk } = Astro.props;
 const logo = logoRaw.replace(/<\?xml[^>]*>/, '').replace(/<!--[\s\S]*?-->/g, '')
 	.replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
 const email = 'hello@musabaysan.nl';
@@ -53,7 +53,7 @@ const nav = [
 
 		<div id="smooth-wrapper">
 			<div id="smooth-content">
-				<header class="bar">
+				<header class:list={['bar', { 'bar--overlay': !!barInk }]} style={barInk ? `--bar-ink:${barInk}` : undefined}>
 					<a class="bar__logo" href="/" aria-label="Musa Baysan, home" set:html={logo} />
 					<nav class="bar__nav" aria-label="Main">
 						{nav.map((n) => (
@@ -69,7 +69,7 @@ const nav = [
 				<main id="main"><slot /></main>
 
 				<footer class="end" id="contact" data-panel>
-					<h2 class="end__title" data-split>Say hi.</h2>
+					<h2 class="end__title" data-fit data-unstretch><span data-fit-text>Say hi.</span></h2>
 					<p class="end__lead">Got a role or a project? Tell me what you are working on, and I will get back to you.</p>
 					<a class="end__mail" href={`mailto:${email}`} data-magnetic><span class="roll" data-text={email}><span>{email}</span></span></a>
 					<dl class="ways">

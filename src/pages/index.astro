@@ -69,7 +69,7 @@ const timeline = [
 		<article class="chapter" data-chapter style={`--panel:${adidas.field};--on-panel:${adidas.ink}`} aria-labelledby="ch-adidas">
 			<div class="chapter__panel" data-panel>
 				<div class="chapter__text" data-chapter-text>
-					<h3 id="ch-adidas" class="chapter__title"><a href={`/work/${adidas.slug}/`} data-curtain={adidas.name}><span data-roll>1.5</span> minutes instead of 5 to 8</a></h3>
+					<h3 id="ch-adidas" class="chapter__title"><a href={`/work/${adidas.slug}/`} data-curtain={adidas.name}>1.5 minutes instead of 5 to 8</a></h3>
 					<p class="chapter__meta">{adidas.name}, {yearsOf(adidas)}</p>
 					<p class="chapter__body">The app 30,000+ adidas store employees work with every day. Testing on the shop floor found a workaround nobody upstream knew about; the native flow I pushed for cut bulk scanning to about 1.5 minutes in tests.</p>
 					<a class="btn btn--ink" href={`/work/${adidas.slug}/`} data-curtain={adidas.name} data-magnetic>Read the case</a>
@@ -80,6 +80,7 @@ const timeline = [
 					</div>
 					<p class="chapter__note">Redrawn as a wireframe. The real screens are confidential.</p>
 				</div>
+				<p class="chapter__band" data-band aria-hidden="true"><span data-roll>1.5</span> min</p>
 			</div>
 		</article>
 
@@ -96,6 +97,7 @@ const timeline = [
 						<Phone screens={athliqScreens} />
 					</div>
 				</div>
+				<p class="chapter__band" data-band aria-hidden="true">ATHLIQ</p>
 			</div>
 		</article>
 
@@ -109,21 +111,22 @@ const timeline = [
 				</div>
 				<div class="chapter__visual chapter__visual--wide" data-cursor="view" data-tilt>
 					<div class="chapter__tilt" data-tilt-target>
-						<img class="chapter__pic" data-pic src="/img/happy-italy.webp" alt="Five Happy Italy app screens: menu, coupons, loyalty points and ordering" width="1200" height="900" loading="lazy" decoding="async" />
+						<img class="chapter__pic" data-pic src="/img/happy-italy.webp" alt="Five Happy Italy app screens: menu, coupons, loyalty points and ordering" width="1035" height="613" loading="lazy" decoding="async" />
 					</div>
 				</div>
+				<p class="chapter__band" data-band aria-hidden="true">Happy Italy</p>
 			</div>
 		</article>
 
 		<article class="sites" aria-labelledby="sites-title">
 			<div class="sites__text">
-				<h3 id="sites-title" data-split>Websites for small businesses</h3>
+				<h3 id="sites-title" data-wipe>Websites for small businesses</h3>
 				<p>From my own studio: research, design and the front-end code. A barber with online booking, a made-to-measure suit maker, a maker of high-end chairs, and the Bayee web shop on a headless CMS.</p>
 			</div>
 			<div class="sites__pics">
 				{sites.map((s, i) => (
 					<figure class="sites__pic" data-speed={i ? '1.08' : '0.94'}>
-						<img src={s.img} alt={s.alt} width="1200" height="900" loading="lazy" decoding="async" />
+						<img src={s.img} alt={s.alt} width="1114" height="668" loading="lazy" decoding="async" />
 						<figcaption>{s.name}</figcaption>
 					</figure>
 				))}
@@ -132,16 +135,16 @@ const timeline = [
 	</section>
 
 	<section class="how" id="how" aria-labelledby="how-title">
-		<h2 id="how-title" class="how__title" data-split>How I work</h2>
+		<h2 id="how-title" class="how__title" data-wipe>How I work</h2>
 		<div class="how__row">
 			<h3 class="how__word" data-drift>Shop floor</h3>
 			<p class="how__text">I test with the people who use the app, where they use it. Watching employees work around a slow flow told us more than any dashboard did.</p>
-			<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'You on the shop floor', spec: '4:5, 2400 × 3000, daylight, phone in hand', ratio: '4 / 5' }} /></div>
+			<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'You on the shop floor', spec: '3:2, 3000 × 2000, daylight, phone in hand', ratio: '3 / 2' }} /></div>
 		</div>
 		<div class="how__row">
 			<h3 class="how__word" data-drift>Figma</h3>
 			<p class="how__text">Journeys, flows and design systems, from the first sketch to the developer handoff. iPhone, iPad and web.</p>
-			<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'An ATHLIQ flow in Figma', spec: '4:5, 2400 × 3000, zoomed out to a map of screens', ratio: '4 / 5' }} /></div>
+			<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'An ATHLIQ flow in Figma', spec: '3:2, 3000 × 2000, zoomed out to a map of screens', ratio: '3 / 2' }} /></div>
 		</div>
 		<div class="how__row">
 			<h3 class="how__word" data-drift>Code</h3>
@@ -153,7 +156,7 @@ const timeline = [
 	</section>
 
 	<section class="years" id="years" aria-labelledby="years-title">
-		<h2 id="years-title" class="years__title" data-split>2013 to now</h2>
+		<h2 id="years-title" class="years__title" data-grow>2013 to now</h2>
 		<div class="years__frame" data-track-frame>
 			<ol class="years__track" data-track>
 				{timeline.map((t) => (

@@ -1,8 +1,8 @@
 ---
 // A phone that exists twice: the dotted wireframe derived from the real screen, and the shipped screen.
 // Without script or with reduced motion it shows the shipped screen; the buttons flip between the two.
-interface Props { wire: string; img?: string; alt: string; caption?: string; eager?: boolean; notes?: { text: string; x: number; y: number; side: 'l' | 'r' }[]; id?: string }
-const { wire, img, alt, caption, eager = false, notes = [], id } = Astro.props;
+interface Props { wire: string; img?: string; alt: string; caption?: string; eager?: boolean; bare?: boolean; notes?: { text: string; x: number; y: number; side: 'l' | 'r' }[]; id?: string }
+const { wire, img, alt, caption, eager = false, bare = false, notes = [], id } = Astro.props;
 const sketchOnly = !img;
 const wires = import.meta.glob('../wire/*.svg', { as: 'raw', eager: true });
 const svg = (wires[`../wire/${wire}.svg`] as string) ?? '';
@@ -19,7 +19,7 @@ const uid = id ?? `d-${wire}`;
 			<span class={`note note--${n.side}`} style={`--x:${n.x};--y:${n.y}%`} aria-hidden="true"><span>{n.text}</span></span>
 		))}
 	</div>
-	{sketchOnly ? (
+	{bare ? null : sketchOnly ? (
 		<figcaption class="device__note">{caption}</figcaption>
 	) : (
 		<figcaption class="device__switch">

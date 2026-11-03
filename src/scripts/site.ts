@@ -66,6 +66,24 @@ const playRoll = (r: Roll, delay = 0) =>
 const rollOnView = (r: Roll, trigger: Element = r.el, start = 'top 88%') =>
 	ScrollTrigger.create({ trigger, start, once: true, onEnter: () => playRoll(r, 0.15) });
 
+/* ---------- display type fitted to its box (layout, not motion) ---------- */
+const fitType = () => $$('[data-fit]').forEach((el) => {
+	const text = $('[data-fit-text]', el) ?? el;
+	el.style.fontSize = '';
+	const avail = el.clientWidth;
+	const w = text.getBoundingClientRect().width;
+	if (!avail || !w) return;
+	const size = parseFloat(getComputedStyle(el).fontSize);
+	el.style.fontSize = `${Math.floor((size * avail * 0.995) / w * 100) / 100}px`;
+});
+fitType();
+document.fonts?.ready.then(fitType);
+let fitTimer = 0;
+window.addEventListener('resize', () => {
+	clearTimeout(fitTimer);
+	fitTimer = window.setTimeout(() => { fitType(); ScrollTrigger.refresh(); }, 150);
+});
+
 /* ---------- curtain between pages ---------- */
 const curtain = $('.curtain');
 const curtainLabel = $('[data-curtain-label]');
@@ -169,7 +187,7 @@ const setState = (p: Plot, state: 'sketch' | 'shipped') => {
 	p.el.dataset.state = state;
 	p.el.querySelectorAll<HTMLButtonElement>('[data-to]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.to === state)));
 };
-function buildPlot(p: Plot, mode: 'load' | 'scroll') {
+function buildPlot(p: Plot, mode: 'load' | 'scroll' | 'manual') {
 	const wire = $('.device__wire', p.el);
 	const shot = $('.device__shot', p.el);
 	const scan = $('.device__scan', p.el);
@@ -193,7 +211,9 @@ function buildPlot(p: Plot, mode: 'load' | 'scroll') {
 	tl.to(scan, { opacity: 0, duration: 0.1 }).addLabel('shipped');
 	if (!sketchOnly) tl.eventCallback('onUpdate', () => setState(p, tl.time() < tl.labels.sketch + 0.6 ? 'sketch' : 'shipped'));
 	p.tl = tl;
-	if (mode === 'load') {
+	if (mode === 'manual') {
+		tl.time(0);
+	} else if (mode === 'load') {
 		tl.time(0);
 		gsap.delayedCall(root.classList.contains('arriving') ? 1 : 0.35, () => tl.tweenTo(sketchOnly ? 'sketch' : 'shipped', { duration: 3.2, ease: 'power1.inOut' }));
 	} else if (sketchOnly) {
@@ -278,10 +298,26 @@ if (!motion) {
 			gsap.fromTo(s.words, { opacity: 0.16 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: words, start: 'top 82%', end: 'bottom 48%', scrub: true } });
 		}
 
-		/* headings rise letter by letter out of their line */
+		/* headings: four moves, not one entrance everywhere */
+		// rise: letters come up out of their line (Selected work, About)
 		$$('[data-split]').forEach((el) => {
 			const s = SplitText.create(el, { type: 'lines,chars', mask: 'lines' });
 			gsap.from(s.chars, { yPercent: 110, duration: 1, ease: EASE, stagger: 0.022, scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+		});
+		// wipe: the heading is uncovered left to right with the scroll (How I work, sites, case sections)
+		$$('[data-wipe]').forEach((el) => {
+			gsap.fromTo(el, { clipPath: 'inset(-15% 100% -15% 0%)' }, { clipPath: 'inset(-15% 0% -15% 0%)', ease: 'none', scrollTrigger: { trigger: el, start: 'top 92%', end: 'top 60%', scrub: true } });
+		});
+		// grow: letters grow up from the baseline one by one (2013 to now)
+		$$('[data-grow]').forEach((el) => {
+			const s = SplitText.create(el, { type: 'chars' });
+			gsap.fromTo(s.chars, { scaleY: 0, transformOrigin: '50% 100%' }, { scaleY: 1, ease: 'none', stagger: 0.06, scrollTrigger: { trigger: el, start: 'top 95%', end: 'top 55%', scrub: true } });
+		});
+		// unstretch: the closing line arrives stretched and settles, the hero move in reverse (Say hi.)
+		$$('[data-unstretch]').forEach((el) => {
+			const s = SplitText.create($('[data-fit-text]', el) ?? el, { type: 'chars' });
+			fitType();
+			gsap.fromTo(s.chars, { scaleY: 2.6, yPercent: -30, transformOrigin: '50% 100%' }, { scaleY: 1, yPercent: 0, ease: 'none', stagger: { each: 0.03, from: 'center' }, scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 45%', scrub: true } });
 		});
 
 		/* chapters: the panel opens from a card to full bleed, the phone swings in, then the reel plays */
@@ -296,11 +332,13 @@ if (!motion) {
 				const shots = $$('[data-shot]', ch);
 				const wire = $('[data-wire]', ch);
 				const flip = ch.classList.contains('chapter--flip');
+				const band = $('[data-band]', ch);
 				const enter = { trigger: ch, start: 'top bottom', end: isDesk ? 'top top' : 'top 15%', scrub: true };
 				gsap.fromTo(panel, { clipPath: isDesk ? 'inset(12% 9% 12% 9% round 32px)' : 'inset(4% 4% 4% 4% round 20px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: enter });
 				if (text) gsap.fromTo(text, { y: 120 }, { y: 0, ease: 'none', scrollTrigger: enter });
 				if (phone) gsap.fromTo(phone, { rotationY: flip ? 44 : -44, rotationX: 24, yPercent: 24, scale: 0.86 }, { rotationY: flip ? 14 : -14, rotationX: 6, yPercent: 0, scale: 1, ease: 'none', scrollTrigger: enter });
 				if (pic) gsap.fromTo(pic, { rotationY: -30, rotationX: 18, scale: 0.8, yPercent: 16 }, { rotationY: -8, rotationX: 4, scale: 1, yPercent: 0, ease: 'none', scrollTrigger: enter });
+				if (band) gsap.fromTo(band, { yPercent: 80 }, { yPercent: 0, ease: 'none', scrollTrigger: enter });
 
 				const tl = gsap.timeline({ defaults: { ease: 'none' } });
 				if (shots.length > 1) {
@@ -312,6 +350,8 @@ if (!motion) {
 				}
 				if (wire) tl.fromTo(wire, { clipPath: 'inset(0% 0% 62% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 2 }, 0);
 				if (pic) tl.to(pic, { rotationY: 6, duration: 1.5 }, 0);
+				// the project's name or number drifts across the panel while it is pinned
+				if (band) tl.fromTo(band, { xPercent: 3 }, { xPercent: -14, duration: Math.max(tl.duration(), 1.5) }, 0);
 				const long = ch.hasAttribute('data-long');
 				ScrollTrigger.create({
 					trigger: ch, start: isDesk ? 'top top' : 'top 40%',
@@ -322,7 +362,7 @@ if (!motion) {
 		});
 
 		/* rolling numbers */
-		rolls.forEach((r) => rollOnView(r));
+		rolls.filter((r) => !r.el.closest('[data-case-cover]')).forEach((r) => rollOnView(r));
 		$$('[data-metric]').forEach((m) => {
 			const strike = $('s', m);
 			if (strike) gsap.fromTo(strike, { '--strike': 0 }, { '--strike': 1, duration: 0.7, ease: EASE, scrollTrigger: { trigger: m, start: 'top 75%', once: true } });
@@ -353,10 +393,64 @@ if (!motion) {
 			if (img) gsap.fromTo(img, { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: portrait, start: 'top bottom', end: 'bottom top', scrub: true } });
 		}
 
-		/* case pages */
-		plots.forEach((p) => buildPlot(p, p.el.id === 'cover-device' ? 'load' : 'scroll'));
-		const cover = $('[data-cover]');
-		if (cover) gsap.fromTo(cover, { clipPath: 'inset(8% 6% 8% 6% round 28px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: cover, start: 'top bottom', end: 'top 20%', scrub: true } });
+		/* case pages: devices in the story plot as they scroll in */
+		plots.filter((p) => !p.el.closest('[data-case-cover]')).forEach((p) => buildPlot(p, 'scroll'));
+
+		/* case cover: arrive after the curtain, then one pinned beat where the name stretches away
+		   and the work takes the stage (ATHLIQ ships from sketch, adidas finishes plotting, Happy Italy lays flat) */
+		const cover = $('[data-case-cover]');
+		if (cover) {
+			const mast = $('[data-mast]', cover)!;
+			const mastText = $('[data-fit-text]', mast) ?? mast;
+			const star = $('[data-star]', cover)!;
+			const tilt = $('[data-star-tilt]', cover)!;
+			const lineEls = $$('[data-lines] > *', cover);
+			const struck = $('[data-struck]', cover);
+			const d0 = arriving ? 0.75 : 0.2;
+			const hasRoll = !!$('[data-roll]', mast);
+			const chars: Element[] = hasRoll ? [mastText] : SplitText.create(mastText, { type: 'chars', charsClass: 'hc' }).chars;
+			fitType(); // splitting drops kerning, so fit again
+			gsap.set(mast, { visibility: 'visible', perspective: 900 });
+			gsap.from(chars, { yPercent: 110, rotationX: -80, opacity: 0, transformOrigin: '50% 100%', duration: 1.1, ease: EASE, stagger: 0.035, delay: d0 });
+			if (struck) gsap.fromTo($('s', struck), { '--strike': 0 }, { '--strike': 1, duration: 0.8, ease: EASE, delay: d0 + 0.6 });
+			gsap.from(tilt, { yPercent: 30, rotationX: 40, opacity: 0, duration: 1.5, ease: EASE, delay: d0 + 0.2 });
+			gsap.from(lineEls, { y: 32, opacity: 0, duration: 1, ease: EASE, stagger: 0.08, delay: d0 + 0.45 });
+			rolls.filter((r) => r.el.closest('[data-case-cover]')).forEach((r, i) => playRoll(r, d0 + 0.3 + i * 0.1));
+
+			const plot = plots.find((p) => p.el.closest('[data-case-cover]'));
+			if (plot) buildPlot(plot, 'manual');
+			const ptl = plot?.tl ?? null;
+			const sketchOnly = !!plot?.el.hasAttribute('data-sketch-only');
+			const from = ptl ? ptl.labels.sketch : 0;
+			const to = ptl && !sketchOnly ? ptl.labels.shipped : from;
+			let intro: gsap.core.Tween | null = ptl ? ptl.tweenTo(from, { duration: 1.8, ease: 'power1.inOut', delay: d0 + 0.35 }) : null;
+			const proxy = { p: 0 };
+			const drive = () => {
+				if (!ptl) return;
+				if (proxy.p > 0.001 && intro) { intro.kill(); intro = null; }
+				if (!intro) ptl.time(from + (to - from) * proxy.p);
+			};
+
+			mm.add({ desk: '(min-width: 901px)', mobile: '(max-width: 900px)' }, (ctx) => {
+				const { desk: isDesk } = ctx.conditions as { desk: boolean };
+				if (!isDesk) {
+					ScrollTrigger.create({ trigger: cover, start: 'top top', end: 'bottom 30%', scrub: 0.6, onUpdate: (self) => { proxy.p = self.progress; drive(); } });
+					return;
+				}
+				const dx = () => cover.clientWidth / 2 - (star.offsetLeft + star.offsetWidth / 2);
+				const dy = () => cover.clientHeight / 2 - (star.offsetTop + star.offsetHeight / 2);
+				const beat = gsap.timeline({
+					defaults: { ease: 'none' },
+					scrollTrigger: { trigger: cover, start: 'top top', end: () => `+=${Math.round(innerHeight * 0.9)}`, pin: true, scrub: 0.6, invalidateOnRefresh: true },
+				});
+				beat.to(chars, { scaleY: 2.4, yPercent: -24, opacity: 0, transformOrigin: '50% 100%', stagger: { each: 0.02, from: 'center' }, duration: 0.7 }, 0)
+					.to(lineEls, { opacity: 0, y: 28, duration: 0.35, stagger: 0.05 }, 0)
+					.to(star, { x: dx, y: dy, scale: sketchOnly ? 1.1 : 1.14, duration: 1 }, 0)
+					.to(tilt, { rotationX: 0, rotationY: 0, rotationZ: 0, duration: 1 }, 0)
+					.fromTo(proxy, { p: 0 }, { p: 1, duration: 0.85, onUpdate: drive }, 0.15);
+				if (struck) beat.to(struck, { opacity: 0, yPercent: -60, duration: 0.5 }, 0);
+			});
+		}
 
 		ScrollTrigger.refresh();
 	};
