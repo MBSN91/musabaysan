@@ -50,10 +50,11 @@ export const home: Home = {
 		],
 	},
 	how: {
-		bar: { label: 'Process', meta: 'Shop floor · Figma · Code' },
+		bar: { label: 'Process', meta: 'Users · Business · Figma · Code' },
 		title: 'How I work',
 		rows: [
-			{ word: 'Shop floor', text: 'I test with the people who use the app, where they use it. Watching employees work around a slow flow told us more than any dashboard did.', visual: { kind: 'slot', label: 'You on the shop floor', spec: '3:2, 3000 × 2000, daylight, phone in hand', ratio: '3 / 2' } },
+			{ word: 'Users', text: 'I test with the people who use the product, where they use it. Their workarounds show what to fix first.', visual: { kind: 'slot', label: 'You testing with a user', spec: '3:2, 3000 × 2000, daylight, phone in hand', ratio: '3 / 2' } },
+			{ word: 'Business', text: 'Design also has to hit the business KPIs. I find the balance between what users need and what the business needs, and make sure product, development and legal all back the direction.' },
 			{ word: 'Figma', text: 'Journeys, flows and design systems, from the first sketch to the developer handoff. iPhone, iPad and web.', visual: { kind: 'slot', label: 'An ATHLIQ flow in Figma', spec: '3:2, 3000 × 2000, zoomed out to a map of screens', ratio: '3 / 2' } },
 			{ word: 'Code', text: 'I build what I design: ATHLIQ in React Native, this site in Astro, prototypes in the real codebase so teams can test the actual thing.', visual: { kind: 'phone', img: '/img/athliq-diary.webp', alt: 'ATHLIQ diary with calories and macros for the day' } },
 		],
