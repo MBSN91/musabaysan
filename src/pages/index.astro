@@ -1,59 +1,36 @@
 ---
 // musabaysan.nl home. Direction: kinetic show reel (see PRODUCT.md and .impeccable/surfaces).
+// Content comes from src/data/content.ts (the CMS when connected, else the built-in defaults).
 // Every fact comes from Musa's CV or facts he confirmed. Slots mark shots Musa still has to make.
 import Site from '../layouts/Site.astro';
 import Phone from '../components/Phone.astro';
 import Orbit from '../components/Orbit.astro';
 import SecBar from '../components/SecBar.astro';
 import Shot from '../components/Shot.astro';
-import { cases, sites } from '../data/work';
+import { cases, home, contact, rollParts, numberLead, yearsOf } from '../data/content';
 
 export const prerender = true;
 
-const email = 'hello@musabaysan.nl';
-const bySlug = Object.fromEntries(cases.map((c) => [c.slug, c]));
-const adidas = bySlug['adidas-store-app'];
-const athliq = bySlug['athliq'];
-const happy = bySlug['happy-italy'];
-const yearsOf = (c: (typeof cases)[number]) => c.facts.find((f) => f[0] === 'Years')?.[1] ?? '';
-
-const ticker = ['Research on the shop floor', 'Flows and design systems in Figma', 'Apps in React Native', 'Sites in Astro', 'iPhone, iPad and web'];
-
-const athliqScreens = [
-	{ img: '/img/athliq-today.webp', alt: 'ATHLIQ home screen with a day score of 88 built from protein, sleep and steps' },
-	{ img: '/img/athliq-diary.webp', alt: 'ATHLIQ diary with calories and macros for the day' },
-	{ img: '/img/athliq-player.webp', alt: 'ATHLIQ workout player for a full body schema with a superset of goblet squats' },
-	{ img: '/img/athliq-recovery.webp', alt: 'ATHLIQ recovery screen with sleep, day and load scores' },
-];
-
-const timeline = [
-	{ year: '2013', title: 'Digital designer', text: 'Campaigns, print, social and motion, after studying Communication & Multimedia Design.' },
-	{ year: '2014', title: 'Own studio', text: 'Research, UX and UI for small businesses, and the front-end code to go with it.' },
-	{ year: '2020', title: 'Happy Italy', text: 'UX designer for the guest app and website: research, usability tests, design system.' },
-	{ year: '2021', title: 'adidas, store app', text: 'Started as a contractor on the app store employees work with.' },
-	{ year: '2022', title: 'Manager UX Design', text: 'Joined adidas in-house, leading the UX of the store app.' },
-	{ year: '2025', title: 'ATHLIQ', text: 'My own coaching app, designed and built end to end.' },
-	{ year: 'Now', title: 'Digital Experience Designer', text: 'Still on the store app at adidas, and still building.' },
-];
+const { hero, sites, how, years, about } = home;
+const email = contact.email;
 ---
-<Site title="Musa Baysan, UX designer in Breda" description="UX designer in Breda. I design apps and build them. Since 2013 for startups, agencies and global brands, today at adidas.">
+<Site title={home.seo.title} description={home.seo.description}>
 	<section class="hero" data-hero>
 		<Orbit />
 		<div class="hero__center">
 			<h1 class="hero__title" data-hero-title>
-				<span class="hero__line">I design apps</span>
-				<span class="hero__line">and build them.</span>
+				{hero.lines.map((l) => <span class="hero__line">{l}</span>)}
 			</h1>
 			<div class="hero__foot" data-hero-foot>
-				<p class="hero__lead">Musa Baysan, UX designer in Breda. Store apps, my own app, web shops and websites, from research on the shop floor through Figma to working code.</p>
-				<a class="btn" href={`mailto:${email}`} data-magnetic>Email me</a>
+				<p class="hero__lead">{hero.lead}</p>
+				<a class="btn" href={`mailto:${email}`} data-magnetic>{hero.cta}</a>
 			</div>
 		</div>
 		<div class="ticker" aria-hidden="true">
 			<div class="ticker__row" data-ticker-row>
 				{[0, 1].map(() => (
 					<div class="ticker__set">
-						{ticker.map((t) => <span class="ticker__item">{t}<i class="ticker__mark"></i></span>)}
+						{home.ticker.map((t) => <span class="ticker__item">{t}<i class="ticker__mark"></i></span>)}
 					</div>
 				))}
 			</div>
@@ -61,74 +38,48 @@ const timeline = [
 	</section>
 
 	<section class="statement framed" aria-label="In short">
-		<p data-words>Since 2013 I have designed for startups, agencies and global brands. Today I design the store app 30,000+ adidas employees work with, and I build my own app, ATHLIQ, from the first sketch to release.</p>
+		<p data-words>{home.statement}</p>
 	</section>
 
 	<section class="work" id="work" aria-labelledby="work-title">
-		<SecBar n={1} label="Work" meta="adidas · ATHLIQ · Happy Italy · websites" />
-		<h2 id="work-title" class="work__title" data-split>Selected work</h2>
+		<SecBar n={1} label={home.work.bar.label} meta={home.work.bar.meta} />
+		<h2 id="work-title" class="work__title" data-split>{home.work.title}</h2>
 
-		<article class="chapter" data-chapter style={`--panel:${adidas.field};--on-panel:${adidas.ink}`} aria-labelledby="ch-adidas">
-			<div class="chapter__panel" data-panel>
-				<div class="chapter__text" data-chapter-text>
-					<h3 id="ch-adidas" class="chapter__title"><a href={`/work/${adidas.slug}/`} data-curtain={adidas.name}>1.5 minutes instead of 5 to 8</a></h3>
-					<p class="chapter__meta">{adidas.name}, {yearsOf(adidas)}</p>
-					<p class="chapter__body">The app 30,000+ adidas store employees work with every day. Testing on the shop floor found a workaround nobody upstream knew about; the native flow I pushed for cut bulk scanning to about 1.5 minutes in tests.</p>
-					<a class="btn btn--ink" href={`/work/${adidas.slug}/`} data-curtain={adidas.name} data-magnetic>Read the case</a>
-				</div>
-				<div class="chapter__visual" data-cursor="view" data-tilt>
-					<div class="chapter__tilt" data-tilt-target>
-						<Phone wire="adidas-bulkscan" wireAlt="Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button" />
+		{cases.map((c, i) => {
+			const v = c.chapter.visual;
+			const band = numberLead(c.front.mast);
+			return (
+				<article class:list={['chapter', { 'chapter--flip': i % 2 === 1 }]} data-chapter data-long={v.kind === 'screens' ? '' : undefined} style={`--panel:${c.field};--on-panel:${c.ink}`} aria-labelledby={`ch-${c.slug}`}>
+					<div class="chapter__panel" data-panel>
+						<div class="chapter__text" data-chapter-text>
+							<h3 id={`ch-${c.slug}`} class="chapter__title"><a href={`/work/${c.slug}/`} data-curtain={c.name}>{c.title}</a></h3>
+							<p class="chapter__meta">{c.name}, {yearsOf(c)}</p>
+							<p class="chapter__body">{rollParts(c.chapter.body).map((p) => (p.roll ? <span data-roll>{p.text}</span> : p.text))}</p>
+							<a class="btn btn--ink" href={`/work/${c.slug}/`} data-curtain={c.name} data-magnetic>Read the case</a>
+						</div>
+						<div class:list={['chapter__visual', { 'chapter__visual--wide': v.kind === 'image' }]} data-cursor="view" data-tilt>
+							<div class="chapter__tilt" data-tilt-target>
+								{v.kind === 'wire' && <Phone wire={v.wire} wireAlt={v.alt} />}
+								{v.kind === 'screens' && <Phone screens={v.screens} />}
+								{v.kind === 'image' && <img class="chapter__pic" data-pic src={v.img} alt={v.alt} width={v.w} height={v.h} loading="lazy" decoding="async" />}
+							</div>
+							{v.kind === 'wire' && v.note && <p class="chapter__note">{v.note}</p>}
+						</div>
+						<p class="chapter__band" data-band aria-hidden="true">{band ? <Fragment><span data-roll>{band.num}</span>{band.rest}</Fragment> : c.front.mast}</p>
 					</div>
-					<p class="chapter__note">Redrawn as a wireframe. The real screens are confidential.</p>
-				</div>
-				<p class="chapter__band" data-band aria-hidden="true"><span data-roll>1.5</span> min</p>
-			</div>
-		</article>
-
-		<article class="chapter chapter--flip" data-chapter data-long style={`--panel:${athliq.field};--on-panel:${athliq.ink}`} aria-labelledby="ch-athliq">
-			<div class="chapter__panel" data-panel>
-				<div class="chapter__text" data-chapter-text>
-					<h3 id="ch-athliq" class="chapter__title"><a href={`/work/${athliq.slug}/`} data-curtain={athliq.name}>{athliq.title}</a></h3>
-					<p class="chapter__meta">{athliq.name}, {yearsOf(athliq)}</p>
-					<p class="chapter__body">An app for personal trainers and their clients: onboarding, training plans, live workout tracking and one score for the day. React Native, Dutch interface, in alpha with <span data-roll>20</span> active users.</p>
-					<a class="btn btn--ink" href={`/work/${athliq.slug}/`} data-curtain={athliq.name} data-magnetic>Read the case</a>
-				</div>
-				<div class="chapter__visual" data-cursor="view" data-tilt>
-					<div class="chapter__tilt" data-tilt-target>
-						<Phone screens={athliqScreens} />
-					</div>
-				</div>
-				<p class="chapter__band" data-band aria-hidden="true">ATHLIQ</p>
-			</div>
-		</article>
-
-		<article class="chapter" data-chapter style={`--panel:${happy.field};--on-panel:${happy.ink}`} aria-labelledby="ch-happy">
-			<div class="chapter__panel" data-panel>
-				<div class="chapter__text" data-chapter-text>
-					<h3 id="ch-happy" class="chapter__title"><a href={`/work/${happy.slug}/`} data-curtain={happy.name}>{happy.title}</a></h3>
-					<p class="chapter__meta">{happy.name}, {yearsOf(happy)}</p>
-					<p class="chapter__body">{happy.summary}</p>
-					<a class="btn btn--ink" href={`/work/${happy.slug}/`} data-curtain={happy.name} data-magnetic>Read the case</a>
-				</div>
-				<div class="chapter__visual chapter__visual--wide" data-cursor="view" data-tilt>
-					<div class="chapter__tilt" data-tilt-target>
-						<img class="chapter__pic" data-pic src="/img/happy-italy.webp" alt="Five Happy Italy app screens: menu, coupons, loyalty points and ordering" width="1035" height="613" loading="lazy" decoding="async" />
-					</div>
-				</div>
-				<p class="chapter__band" data-band aria-hidden="true">Happy Italy</p>
-			</div>
-		</article>
+				</article>
+			);
+		})}
 
 		<article class="sites" aria-labelledby="sites-title">
 			<div class="sites__text">
-				<h3 id="sites-title" data-wipe>Websites for small businesses</h3>
-				<p>From my own studio: research, design and the front-end code. A barber with online booking, a made-to-measure suit maker, a maker of high-end chairs, and the Bayee web shop on a headless CMS.</p>
+				<h3 id="sites-title" data-wipe>{sites.title}</h3>
+				<p>{sites.text}</p>
 			</div>
 			<div class="sites__pics">
-				{sites.map((s, i) => (
-					<figure class="sites__pic" data-speed={i ? '1.08' : '0.94'}>
-						<img src={s.img} alt={s.alt} width="1114" height="668" loading="lazy" decoding="async" />
+				{sites.items.map((s, i) => (
+					<figure class="sites__pic" data-speed={i % 2 ? '1.08' : '0.94'}>
+						<img src={s.img} alt={s.alt} width={s.w} height={s.h} loading="lazy" decoding="async" />
 						<figcaption>{s.name}</figcaption>
 					</figure>
 				))}
@@ -137,33 +88,29 @@ const timeline = [
 	</section>
 
 	<section class="how framed" id="how" aria-labelledby="how-title">
-		<SecBar n={2} label="Process" meta="Shop floor · Figma · Code" />
-		<h2 id="how-title" class="how__title" data-wipe>How I work</h2>
-		<div class="how__row">
-			<h3 class="how__word" data-drift>Shop floor</h3>
-			<p class="how__text">I test with the people who use the app, where they use it. Watching employees work around a slow flow told us more than any dashboard did.</p>
-			<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'You on the shop floor', spec: '3:2, 3000 × 2000, daylight, phone in hand', ratio: '3 / 2' }} /></div>
-		</div>
-		<div class="how__row">
-			<h3 class="how__word" data-drift>Figma</h3>
-			<p class="how__text">Journeys, flows and design systems, from the first sketch to the developer handoff. iPhone, iPad and web.</p>
-			<div class="how__visual"><Shot shot={{ kind: 'slot', label: 'An ATHLIQ flow in Figma', spec: '3:2, 3000 × 2000, zoomed out to a map of screens', ratio: '3 / 2' }} /></div>
-		</div>
-		<div class="how__row">
-			<h3 class="how__word" data-drift>Code</h3>
-			<p class="how__text">I build what I design: ATHLIQ in React Native, this site in Astro, prototypes in the real codebase so teams can test the actual thing.</p>
-			<div class="how__visual how__visual--phone" data-tilt>
-				<div class="chapter__tilt" data-tilt-target><Phone screens={[athliqScreens[1]]} /></div>
+		<SecBar n={2} label={how.bar.label} meta={how.bar.meta} />
+		<h2 id="how-title" class="how__title" data-wipe>{how.title}</h2>
+		{how.rows.map((r) => (
+			<div class="how__row">
+				<h3 class="how__word" data-drift>{r.word}</h3>
+				<p class="how__text">{r.text}</p>
+				{r.visual && (r.visual.kind === 'phone' ? (
+					<div class="how__visual how__visual--phone" data-tilt>
+						<div class="chapter__tilt" data-tilt-target><Phone screens={[{ img: r.visual.img, alt: r.visual.alt }]} /></div>
+					</div>
+				) : (
+					<div class="how__visual"><Shot shot={r.visual} /></div>
+				))}
 			</div>
-		</div>
+		))}
 	</section>
 
 	<section class="years framed" id="years" aria-labelledby="years-title">
-		<SecBar n={3} label="Timeline" meta="Since 2013" />
-		<h2 id="years-title" class="years__title" data-grow>2013 to now</h2>
+		<SecBar n={3} label={years.bar.label} meta={years.bar.meta} />
+		<h2 id="years-title" class="years__title" data-grow>{years.title}</h2>
 		<div class="years__frame" data-track-frame>
 			<ol class="years__track" data-track>
-				{timeline.map((t) => (
+				{years.items.map((t) => (
 					<li><span class="years__year">{t.year}</span><h3>{t.title}</h3><p>{t.text}</p></li>
 				))}
 			</ol>
@@ -172,16 +119,14 @@ const timeline = [
 	</section>
 
 	<section class="about framed" id="about" aria-labelledby="about-title">
-		<SecBar n={4} label="Profile" meta="Breda, the Netherlands" />
+		<SecBar n={4} label={about.bar.label} meta={about.bar.meta} />
 		<figure class="about__portrait" data-portrait>
-			<img src="/img/musa.webp" alt="Musa Baysan in a white T-shirt, outdoors in evening sun" width="900" height="900" loading="lazy" decoding="async" />
+			<img src={about.portrait.img} alt={about.portrait.alt} width={about.portrait.w} height={about.portrait.h} loading="lazy" decoding="async" />
 		</figure>
 		<div class="about__letter">
-			<h2 id="about-title" data-split>About</h2>
-			<p>I studied Communication & Multimedia Design and started as a digital designer. From 2014 I ran my own studio, doing research, UX and UI for small businesses. Since 2021 I have been at adidas, where I design the app store employees work with every day.</p>
-			<p>I work close to the code. I prototype in it, and I build my own products, like ATHLIQ, from the first sketch to release.</p>
-			<p>My best insights come from the shop floor.</p>
-			<Shot shot={{ kind: 'slot', label: 'Me in a minute', spec: 'Video, 16:9, 45 to 60 s, captions burned in, click to play', ratio: '16 / 9' }} />
+			<h2 id="about-title" data-split>{about.title}</h2>
+			{about.paragraphs.map((p) => <p>{p}</p>)}
+			{about.extra && <Shot shot={about.extra} />}
 		</div>
 	</section>
 </Site>

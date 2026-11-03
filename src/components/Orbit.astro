@@ -2,7 +2,8 @@
 // The hero orbit: real work on two tilted rings around the headline, in CSS 3D. The layout below is the
 // still frame (no script, reduced motion); scripts/site.ts turns the rings, flies the tiles in, and on
 // scroll dollies the camera through them. Decorative: the same work is linked and described further down.
-import { tiles, rings } from '../data/orbit';
+import { rings } from '../data/orbit';
+import { tiles } from '../data/content';
 const wires = import.meta.glob('../wire/*.svg', { as: 'raw', eager: true });
 const rad = (d: number) => (d * Math.PI) / 180;
 // the drawn orbits around the headline (2D, in a 160 x 100 box): lime, green and a faint full track

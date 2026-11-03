@@ -5,7 +5,7 @@
 import Site from '../../layouts/Site.astro';
 import Shot from '../../components/Shot.astro';
 import CaseCover from '../../components/CaseCover.astro';
-import { cases } from '../../data/work';
+import { cases } from '../../data/content';
 
 export const prerender = true;
 
@@ -38,13 +38,13 @@ const facts = c.facts.filter(([k]) => !shown.has(k));
 			</section>
 		))}
 
-		{c.slug === 'adidas-store-app' && (
+		{c.closing && (
 			<section class="cs__part">
 				<div class="cs__copy">
-					<h2 data-wipe>What I can show in a call</h2>
-					<p>The screens are confidential. In a call I walk you through the flows, the research and the decisions behind them.</p>
+					<h2 data-wipe>{c.closing.heading}</h2>
+					{c.closing.body.map((p) => <p>{p}</p>)}
 				</div>
-				<div class="cs__shot"><Shot shot={c.cover} /></div>
+				{c.closing.shot && <div class="cs__shot"><Shot shot={c.closing.shot} /></div>}
 			</section>
 		)}
 

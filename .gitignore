@@ -22,3 +22,7 @@ pnpm-debug.log*
 .impeccable/review/
 .impeccable/build/
 .impeccable/mocks/
+
+# CMS snapshot, pulled at build time (scripts/pull-content.mjs)
+src/data/cms.json
+public/cms/

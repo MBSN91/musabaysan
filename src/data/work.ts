@@ -1,5 +1,7 @@
 // Case content for musabaysan.nl. Every fact comes from Musa's CV or facts he confirmed (see PRODUCT.md).
 // `slot` entries are shots Musa still has to make; they render as labelled sketches until a file exists.
+// These are the built-in defaults and the seed for the CMS. Pages read src/data/content.ts, which uses the
+// published CMS content when a snapshot exists (scripts/pull-content.mjs) and falls back to this file.
 
 export type Shot = { kind: 'device'; wire: string; img: string; alt: string }
 	| { kind: 'image'; img: string; alt: string; w: number; h: number }
@@ -16,6 +18,17 @@ export type Cover = {
 		| { kind: 'comp'; img: string; alt: string; w: number; h: number };
 };
 
+// The case's chapter in the home reel. Numbers in [brackets] count up as they scroll in.
+export type Chapter = {
+	body: string;
+	visual:
+		| { kind: 'wire'; wire: string; alt: string; note?: string }
+		| { kind: 'screens'; screens: { img: string; alt: string }[] }
+		| { kind: 'image'; img: string; alt: string; w: number; h: number };
+};
+
+export type Section = { heading: string; body: string[]; shot?: Shot };
+
 export type Case = {
 	slug: string;
 	name: string;
@@ -24,9 +37,10 @@ export type Case = {
 	field: string;            // CSS colour of the project's field
 	ink: string;              // text colour on that field
 	facts: [string, string][];
-	cover: Shot;
 	front: Cover;
-	sections: { heading: string; body: string[]; shot?: Shot }[];
+	chapter: Chapter;
+	sections: Section[];
+	closing?: Section;        // a last part without the alternating layout
 };
 
 export const cases: Case[] = [
@@ -50,7 +64,15 @@ export const cases: Case[] = [
 			lines: [['Used by', '30,000+ employees'], ['Measured', 'In store tests'], ['Years', '2021 to now']],
 			star: { kind: 'device', wire: 'adidas-bulkscan', alt: 'Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button', caption: 'Redrawn as a wireframe. The real screens are confidential.' },
 		},
-		cover: { kind: 'slot', label: 'Bulk-scan flow, rebuilt as wireframes', spec: '3 screens, 1170 × 2532 each, greys only, no real data', ratio: '4 / 3', blur: true },
+		chapter: {
+			body: 'The app 30,000+ adidas store employees work with every day. Testing on the shop floor found a workaround nobody upstream knew about; the native flow I pushed for cut bulk scanning to about 1.5 minutes in tests.',
+			visual: { kind: 'wire', wire: 'adidas-bulkscan', alt: 'Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button', note: 'Redrawn as a wireframe. The real screens are confidential.' },
+		},
+		closing: {
+			heading: 'What I can show in a call',
+			body: ['The screens are confidential. In a call I walk you through the flows, the research and the decisions behind them.'],
+			shot: { kind: 'slot', label: 'Bulk-scan flow, rebuilt as wireframes', spec: '3 screens, 1170 × 2532 each, greys only, no real data', ratio: '4 / 3', blur: true },
+		},
 		sections: [
 			{
 				heading: 'One app instead of many',
@@ -104,7 +126,15 @@ export const cases: Case[] = [
 				],
 			},
 		},
-		cover: { kind: 'device', wire: 'athliq-today', img: '/img/athliq-today.webp', alt: 'ATHLIQ home screen with a day score of 88 built from protein, sleep and steps' },
+		chapter: {
+			body: 'An app for personal trainers and their clients: onboarding, training plans, live workout tracking and one score for the day. React Native, Dutch interface, in alpha with [20] active users.',
+			visual: { kind: 'screens', screens: [
+				{ img: '/img/athliq-today.webp', alt: 'ATHLIQ home screen with a day score of 88 built from protein, sleep and steps' },
+				{ img: '/img/athliq-diary.webp', alt: 'ATHLIQ diary with calories and macros for the day' },
+				{ img: '/img/athliq-player.webp', alt: 'ATHLIQ workout player for a full body schema with a superset of goblet squats' },
+				{ img: '/img/athliq-recovery.webp', alt: 'ATHLIQ recovery screen with sleep, day and load scores' },
+			] },
+		},
 		sections: [
 			{
 				heading: 'Made for the gym floor',
@@ -148,7 +178,10 @@ export const cases: Case[] = [
 			lines: [['Years', '2020 to 2021'], ['Platform', 'iOS, Android and web'], ['Role', 'UX designer']],
 			star: { kind: 'comp', img: '/img/happy-italy.webp', alt: 'Five Happy Italy app screens: menu, coupons, loyalty points and ordering', w: 1035, h: 613 },
 		},
-		cover: { kind: 'image', img: '/img/happy-italy.webp', alt: 'Five Happy Italy app screens: menu, coupons, loyalty points and ordering', w: 1035, h: 613 },
+		chapter: {
+			body: 'A guest app for ordering with a built-in loyalty system, plus a redesigned website. Research and usability tests shaped the ordering journey; I set up the design system with the external developers.',
+			visual: { kind: 'image', img: '/img/happy-italy.webp', alt: 'Five Happy Italy app screens: menu, coupons, loyalty points and ordering', w: 1035, h: 613 },
+		},
 		sections: [
 			{
 				heading: 'Research first',
@@ -171,9 +204,4 @@ export const cases: Case[] = [
 			},
 		],
 	},
-];
-
-export const sites = [
-	{ img: '/img/site-barber.webp', alt: 'Barber website with online booking on laptop, tablet and phone', name: 'Barber with online booking' },
-	{ img: '/img/site-suits.webp', alt: 'Made-to-measure wedding suit website on laptop, tablet and phone', name: 'Made-to-measure suit maker' },
 ];

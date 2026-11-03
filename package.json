@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/pull-content.mjs && astro build",
+    "content": "node scripts/pull-content.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
