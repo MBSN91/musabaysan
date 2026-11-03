@@ -239,19 +239,16 @@ if (!motion) {
 	plots.forEach((p) => { if (!p.el.hasAttribute('data-sketch-only')) setState(p, 'shipped'); });
 } else {
 	const start = () => {
-		/* hero: the headline builds itself, then stretches upward and lifts away as you scroll */
+		/* hero: each line rises out of its own mask as one piece (crisp, no per-letter 3D), then the
+		   headline drifts up and fades as you scroll. The letter stretch lives on in the footer (Say hi.) */
 		const heroTitle = $('[data-hero-title]');
 		const hero = $('[data-hero]');
 		const arriving = root.classList.contains('arriving');
 		if (heroTitle && hero) {
-			const split = SplitText.create(heroTitle, { type: 'lines,chars', linesClass: 'hl', charsClass: 'hc' });
-			gsap.set(heroTitle, { visibility: 'visible', perspective: 900 });
-			gsap.from(split.chars, { yPercent: 115, rotationX: -80, opacity: 0, transformOrigin: '50% 100%', duration: 1.15, ease: EASE, stagger: 0.03, delay: arriving ? 0.7 : 0.15 });
-			gsap.from('[data-hero-foot] > *', { y: 28, opacity: 0, duration: 1, ease: EASE, stagger: 0.1, delay: arriving ? 1.2 : 0.75 });
-			gsap.to(split.chars, {
-				scaleY: 2.6, y: (i) => -40 - (i % 7) * 14, transformOrigin: '50% 100%', ease: 'none', stagger: { each: 0.02, from: 'center' },
-				scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
-			});
+			gsap.set(heroTitle, { visibility: 'visible' });
+			gsap.from($$('.hero__in', heroTitle), { yPercent: 135, duration: 1.1, ease: EASE, stagger: 0.12, delay: arriving ? 0.7 : 0.15 });
+			gsap.from('[data-hero-foot] > *', { y: 28, opacity: 0, duration: 1, ease: EASE, stagger: 0.1, delay: arriving ? 1.1 : 0.6 });
+			gsap.to(heroTitle, { y: () => -0.12 * innerHeight, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
 			gsap.to(heroTitle, { opacity: 0, ease: 'power1.in', scrollTrigger: { trigger: hero, start: '20% top', end: '85% top', scrub: true } });
 		}
 
