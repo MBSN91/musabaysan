@@ -1,0 +1,50 @@
+---
+// The hero orbit: real work on two tilted rings around the headline, in CSS 3D. The layout below is the
+// still frame (no script, reduced motion); scripts/site.ts turns the rings, flies the tiles in, and on
+// scroll dollies the camera through them. Decorative: the same work is linked and described further down.
+import { tiles, rings } from '../data/orbit';
+const wires = import.meta.glob('../wire/*.svg', { as: 'raw', eager: true });
+const rad = (d: number) => (d * Math.PI) / 180;
+// the drawn orbits around the headline (2D, in a 160 x 100 box): lime, green and a faint full track
+const orbits = [
+	{ rx: 66, ry: 30, rot: -9, speed: 1.6 },
+	{ rx: 52, ry: 40, rot: 14, speed: -2.2 },
+	{ rx: 76, ry: 44, rot: 3, speed: 1 },
+];
+const place = (t: (typeof tiles)[number]) => {
+	const r = rings[t.ring];
+	const x = r.rx * Math.sin(rad(t.a));
+	const z = r.rz * Math.cos(rad(t.a));
+	const depth = (Math.cos(rad(t.a)) + 1) / 2;
+	// tiles step aside where the words are (the motion in scripts/site.ts measures this exactly)
+	const clear = Math.abs(x) < 34 && Math.abs(t.y) < 34 ? 0.2 : 1;
+	const o = t.kind === 'wire' ? 0.9 : 0.3 + 0.7 * depth;
+	return `--x:${x.toFixed(2)}vw;--y:${t.y}svh;--z:${z.toFixed(2)}vw;--o:${(o * clear).toFixed(2)}`;
+};
+---
+<div class="orbit" data-orbit aria-hidden="true">
+	<svg class="orbit__rings" viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice">
+		{orbits.map((e, i) => (
+			<g transform={`rotate(${e.rot} 80 48)`}>
+				<ellipse class="orbit__track" cx="80" cy="48" rx={e.rx} ry={e.ry} vector-effect="non-scaling-stroke" />
+				<ellipse class={`orbit__arc orbit__arc--${i}`} data-arc data-speed={e.speed} cx="80" cy="48" rx={e.rx} ry={e.ry} pathLength="100" vector-effect="non-scaling-stroke" />
+			</g>
+		))}
+	</svg>
+	<div class="orbit__world" data-orbit-world>
+		{tiles.map((t) => (
+			<figure class:list={['orbit__tile', `orbit__tile--${t.kind}`, { 'orbit__tile--desk': t.desk }]} data-tile data-ring={t.ring} data-a={t.a} data-y={t.y} style={place(t)}>
+				<div class="orbit__face">
+					{t.kind === 'wire' ? (
+						<div class="orbit__wire" set:html={(wires[`../wire/${t.src}.svg`] as string) ?? ''} />
+					) : t.kind === 'video' ? (
+						<video src={t.src} poster={t.poster} muted playsinline loop preload="none" data-tile-video width="320" height="710"></video>
+					) : (
+						<img src={t.src} alt="" loading="eager" decoding="async" />
+					)}
+				</div>
+				<figcaption class="orbit__label">{t.label}</figcaption>
+			</figure>
+		))}
+	</div>
+</div>

@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { SplitText } from 'gsap/SplitText';
+import { rings } from '../data/orbit';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
@@ -254,26 +255,77 @@ if (!motion) {
 			gsap.to(heroTitle, { opacity: 0, ease: 'power1.in', scrollTrigger: { trigger: hero, start: '20% top', end: '85% top', scrub: true } });
 		}
 
-		/* hero phone: swings in, then plays ATHLIQ screens on a loop while the hero is on screen */
-		const heroPhone = $('[data-hero-phone]');
-		if (heroPhone && hero && getComputedStyle(heroPhone).display !== 'none') {
-			const phone = $('[data-phone]', heroPhone)!;
-			const shots = $$('[data-shot]', heroPhone);
-			gsap.from(phone, { rotationY: -70, rotationX: 30, yPercent: 40, opacity: 0, duration: 1.6, ease: EASE, delay: arriving ? 1 : 0.55 });
-			gsap.to(phone, { yPercent: -28, rotationZ: 6, rotationY: -30, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
-			gsap.set(shots.slice(1), { yPercent: 100 });
-			let cur = 0, z = 1;
-			const cycle = gsap.timeline({ repeat: -1, paused: true });
-			const step = () => {
-				const a = shots[cur], b = shots[(cur + 1) % shots.length];
-				gsap.set(b, { zIndex: ++z, yPercent: 100 });
-				gsap.to(b, { yPercent: 0, duration: 0.9, ease: 'expo.inOut' });
-				gsap.to(a, { yPercent: -25, duration: 0.9, ease: 'expo.inOut' });
-				cur = (cur + 1) % shots.length;
+		/* hero orbit: real work on two tilted rings turns around the headline; tiles fly in from deep
+		   behind after the words build, and scrolling dollies the camera through them (after ArtCraft) */
+		const orbit = $('[data-orbit]');
+		if (orbit && hero) {
+			const world = $('[data-orbit-world]', orbit)!;
+			const arcs = $$<SVGElement>('[data-arc]', orbit);
+			const vids = $$<HTMLVideoElement>('[data-tile-video]', orbit);
+			const items = $$('[data-tile]', orbit)
+				.filter((el) => getComputedStyle(el).display !== 'none')
+				.map((el) => ({ el, ring: Number(el.dataset.ring), a: Number(el.dataset.a), y: Number(el.dataset.y), wire: el.classList.contains('orbit__tile--wire'), k: 0, q: 1, w: 0, h: 0, bob: Math.random() * 6.28 }));
+			const cam = { z: 0, spread: 1 };
+			const PERSP = 1100;
+			const TILT = (10 * Math.PI) / 180;
+			// the words' box and the perspective origin, relative to the ring centre (measured, not animated)
+			const words = { l: 0, r: 0, t: 0, b: 0, py: 0 };
+			const measure = () => {
+				const o = world.getBoundingClientRect();
+				const box = [$('[data-hero-title]', hero), $('[data-hero-foot]', hero)].map((e) => e!.getBoundingClientRect());
+				const pad = 18;
+				words.l = Math.min(...box.map((b) => b.left)) - o.left - pad;
+				words.r = Math.max(...box.map((b) => b.right)) - o.left + pad;
+				words.t = Math.min(...box.map((b) => b.top)) - o.top - pad;
+				words.b = Math.max(...box.map((b) => b.bottom)) - o.top + pad;
+				words.py = orbit.getBoundingClientRect().top + orbit.clientHeight * 0.4 - o.top;
+				items.forEach((it) => { it.w = it.el.offsetWidth; it.h = it.el.offsetHeight; });
 			};
-			cycle.call(step, [], 2.4).to({}, { duration: 0.0001 }, 2.4);
-			ScrollTrigger.create({ trigger: hero, start: 'top top', end: 'bottom top', onToggle: (self) => (self.isActive ? cycle.play() : cycle.pause()) });
-			cycle.play();
+			measure();
+			window.addEventListener('resize', measure);
+			let running = true;
+			const t0 = performance.now();
+			const tick = () => {
+				if (!running) return;
+				const t = (performance.now() - t0) / 1000;
+				const W = innerWidth / 100, H = innerHeight / 100;
+				for (const it of items) {
+					const r = rings[it.ring];
+					const ang = ((it.a + r.speed * t) * Math.PI) / 180;
+					const x = r.rx * W * Math.sin(ang) * cam.spread;
+					const z = r.rz * W * Math.cos(ang) * cam.spread + cam.z - (1 - it.k) * 2200;
+					const y = it.y * H * cam.spread + Math.sin(t * 0.7 + it.bob) * 6;
+					// where the tile lands on screen: the world's tilt, then perspective from the origin
+					const yc = y * Math.cos(TILT) + z * Math.sin(TILT);
+					const zc = z * Math.cos(TILT) - y * Math.sin(TILT);
+					const s = PERSP / Math.max(1, PERSP - zc);
+					const sx = x * s, sy = words.py + (yc - words.py) * s;
+					const hw = (it.w * s) / 2, hh = (it.h * s) / 2;
+					// tiles go quiet while they pass behind the words: a clean dim, no veil over them
+					const hit = sx + hw > words.l && sx - hw < words.r && sy + hh > words.t && sy - hh < words.b;
+					it.q += ((hit ? (root.dataset.theme === 'light' ? 0.08 : 0.2) : 1) - it.q) * 0.12;
+					let o = (it.wire ? 0.9 : 0.3 + 0.7 * ((Math.cos(ang) + 1) / 2)) * it.k * it.q;
+					if (zc > PERSP * 0.4) o *= Math.max(0, 1 - (zc - PERSP * 0.4) / (PERSP * 0.35));
+					it.el.style.transform = `translate(-50%, -50%) translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, ${z.toFixed(1)}px) rotateX(10deg)`;
+					it.el.style.opacity = o.toFixed(3);
+					it.el.style.visibility = o < 0.01 ? 'hidden' : '';
+				}
+				arcs.forEach((a) => { a.style.strokeDashoffset = String(-((Number(a.dataset.speed) * t) / 360) * 100); });
+			};
+			gsap.ticker.add(tick);
+			const d1 = arriving ? 1.1 : 0.55;
+			gsap.to(items, { k: 1, duration: 2.2, ease: 'expo.out', stagger: { each: 0.06, from: 'random' }, delay: d1 });
+			gsap.from($$('.orbit__rings g', orbit), { scale: 0.6, opacity: 0, transformOrigin: '50% 50%', duration: 2, ease: EASE, stagger: 0.15, delay: d1 });
+			const play = (on: boolean) => vids.forEach((v) => (on ? v.play().catch(() => {}) : v.pause()));
+			gsap.delayedCall(d1 + 1.2, () => running && play(true));
+			ScrollTrigger.create({ trigger: hero, start: 'top top', end: 'bottom top', onToggle: (self) => { running = self.isActive; play(self.isActive); } });
+			gsap.to(cam, { z: 1600, spread: 1.35, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+			if (fine) {
+				gsap.set(world, { rotationX: -10 });
+				const rx = gsap.quickTo(world, 'rotationX', { duration: 1.4, ease: 'power3' });
+				const ry = gsap.quickTo(world, 'rotationY', { duration: 1.4, ease: 'power3' });
+				hero.addEventListener('pointermove', (e) => { ry((e.clientX / innerWidth - 0.5) * 10); rx(-10 - (e.clientY / innerHeight - 0.5) * 6); });
+			}
 		}
 
 		/* ticker: always running, faster with scroll speed, reverses with scroll direction */
@@ -468,6 +520,40 @@ if (!motion) {
 				if (struck) beat.to(struck, { opacity: 0, yPercent: -60, duration: 0.5 }, 0);
 			});
 		}
+
+		/* section bars: the rule draws in, ticks land on the frame lines, the bar holds the top while you
+		   are in its section and the next one takes over; the lime foot fills with your progress */
+		$$('[data-secbar]').forEach((bar) => {
+			const sec = bar.parentElement!;
+			const spacer = sec.parentElement?.classList.contains('pin-spacer') ? sec.parentElement : null;
+			const span = spacer ?? sec;
+			const rule = $('[data-secbar-rule]', bar);
+			const fill = $('[data-secbar-fill]', bar);
+			const labels = $$('[data-secbar-label]', bar);
+			const ticks = $$('.secbar__tick', bar);
+			// ScrollSmoother moves the page with a transform, which stops position: sticky; pin instead.
+			// A section that pins itself (the timeline) already carries its bar.
+			if (smoother) bar.classList.add('secbar--pinned');
+			if (smoother && !spacer && !bar.closest('.end')) {
+				ScrollTrigger.create({ trigger: sec, start: 'top top', end: () => `bottom top+=${bar.offsetHeight}`, pin: bar, pinSpacing: false, refreshPriority: -1 });
+			}
+			// over a colour chapter the bar takes the chapter's colours, like the footer's bar
+			$$('[data-chapter]', sec).forEach((ch) => {
+				const zone = ch.parentElement?.classList.contains('pin-spacer') ? ch.parentElement : ch;
+				const on = (yes: boolean) => {
+					if (!yes) { bar.removeAttribute('data-on-panel'); return; }
+					const cs = getComputedStyle(ch);
+					bar.style.setProperty('--bar-panel', cs.getPropertyValue('--panel').trim());
+					bar.style.setProperty('--bar-ink', cs.getPropertyValue('--on-panel').trim());
+					bar.setAttribute('data-on-panel', '');
+				};
+				ScrollTrigger.create({ trigger: zone, start: () => `top top+=${bar.offsetHeight}`, end: () => `bottom top+=${bar.offsetHeight}`, refreshPriority: -1, onToggle: (self) => on(self.isActive) });
+			});
+			if (rule) gsap.fromTo(rule, { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: span, start: 'top bottom', end: 'top 55%', scrub: true } });
+			gsap.from(ticks, { scale: 0, rotation: -90, duration: 0.6, ease: EASE, stagger: 0.08, scrollTrigger: { trigger: span, start: 'top 70%', once: true } });
+			gsap.from(labels, { yPercent: 120, opacity: 0, duration: 0.8, ease: EASE, stagger: 0.08, scrollTrigger: { trigger: span, start: 'top 70%', once: true } });
+			if (fill) gsap.fromTo(fill, { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: span, start: 'top top', end: 'bottom top', scrub: true, refreshPriority: -1 } });
+		});
 
 		ScrollTrigger.refresh();
 	};

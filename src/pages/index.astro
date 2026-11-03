@@ -3,6 +3,8 @@
 // Every fact comes from Musa's CV or facts he confirmed. Slots mark shots Musa still has to make.
 import Site from '../layouts/Site.astro';
 import Phone from '../components/Phone.astro';
+import Orbit from '../components/Orbit.astro';
+import SecBar from '../components/SecBar.astro';
 import Shot from '../components/Shot.astro';
 import { cases, sites } from '../data/work';
 
@@ -35,18 +37,17 @@ const timeline = [
 ];
 ---
 <Site title="Musa Baysan, UX designer in Breda" description="UX designer in Breda. I design apps and build them. Since 2013 for startups, agencies and global brands, today at adidas.">
-	<section class="hero" data-hero data-tilt>
-		<h1 class="hero__title" data-hero-title>
-			<span class="hero__line">I design</span>
-			<span class="hero__line">apps and</span>
-			<span class="hero__line">build them.</span>
-		</h1>
-		<div class="hero__phone" data-hero-phone>
-			<div class="chapter__tilt" data-tilt-target><Phone screens={athliqScreens} eager /></div>
-		</div>
-		<div class="hero__foot" data-hero-foot>
-			<p class="hero__lead">Musa Baysan, UX designer in Breda. I take apps from research on the shop floor through Figma to working code.</p>
-			<a class="btn" href={`mailto:${email}`} data-magnetic>Email me</a>
+	<section class="hero" data-hero>
+		<Orbit />
+		<div class="hero__center">
+			<h1 class="hero__title" data-hero-title>
+				<span class="hero__line">I design apps</span>
+				<span class="hero__line">and build them.</span>
+			</h1>
+			<div class="hero__foot" data-hero-foot>
+				<p class="hero__lead">Musa Baysan, UX designer in Breda. Store apps, my own app, web shops and websites, from research on the shop floor through Figma to working code.</p>
+				<a class="btn" href={`mailto:${email}`} data-magnetic>Email me</a>
+			</div>
 		</div>
 		<div class="ticker" aria-hidden="true">
 			<div class="ticker__row" data-ticker-row>
@@ -59,11 +60,12 @@ const timeline = [
 		</div>
 	</section>
 
-	<section class="statement" aria-label="In short">
+	<section class="statement framed" aria-label="In short">
 		<p data-words>Since 2013 I have designed for startups, agencies and global brands. Today I design the store app 30,000+ adidas employees work with, and I build my own app, ATHLIQ, from the first sketch to release.</p>
 	</section>
 
 	<section class="work" id="work" aria-labelledby="work-title">
+		<SecBar n={1} label="Work" meta="adidas · ATHLIQ · Happy Italy · websites" />
 		<h2 id="work-title" class="work__title" data-split>Selected work</h2>
 
 		<article class="chapter" data-chapter style={`--panel:${adidas.field};--on-panel:${adidas.ink}`} aria-labelledby="ch-adidas">
@@ -134,7 +136,8 @@ const timeline = [
 		</article>
 	</section>
 
-	<section class="how" id="how" aria-labelledby="how-title">
+	<section class="how framed" id="how" aria-labelledby="how-title">
+		<SecBar n={2} label="Process" meta="Shop floor · Figma · Code" />
 		<h2 id="how-title" class="how__title" data-wipe>How I work</h2>
 		<div class="how__row">
 			<h3 class="how__word" data-drift>Shop floor</h3>
@@ -155,7 +158,8 @@ const timeline = [
 		</div>
 	</section>
 
-	<section class="years" id="years" aria-labelledby="years-title">
+	<section class="years framed" id="years" aria-labelledby="years-title">
+		<SecBar n={3} label="Timeline" meta="Since 2013" />
 		<h2 id="years-title" class="years__title" data-grow>2013 to now</h2>
 		<div class="years__frame" data-track-frame>
 			<ol class="years__track" data-track>
@@ -167,7 +171,8 @@ const timeline = [
 		</div>
 	</section>
 
-	<section class="about" id="about" aria-labelledby="about-title">
+	<section class="about framed" id="about" aria-labelledby="about-title">
+		<SecBar n={4} label="Profile" meta="Breda, the Netherlands" />
 		<figure class="about__portrait" data-portrait>
 			<img src="/img/musa.webp" alt="Musa Baysan in a white T-shirt, outdoors in evening sun" width="900" height="900" loading="lazy" decoding="async" />
 		</figure>
