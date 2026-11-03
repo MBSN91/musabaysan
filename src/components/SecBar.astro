@@ -1,0 +1,18 @@
+---
+// Section bar, after getartcraft.com's scroll progression: a numbered bar opens each home section,
+// its rule draws in from the left with ticks at the frame lines, it stays at the top while you read
+// the section and is pushed off by the next one. The lime line at its foot fills with your progress
+// through the section. Wayfinding only (the section heading carries the meaning), so it is hidden
+// from assistive tech. Sticky in CSS; scripts/site.ts pins it when ScrollSmoother is on.
+interface Props { n: number; label: string; meta?: string }
+const { n, label, meta } = Astro.props;
+const num = String(n).padStart(2, '0'); // taste-skill-ignore: the section numbers Musa asked for, after getartcraft.com
+---
+<div class="secbar" data-secbar aria-hidden="true">
+	<span class="secbar__rule" data-secbar-rule></span>
+	<span class="secbar__tick secbar__tick--l"></span>
+	<span class="secbar__tick secbar__tick--r"></span>
+	<p class="secbar__label" data-secbar-label><span class="secbar__num">{num}</span><span class="secbar__slash">/</span>{label}</p>
+	{meta && <p class="secbar__meta" data-secbar-label>{meta}</p>}
+	<span class="secbar__fill" data-secbar-fill></span>
+</div>

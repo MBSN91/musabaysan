@@ -1,0 +1,56 @@
+---
+// Case cover: masthead, cover star, cover lines. The name is set huge, the work rises through its letters,
+// the outcome and three facts sit along the bottom. scripts/site.ts plays the arrival after the page
+// curtain and, on wide screens, one pinned scroll beat where the name stretches away and the work takes over.
+import Device from './Device.astro';
+import type { Case } from '../data/work';
+interface Props { c: Case }
+const { c } = Astro.props;
+const f = c.front;
+const star = f.star;
+const fit = (Math.max(f.mast.length, 4) * 0.79).toFixed(2);
+// Roll the leading number of a fact ("30,000+ employees" rolls "30,000+").
+// Years ("2021 to now") stay plain text: only counts roll.
+const parts = (v: string) => {
+	const m = /^\d{4}\b/.test(v) ? null : v.match(/^([\d.,+]+)(.*)$/);
+	return m ? { num: m[1], rest: m[2] } : { num: '', rest: v };
+};
+const mastNum = f.mast.match(/^([\d.]+)(.*)$/);
+const rows = ['--row:0', '--row:1', '--row:2'];
+---
+<section class:list={['cover', `cover--${star.kind}`, { 'cover--metric': !!f.struck }]} data-case-cover data-panel style={`--field:${c.field};--on-field:${c.ink}`} aria-labelledby="cover-title">
+	{f.struck && <p class="cover__struck" data-struck><s>{f.struck}</s></p>}
+	<h1 id="cover-title" class="cover__mast" data-mast data-fit style={`--fit:${fit}`}>
+		{f.mast.toLowerCase() !== c.name.toLowerCase() && <span class="sr">{c.name}: </span>}
+		<span data-fit-text>{mastNum ? <Fragment><span data-roll>{mastNum[1]}</span>{mastNum[2]}</Fragment> : f.mast}</span>
+	</h1>
+
+	<div class="cover__star" data-star>
+		<div class="cover__tilt" data-star-tilt>
+			{star.kind === 'device' ? (
+				<Device id="cover-device" wire={star.wire} img={star.img} alt={star.alt} notes={star.notes} eager bare />
+			) : (
+				<img class="cover__comp" src={star.img} alt={star.alt} width={star.w} height={star.h} fetchpriority="high" decoding="async" />
+			)}
+			{star.kind === 'device' && !star.img && (
+				<div class="cover__scan" aria-hidden="true">
+					<span class="cover__timer" data-timer>1:30</span>
+					{rows.map((r) => <span class="cover__tick" data-tick style={r}></span>)}
+				</div>
+			)}
+		</div>
+	</div>
+
+	<div class="cover__lines" data-lines>
+		<div>
+			<p class="cover__title">{f.title}</p>
+			{star.kind === 'device' && star.caption && <p class="cover__caption">{star.caption}</p>}
+		</div>
+		<dl class="cover__facts">
+			{f.lines.map(([k, v]) => {
+				const p = parts(v);
+				return <div><dt>{k}</dt><dd>{p.num && <span data-roll>{p.num}</span>}{p.rest}</dd></div>;
+			})}
+		</dl>
+	</div>
+</section>

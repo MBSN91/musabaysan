@@ -18,3 +18,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+.taste-skill/
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
+
+# CMS snapshot, pulled at build time (scripts/pull-content.mjs)
+src/data/cms.json
+public/cms/

@@ -1,0 +1,59 @@
+---
+// Case pages. They open on the case cover (components/CaseCover.astro), then the summary and facts,
+// then the story. The sketch-to-shipped plotting lives here: each real screen draws as its dotted
+// wireframe first, then prints as the shipped screen. adidas only ever shows redrawn wireframes.
+import Site from '../../layouts/Site.astro';
+import Shot from '../../components/Shot.astro';
+import CaseCover from '../../components/CaseCover.astro';
+import { cases } from '../../data/content';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+	return cases.map((c, i) => ({ params: { slug: c.slug }, props: { c, next: cases[(i + 1) % cases.length] } }));
+}
+const { c, next } = Astro.props;
+// The cover already shows some facts; the summary only lists the rest.
+const shown = new Set(c.front.lines.map(([k]) => k));
+const facts = c.facts.filter(([k]) => !shown.has(k));
+---
+<Site title={`${c.name}: ${c.title} · Musa Baysan`} description={c.summary} path={`/work/${c.slug}/`} barInk={c.ink}>
+	<article class="cs" style={`--field:${c.field};--on-field:${c.ink}`}>
+		<CaseCover c={c} />
+
+		<section class="cs__intro" aria-label="Summary">
+			<p class="cs__lead">{c.summary}</p>
+			<dl class="cs__facts">
+				{facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+			</dl>
+		</section>
+
+		{c.sections.map((s, i) => (
+			<section class:list={['cs__part', { 'cs__part--flip': i % 2 }]}>
+				<div class="cs__copy">
+					<h2 data-wipe>{s.heading}</h2>
+					{s.body.map((p) => <p>{p}</p>)}
+				</div>
+				{s.shot && <div class="cs__shot"><Shot shot={s.shot} /></div>}
+			</section>
+		))}
+
+		{c.closing && (
+			<section class="cs__part">
+				<div class="cs__copy">
+					<h2 data-wipe>{c.closing.heading}</h2>
+					{c.closing.body.map((p) => <p>{p}</p>)}
+				</div>
+				{c.closing.shot && <div class="cs__shot"><Shot shot={c.closing.shot} /></div>}
+			</section>
+		)}
+
+		<nav class="cs__next" aria-label="More work">
+			<a href={`/work/${next.slug}/`} data-curtain={next.name} data-cursor="view">
+				<span class="cs__next-label">Next case, {next.name}</span>
+				<strong>{next.title}</strong>
+			</a>
+			<p class="cs__all"><a class="u" href="/#work">All work</a></p>
+		</nav>
+	</article>
+</Site>

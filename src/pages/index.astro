@@ -1,64 +1,132 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/button.astro';
-import Navigation from '../components/navigation.astro';
-import ThemeToggle from '../components/ThemeToggleButton';
+// musabaysan.nl home. Direction: kinetic show reel (see PRODUCT.md and .impeccable/surfaces).
+// Content comes from src/data/content.ts (the CMS when connected, else the built-in defaults).
+// Every fact comes from Musa's CV or facts he confirmed. Slots mark shots Musa still has to make.
+import Site from '../layouts/Site.astro';
+import Phone from '../components/Phone.astro';
+import Orbit from '../components/Orbit.astro';
+import SecBar from '../components/SecBar.astro';
+import Shot from '../components/Shot.astro';
+import { cases, home, contact, rollParts, numberLead, yearsOf } from '../data/content';
 
-import { Icon } from 'astro-icon';
+export const prerender = true;
 
+const { hero, sites, how, years, about } = home;
+const email = contact.email;
 ---
+<Site title={home.seo.title} description={home.seo.description}>
+	<section class="hero" data-hero>
+		<Orbit />
+		<div class="hero__center">
+			<h1 class="hero__title" data-hero-title>
+				{hero.lines.map((l) => <span class="hero__line"><span class="hero__in">{l}</span></span>)}
+			</h1>
+			<div class="hero__foot" data-hero-foot>
+				<p class="hero__lead">{hero.lead}</p>
+				<a class="btn" href={`mailto:${email}`} data-magnetic>{hero.cta}</a>
+			</div>
+		</div>
+		<div class="ticker" aria-hidden="true">
+			<div class="ticker__row" data-ticker-row>
+				{[0, 1].map(() => (
+					<div class="ticker__set">
+						{home.ticker.map((t) => <span class="ticker__item">{t}<i class="ticker__mark"></i></span>)}
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
 
-<Layout title="Freelance UX designer | Musa Baysan">
-	<div class="opacity-0">
-		<Navigation />
-	</div>
-	<main class="relative flex flex-col z-10 justify-center items-center text-center h-screen px-8">
-		<div class="fixed top-8">
-			<ThemeToggle client:load />
+	<section class="statement framed" aria-label="In short">
+		<p data-words>{home.statement}</p>
+	</section>
+
+	<section class="work" id="work" aria-labelledby="work-title">
+		<SecBar n={1} label={home.work.bar.label} meta={home.work.bar.meta} />
+		<h2 id="work-title" class="work__title" data-split>{home.work.title}</h2>
+
+		{cases.map((c, i) => {
+			const v = c.chapter.visual;
+			const band = numberLead(c.front.mast);
+			return (
+				<article class:list={['chapter', { 'chapter--flip': i % 2 === 1 }]} data-chapter data-long={v.kind === 'screens' ? '' : undefined} style={`--panel:${c.field};--on-panel:${c.ink}`} aria-labelledby={`ch-${c.slug}`}>
+					<div class="chapter__panel" data-panel>
+						<div class="chapter__text" data-chapter-text>
+							<h3 id={`ch-${c.slug}`} class="chapter__title"><a href={`/work/${c.slug}/`} data-curtain={c.name}>{c.title}</a></h3>
+							<p class="chapter__meta">{c.name}, {yearsOf(c)}</p>
+							<p class="chapter__body">{rollParts(c.chapter.body).map((p) => (p.roll ? <span data-roll>{p.text}</span> : p.text))}</p>
+							<a class="btn btn--ink" href={`/work/${c.slug}/`} data-curtain={c.name} data-magnetic>Read the case</a>
+						</div>
+						<div class:list={['chapter__visual', { 'chapter__visual--wide': v.kind === 'image' }]} data-cursor="view" data-tilt>
+							<div class="chapter__tilt" data-tilt-target>
+								{v.kind === 'wire' && <Phone wire={v.wire} wireAlt={v.alt} />}
+								{v.kind === 'screens' && <Phone screens={v.screens} />}
+								{v.kind === 'image' && <img class="chapter__pic" data-pic src={v.img} alt={v.alt} width={v.w} height={v.h} loading="lazy" decoding="async" />}
+							</div>
+							{v.kind === 'wire' && v.note && <p class="chapter__note">{v.note}</p>}
+						</div>
+						<p class="chapter__band" data-band aria-hidden="true">{band ? <Fragment><span data-roll>{band.num}</span>{band.rest}</Fragment> : c.front.mast}</p>
+					</div>
+				</article>
+			);
+		})}
+
+		<article class="sites" aria-labelledby="sites-title">
+			<div class="sites__text">
+				<h3 id="sites-title" data-wipe>{sites.title}</h3>
+				<p>{sites.text}</p>
+			</div>
+			<div class="sites__pics">
+				{sites.items.map((s, i) => (
+					<figure class="sites__pic" data-speed={i % 2 ? '1.08' : '0.94'}>
+						<img src={s.img} alt={s.alt} width={s.w} height={s.h} loading="lazy" decoding="async" />
+						<figcaption>{s.name}</figcaption>
+					</figure>
+				))}
+			</div>
+		</article>
+	</section>
+
+	<section class="how framed" id="how" aria-labelledby="how-title">
+		<SecBar n={2} label={how.bar.label} meta={how.bar.meta} />
+		<h2 id="how-title" class="how__title" data-wipe>{how.title}</h2>
+		{how.rows.map((r) => (
+			<div class="how__row">
+				<h3 class="how__word" data-drift>{r.word}</h3>
+				<p class="how__text">{r.text}</p>
+				{r.visual && (r.visual.kind === 'phone' ? (
+					<div class="how__visual how__visual--phone" data-tilt>
+						<div class="chapter__tilt" data-tilt-target><Phone screens={[{ img: r.visual.img, alt: r.visual.alt }]} /></div>
+					</div>
+				) : (
+					<div class="how__visual"><Shot shot={r.visual} /></div>
+				))}
+			</div>
+		))}
+	</section>
+
+	<section class="years framed" id="years" aria-labelledby="years-title">
+		<SecBar n={3} label={years.bar.label} meta={years.bar.meta} />
+		<h2 id="years-title" class="years__title" data-grow>{years.title}</h2>
+		<div class="years__frame" data-track-frame>
+			<ol class="years__track" data-track>
+				{years.items.map((t) => (
+					<li><span class="years__year">{t.year}</span><h3>{t.title}</h3><p>{t.text}</p></li>
+				))}
+			</ol>
+			<div class="years__bar" aria-hidden="true"><span class="years__fill" data-track-fill></span></div>
 		</div>
-		<div
-			class="relative flex flex-col items-center text-center p-8 w-full max-w-6xl space-y-4 outline outline-1 outline-secondary outline-offset-0.5">
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -top-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 top-36">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -top-6">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -top-6">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 -bottom-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -left-2 top-36">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -bottom-2">
-			</div>
-			<div
-				class="absolute w-4 h-4 outline outline-1 bg-background dark:bg-dark-100 outline-secondary -right-2 -bottom-2">
-			</div>
-			<div>
-				<Icon name="logo" class="relative w-64 text-primary dark:text-background"/>
-				<h1 class="font-button text-l font-bold leading-10 text-secondary tracking-wide">
-					UX designer
-				</h1>
-			</div>
-			<div>
-				<p class="font-body text-lg dark:text-background">
-					The portfolio is being rebuilt from scratch with captivating case studies, beautiful features, and a high-performing website.
-					<br /><b>Q4 2025</b>
-				</p>
-			</div>
-			<Button
-				
-				title="visit previous portfolio"
-				link="https://mbsn.webflow.io/"
-			/>
+	</section>
+
+	<section class="about framed" id="about" aria-labelledby="about-title">
+		<SecBar n={4} label={about.bar.label} meta={about.bar.meta} />
+		<figure class="about__portrait" data-portrait>
+			<img src={about.portrait.img} alt={about.portrait.alt} width={about.portrait.w} height={about.portrait.h} loading="lazy" decoding="async" />
+		</figure>
+		<div class="about__letter">
+			<h2 id="about-title" data-split>{about.title}</h2>
+			{about.paragraphs.map((p) => <p>{p}</p>)}
+			{about.extra && <Shot shot={about.extra} />}
 		</div>
-	</main>
-</Layout>
+	</section>
+</Site>
