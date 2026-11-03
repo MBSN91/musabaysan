@@ -52,14 +52,14 @@ npm run migrate:create -- <name>   # production only changes schema through migr
 
 Then update `scripts/pull-content.mjs` and the types in `src/data/*.ts` in the site to match.
 
-## Hosting (to set up): free tiers only
+## Hosting: free tiers only
 
-Every visitor gets the files from Netlify, because the build copies them into the site. The bucket and the database only serve the editor and the build, so traffic stays tiny.
+Live since 3 Nov 2026. Every visitor gets the files from Netlify, because the build copies them into the site. The bucket and the database only serve the editor and the build.
 
-- **App:** Vercel Hobby (free, for personal use), with this folder (`cms`) as the root directory and Node 24.
-- **Database:** Neon Free (1 GB per project, scales to zero when idle and wakes in under a second; the content is a few MB). Create it from the Vercel project's Storage tab so `DATABASE_URL` is filled in. Use the pooled connection string. Migrations run on start in production.
-- **Files:** Cloudflare R2 (10 GB free, no fees for downloads). Set `S3_BUCKET`, `S3_ENDPOINT=https://<account id>.r2.cloudflarestorage.com`, `S3_REGION=auto`, and the access key pair from an R2 API token scoped to this bucket with Object Read & Write. Uploads go straight from the browser to the bucket (Vercel caps request bodies at 4.5 MB), so add a CORS rule on the bucket allowing `PUT` and `GET` from the CMS domain.
-- **Environment (Vercel):** `DATABASE_URL`, `PAYLOAD_SECRET`, `NETLIFY_BUILD_HOOK`, `S3_BUCKET`, `S3_ENDPOINT`, `S3_REGION`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`.
-- **Netlify (the site):** `CMS_URL` (the CMS address) and `CMS_API_KEY`. Then create a build hook for the production branch and paste it into `NETLIFY_BUILD_HOOK`. Each Publish is one production deploy. Netlify accounts from before September 2025 stay on a legacy plan without per-deploy charges (check under Usage & billing, and don't switch plans). The newer credit plans charge 15 of their 300 free monthly credits per deploy, which is about 20 publishes a month.
+- **Editor:** https://musabaysan-cms.vercel.app/admin, Vercel Hobby project `musabaysan-cms` (Frankfurt, Node 24). The login is in 1Password, Hermes vault, "musabaysan.nl editor (Payload CMS)". The build API key is in the same item.
+- **Database:** Neon Free `musabaysan-cms-db` (eu-central-1), connected through Vercel's Storage tab, pooled `DATABASE_URL`. Migrations run on start in production. Run them from a laptop with `NODE_ENV=production` and the pulled production env.
+- **Files:** Cloudflare R2 bucket `musabaysan` (10 GB free, no fees for downloads). Its key only allows reading and writing files. CORS allows `GET`, `PUT` and `HEAD` from the editor domain. Downloads go through short-lived signed links.
+- **Environment (Vercel):** `DATABASE_URL` and the other Neon variables, `PAYLOAD_SECRET`, `S3_BUCKET`, `S3_ENDPOINT`, `S3_REGION`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `NETLIFY_BUILD_HOOK` (production only).
+- **Netlify (the site, Free plan, account from 2022 so a legacy plan):** `CMS_URL` and `CMS_API_KEY` in all contexts. The free plan allows neither specific scopes nor secret values. The build hook "Payload CMS publish" builds the branch **portfolio-v2** (https://portfolio-v2--mbsn.netlify.app) until PR #2 is merged. After the merge, point it at `master`.
 
 Not chosen: Payload on Cloudflare Workers with D1 needs the paid Workers plan ($5 a month) because of its bundle size. Supabase storage is too expensive for large files.
