@@ -160,6 +160,8 @@ await mkdir(dir, { recursive: true });
 for (const [local, url] of downloads) {
 	const res = await fetch(url, { headers });
 	if (!res.ok) throw new Error(`download ${url}: ${res.status}`);
+	// a lost API key redirects to the admin login page; never save that HTML as an image
+	if ((res.headers.get('content-type') || '').startsWith('text/html')) throw new Error(`download ${url}: got a web page instead of a file (check CMS_API_KEY)`);
 	await writeFile(path.join(root, 'public', local), Buffer.from(await res.arrayBuffer()));
 }
 await writeFile(out, JSON.stringify(snapshot, null, '\t'));

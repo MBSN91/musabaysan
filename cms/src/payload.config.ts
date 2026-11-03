@@ -38,7 +38,8 @@ export default buildConfig({
   plugins: [
     s3Storage({
       enabled: Boolean(process.env.S3_BUCKET),
-      collections: { media: true },
+      // Downloads redirect to a short-lived bucket link, so big videos never pass through Vercel's 4.5 MB limit
+      collections: { media: { signedDownloads: { expiresIn: 3600 } } },
       bucket: process.env.S3_BUCKET || '',
       clientUploads: true,
       config: {

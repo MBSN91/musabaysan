@@ -47,7 +47,7 @@ Edit the collections in `src/collections` or the globals in `src/globals`. Then:
 ```sh
 npm run generate:types
 npm run generate:importmap
-npm run payload migrate:create <name>   # production only changes schema through migrations
+npm run migrate:create -- <name>   # production only changes schema through migrations; the script turns the R2 plugin on so its column is included
 ```
 
 Then update `scripts/pull-content.mjs` and the types in `src/data/*.ts` in the site to match.
