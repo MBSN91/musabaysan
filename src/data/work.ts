@@ -89,7 +89,7 @@ export const cases: Case[] = [
 			['Role', 'Designer and developer'],
 			['Years', '2025 to now'],
 			['Platform', 'iOS and Android, React Native'],
-			['Status', 'Alpha, 20 active users'],
+			['Status', 'Alpha, not yet in the stores'],
 		],
 		front: {
 			mast: 'ATHLIQ',

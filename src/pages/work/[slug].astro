@@ -13,6 +13,9 @@ export function getStaticPaths() {
 	return cases.map((c, i) => ({ params: { slug: c.slug }, props: { c, next: cases[(i + 1) % cases.length] } }));
 }
 const { c, next } = Astro.props;
+// The cover already shows some facts; the summary only lists the rest.
+const shown = new Set(c.front.lines.map(([k]) => k));
+const facts = c.facts.filter(([k]) => !shown.has(k));
 ---
 <Site title={`${c.name}: ${c.title} · Musa Baysan`} description={c.summary} path={`/work/${c.slug}/`} barInk={c.ink}>
 	<article class="cs" style={`--field:${c.field};--on-field:${c.ink}`}>
@@ -21,7 +24,7 @@ const { c, next } = Astro.props;
 		<section class="cs__intro" aria-label="Summary">
 			<p class="cs__lead">{c.summary}</p>
 			<dl class="cs__facts">
-				{c.facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+				{facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
 			</dl>
 		</section>
 

@@ -425,7 +425,24 @@ if (!motion) {
 			const to = ptl && !sketchOnly ? ptl.labels.shipped : from;
 			let intro: gsap.core.Tween | null = ptl ? ptl.tweenTo(from, { duration: 1.8, ease: 'power1.inOut', delay: d0 + 0.35 }) : null;
 			const proxy = { p: 0 };
+			// adidas: the bulk scan runs on the redrawn screen, a stopwatch to 1:30 while three rows tick off
+			const timer = $('[data-timer]', cover);
+			const ticks = $$('[data-tick]', cover);
+			const ticked = ticks.map(() => true);
+			const scan = (p: number) => {
+				if (!timer) return;
+				const s = Math.round(90 * Math.min(1, p / 0.9));
+				timer.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+				ticks.forEach((t, i) => {
+					const on = p >= 0.2 + i * 0.25;
+					if (on === ticked[i]) return;
+					ticked[i] = on;
+					gsap.to(t, { scale: on ? 1 : 0, duration: on ? 0.45 : 0.2, ease: on ? 'back.out(2.4)' : 'power2.in' });
+				});
+			};
+			if (timer) { gsap.set(ticks, { scale: 0 }); ticked.fill(false); scan(0); }
 			const drive = () => {
+				scan(proxy.p);
 				if (!ptl) return;
 				if (proxy.p > 0.001 && intro) { intro.kill(); intro = null; }
 				if (!intro) ptl.time(from + (to - from) * proxy.p);

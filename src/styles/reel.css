@@ -238,21 +238,25 @@ html.motion .years__frame { overflow: hidden; }
 
 /* ---------- case pages ---------- */
 .cover { position: relative; min-height: 100svh; overflow: hidden; background: var(--field); color: var(--on-field); padding: 116px var(--m) 32px; }
-.cover__struck { font-family: var(--head); font-size: clamp(2rem, 1rem + 3.4vw, 4.5rem); line-height: 1; margin-bottom: 18px; }
+.cover__struck { font-family: var(--head); font-size: clamp(1.75rem, 1rem + 2.6vw, 3.5rem); line-height: 1; margin-bottom: 14px; }
+.cover--metric { padding-top: 100px; }
 .cover__struck s { position: relative; text-decoration: none; opacity: 0.55; }
 .cover__struck s::after { content: ""; position: absolute; left: -3%; right: -3%; top: 52%; height: 0.1em; background: currentColor; transform: scaleX(var(--strike, 1)); transform-origin: left; }
 .cover__mast { position: relative; z-index: 1; display: block; font-size: calc((100vw - 2 * var(--m)) / var(--fit, 6)); line-height: 0.8; text-transform: uppercase; white-space: nowrap; letter-spacing: -0.01em; }
-.cover--metric .cover__mast { width: 64%; font-size: calc((100vw - 2 * var(--m)) * 0.64 / var(--fit, 6)); }
 html.motion [data-mast] { visibility: hidden; animation: reveal-fallback 0s 2.5s forwards; }
 .cover__star { --star-h: min(54svh, 500px); --star-w: calc(var(--star-h) * 640 / 1138); position: absolute; z-index: 2; top: 31%; left: calc(50% - var(--star-w) * 0.15); perspective: 1600px; }
 .cover__star .device { --h: var(--star-h); }
 .cover__tilt { transform: rotateY(-16deg) rotateX(8deg) rotateZ(-4deg); transform-style: preserve-3d; }
-.cover--metric .cover__star { top: 15%; left: auto; right: calc(var(--m) + 5vw); }
+.cover--metric .cover__star { --star-h: min(44svh, 400px); top: 40%; left: auto; right: calc(var(--m) + 9vw); }
 .cover--metric .cover__tilt { transform: rotateY(16deg) rotateX(6deg) rotateZ(4deg); }
 .cover--comp .cover__star { --comp-w: min(62vw, 900px); top: 25%; left: calc(50% - var(--comp-w) / 2); }
 .cover--comp .cover__tilt { transform: rotateX(16deg); }
 .cover__comp { width: var(--comp-w); filter: drop-shadow(24px 44px 40px rgb(0 0 0 / 0.28)); } /* taste-skill-ignore: transparent comp lifted off the cover */
-.cover__caption { margin: 16px auto 0; max-width: 24ch; text-align: center; font-size: var(--small); font-weight: 500; }
+.cover__scan { position: absolute; inset: 0; pointer-events: none; }
+.cover__timer { position: absolute; left: 50%; top: 30.8%; translate: -50% -50%; min-width: 3.2em; padding: 0.15em 0.2em; background: var(--white); color: #000; font-family: var(--head); font-size: calc(var(--star-h) * 0.075); line-height: 1; text-align: center; font-variant-numeric: tabular-nums; }
+.cover__tick { position: absolute; left: 85%; top: calc(56.9% + var(--row) * 9.84%); width: 9%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: #000; }
+.cover__tick::after { content: ""; position: absolute; left: 30%; top: 24%; width: 24%; height: 40%; border: solid var(--lime); border-width: 0 3px 3px 0; rotate: 45deg; }
+.cover__caption { margin-top: 12px; max-width: 34ch; font-size: var(--small); font-weight: 500; }
 .cover .note span { color: var(--on-field); }
 .cover__lines { position: absolute; z-index: 3; left: var(--m); right: var(--m); bottom: 32px; display: flex; justify-content: space-between; align-items: end; gap: 40px; }
 .cover__title { font-family: var(--head); font-size: clamp(1.75rem, 1rem + 1.6vw, 2.75rem); line-height: 1.02; max-width: 16em; }
@@ -305,7 +309,7 @@ html.motion .device .device__shot { opacity: 1; }
 .note { position: absolute; top: var(--y); left: 0; right: 0; height: 0; pointer-events: none; }
 .note::before { content: ""; position: absolute; top: -4px; left: calc(var(--x) * 1%); width: 8px; height: 8px; margin-left: -4px; border-radius: 2px; background: currentColor; }
 .note::after { content: ""; position: absolute; top: 0; left: calc(var(--x) * 1%); right: -28px; border-top: 2px dotted currentColor; } /* taste-skill-ignore: a redline leader, part of the drawing */
-.note span { position: absolute; left: calc(100% + 36px); top: -0.7em; width: 15ch; font-size: var(--small); font-weight: 600; line-height: 1.3; }
+.note span { position: absolute; left: calc(100% + 36px); top: -0.7em; width: 18ch; text-wrap: balance; font-size: var(--small); font-weight: 600; line-height: 1.3; }
 
 /* ---------- tablet and phone ---------- */
 @media (max-width: 900px) {
@@ -337,7 +341,8 @@ html.motion .device .device__shot { opacity: 1; }
 	.cover--comp .cover__star { align-self: stretch; margin-top: 20px; }
 	.cover--metric .cover__star { margin-top: 8px; }
 	.cover__lines { position: static; flex-direction: column; align-items: start; gap: 24px; margin-top: 40px; }
-	.cover__facts { flex-wrap: wrap; gap: 16px 32px; }
+	.cover__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: 100%; }
+	.cover__facts dd { font-size: var(--small); }
 	.chapter__panel { padding-bottom: 0; }
 	.chapter__band { display: block; margin: 48px 0 0; padding-bottom: 12px; font-size: 24vw; }
 	.chapter .phone { --h: min(62svh, 520px); }

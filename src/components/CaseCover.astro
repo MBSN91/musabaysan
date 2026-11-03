@@ -10,11 +10,13 @@ const f = c.front;
 const star = f.star;
 const fit = (Math.max(f.mast.length, 4) * 0.79).toFixed(2);
 // Roll the leading number of a fact ("30,000+ employees" rolls "30,000+").
+// Years ("2021 to now") stay plain text: only counts roll.
 const parts = (v: string) => {
-	const m = v.match(/^([\d.,+]+)(.*)$/);
+	const m = /^\d{4}\b/.test(v) ? null : v.match(/^([\d.,+]+)(.*)$/);
 	return m ? { num: m[1], rest: m[2] } : { num: '', rest: v };
 };
 const mastNum = f.mast.match(/^([\d.]+)(.*)$/);
+const rows = ['--row:0', '--row:1', '--row:2'];
 ---
 <section class:list={['cover', `cover--${star.kind}`, { 'cover--metric': !!f.struck }]} data-case-cover data-panel style={`--field:${c.field};--on-field:${c.ink}`} aria-labelledby="cover-title">
 	{f.struck && <p class="cover__struck" data-struck><s>{f.struck}</s></p>}
@@ -30,12 +32,20 @@ const mastNum = f.mast.match(/^([\d.]+)(.*)$/);
 			) : (
 				<img class="cover__comp" src={star.img} alt={star.alt} width={star.w} height={star.h} fetchpriority="high" decoding="async" />
 			)}
+			{star.kind === 'device' && !star.img && (
+				<div class="cover__scan" aria-hidden="true">
+					<span class="cover__timer" data-timer>1:30</span>
+					{rows.map((r) => <span class="cover__tick" data-tick style={r}></span>)}
+				</div>
+			)}
 		</div>
-		{star.kind === 'device' && star.caption && <p class="cover__caption">{star.caption}</p>}
 	</div>
 
 	<div class="cover__lines" data-lines>
-		<p class="cover__title">{f.title}</p>
+		<div>
+			<p class="cover__title">{f.title}</p>
+			{star.kind === 'device' && star.caption && <p class="cover__caption">{star.caption}</p>}
+		</div>
 		<dl class="cover__facts">
 			{f.lines.map(([k, v]) => {
 				const p = parts(v);
