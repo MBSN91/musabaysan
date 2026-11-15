@@ -47,8 +47,8 @@ export const cases: Case[] = [
 	{
 		slug: 'adidas-store-app',
 		name: 'adidas store app',
-		title: '1.5 minutes instead of 5 to 8',
-		summary: 'The app 30,000+ adidas store employees work with every day. Testing on the shop floor found a workaround nobody upstream knew about; the native flow I pushed for cut the task to about 1.5 minutes in tests.',
+		title: 'Many store apps, one app',
+		summary: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers and retail UX designers, and I am the only UX designer bringing adiClub membership into the stores.',
 		field: 'var(--lime)',
 		ink: '#000000',
 		facts: [
@@ -58,20 +58,19 @@ export const cases: Case[] = [
 			['Worked with', 'Product, business, developers, retail UX designers, markets'],
 		],
 		front: {
-			mast: '1.5 min',
-			struck: '5 to 8 min',
-			title: 'Bulk scanning in the adidas store app',
-			lines: [['Used by', '30,000+ employees'], ['Measured', 'In store tests'], ['Years', '2021 to now']],
-			star: { kind: 'device', wire: 'adidas-bulkscan', alt: 'Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button', caption: 'Redrawn as a wireframe. The real screens are confidential.' },
+			mast: 'adidas',
+			title: 'Many store apps, one app',
+			lines: [['Used by', '30,000+ employees'], ['Platform', 'iPhone and iPad'], ['Years', '2021 to now']],
+			star: { kind: 'device', wire: 'adidas-bulkscan', alt: 'Redrawn wireframe of a store app screen: a summary card and a list of products', caption: 'Redrawn as a wireframe. The real screens are confidential.' },
 		},
 		chapter: {
-			body: 'The app 30,000+ adidas store employees work with every day. Testing on the shop floor found a workaround nobody upstream knew about; the native flow I pushed for cut bulk scanning to about 1.5 minutes in tests.',
-			visual: { kind: 'wire', wire: 'adidas-bulkscan', alt: 'Wireframe of a bulk-scan screen: a scan counter, a list of scanned items and a done button', note: 'Redrawn as a wireframe. The real screens are confidential.' },
+			body: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers and retail UX designers, and I am the only UX designer bringing adiClub membership into the stores.',
+			visual: { kind: 'wire', wire: 'adidas-bulkscan', alt: 'Redrawn wireframe of a store app screen: a summary card and a list of products', note: 'Redrawn as a wireframe. The real screens are confidential.' },
 		},
 		closing: {
 			heading: 'What I can show in a call',
 			body: ['The screens are confidential. In a call I walk you through the flows, the research and the decisions behind them.'],
-			shot: { kind: 'slot', label: 'Bulk-scan flow, rebuilt as wireframes', spec: '3 screens, 1170 × 2532 each, greys only, no real data', ratio: '4 / 3', blur: true },
+			shot: { kind: 'slot', label: 'Store app flows, rebuilt as wireframes', spec: '3 screens, 1170 × 2532 each, greys only, no real data', ratio: '4 / 3', blur: true },
 		},
 		sections: [
 			{
@@ -83,17 +82,9 @@ export const cases: Case[] = [
 				shot: { kind: 'slot', label: 'Design system, rebuilt', spec: '16:10, 2880 × 1800, components redrawn as greyscale wireframes, no real UI', ratio: '16 / 10' },
 			},
 			{
-				heading: 'The workaround on the shop floor',
-				body: [
-					'In market discussions and hands-on testing in stores, I saw employees bulk-scanning with a workaround that product and business did not know about.',
-					'I advocated for native mass scanning, even when it met resistance at first. In tests the flow went from 5 to 8 minutes to about 1.5.',
-				],
-				shot: { kind: 'slot', label: 'Hands scanning a shoebox', spec: '3:2, 3000 px wide, no faces, no brand marks', ratio: '3 / 2' },
-			},
-			{
 				heading: 'Journey mapping that changed the scope',
 				body: [
-					'Mapping the in-store membership journey uncovered broken steps and incorrect emails. The scope changed from a screen to the whole journey.',
+					'As the only UX designer on membership in stores, I mapped the in-store membership journey. It uncovered broken steps and incorrect emails, and the scope changed from a screen to the whole journey.',
 					'I brought business, privacy, legal, the product owner, the flagship app and CRM teams together. The fixes shipped within weeks, with wording aligned to what markets expect and what the law requires.',
 				],
 				shot: { kind: 'slot', label: 'Journey map, anonymised', spec: '3:2, 3000 px wide, redrawn steps only, no real text', ratio: '3 / 2' },

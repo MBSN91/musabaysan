@@ -37,7 +37,8 @@ Visitors arrive from CVs, LinkedIn and job applications. adidas can see the site
 ## Evidence on Hand
 - ATHLIQ real screens: `public/img/athliq-*.webp` (from `~/Documents/ATHLIQ/store-assets/play`).
 - Happy Italy app comp `public/img/happy-italy.webp`; client websites `public/img/site-barber.webp`, `site-suits.webp`; portrait `public/img/musa.webp`.
-- CV facts: 30,000+ store employees use the adidas app; native bulk scanning took about 1.5 minutes instead of 5 to 8 in tests; store journey mapping got broken membership steps fixed within weeks; designing since 2013; own studio from 2014; Happy Italy 2020 to 2021; adidas since Aug 2021 (contractor, Manager UX Design from Jul 2022, now Digital Experience Designer); ATHLIQ in alpha with 20 active users.
+- Not Musa's claim (Musa, 15 Nov 2026): the bulk-scanning workaround and the 5 to 8 minutes to about 1.5 result were found and steered by his lead designer as a team effort. Keep it off the site; the adidas cover and sections built on it are to be replaced.
+- CV facts: 30,000+ store employees use the adidas app; store journey mapping got broken membership steps fixed within weeks; designing since 2013; own studio from 2014; Happy Italy 2020 to 2021; adidas since Aug 2021 (contractor, Manager UX Design from Jul 2022, now Digital Experience Designer); ATHLIQ in alpha with 20 active users.
 - Missing, must not be faked: adidas screens, client quotes, testimonials, press, team size numbers. Photos and video from the shot list (see `~/.hermes/plans/2026-10-28_portfolio-visuals-v2-plan.md`) are still to be made.
 
 ## Product Principles

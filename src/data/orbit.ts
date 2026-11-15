@@ -18,7 +18,7 @@ export const tiles: Tile[] = [
 	// outer ring
 	{ kind: 'phone', src: '/img/orbit/athliq-today.webp', label: 'ATHLIQ, the day score', ring: 0, a: 20, y: -30 },
 	{ kind: 'site', src: '/img/orbit/site-glowtect.webp', label: 'Glowtect, B2B web shop', ring: 0, a: 65, y: 22 },
-	{ kind: 'wire', src: 'adidas-bulkscan', label: 'adidas store app, bulk scanning, redrawn', ring: 0, a: 110, y: -34 },
+	{ kind: 'wire', src: 'adidas-bulkscan', label: 'adidas store app, redrawn wireframe', ring: 0, a: 110, y: -34 },
 	{ kind: 'comp', src: '/img/orbit/site-barber-devices.webp', label: 'Barbershop Dongen, website with online booking', ring: 0, a: 155, y: 30, desk: true },
 	{ kind: 'site', src: '/img/orbit/site-connecting.webp', label: 'Connecting People, website', ring: 0, a: 200, y: -27 },
 	{ kind: 'video', src: '/img/orbit/athliq-player.mp4', poster: '/img/orbit/athliq-player-poster.webp', label: 'ATHLIQ, the workout player', ring: 0, a: 245, y: 34, desk: true },
