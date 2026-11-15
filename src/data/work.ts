@@ -48,7 +48,7 @@ export const cases: Case[] = [
 		slug: 'adidas-store-app',
 		name: 'adidas store app',
 		title: 'Many store apps, one app',
-		summary: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers and retail UX designers, and I am the only UX designer bringing adiClub membership into the stores.',
+		summary: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers, product owners and retail UX designers, and work with the membership team on bringing adiClub into the stores.',
 		field: 'var(--lime)',
 		ink: '#000000',
 		facts: [
@@ -64,7 +64,7 @@ export const cases: Case[] = [
 			star: { kind: 'device', wire: 'adidas-bulkscan', alt: 'Redrawn wireframe of a store app screen: a summary card and a list of products', caption: 'Redrawn as a wireframe. The real screens are confidential.' },
 		},
 		chapter: {
-			body: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers and retail UX designers, and I am the only UX designer bringing adiClub membership into the stores.',
+			body: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers, product owners and retail UX designers, and work with the membership team on bringing adiClub into the stores.',
 			visual: { kind: 'wire', wire: 'adidas-bulkscan', alt: 'Redrawn wireframe of a store app screen: a summary card and a list of products', note: 'Redrawn as a wireframe. The real screens are confidential.' },
 		},
 		closing: {
@@ -84,8 +84,8 @@ export const cases: Case[] = [
 			{
 				heading: 'Journey mapping that changed the scope',
 				body: [
-					'As the only UX designer on membership in stores, I mapped the in-store membership journey. It uncovered broken steps and incorrect emails, and the scope changed from a screen to the whole journey.',
-					'I brought business, privacy, legal, the product owner, the flagship app and CRM teams together. The fixes shipped within weeks, with wording aligned to what markets expect and what the law requires.',
+					'Mapping the in-store membership journey uncovered broken steps and incorrect emails. The scope changed from a screen to the whole journey.',
+					'I worked with business, privacy, legal, the product owner, the flagship app and CRM teams on the fixes. They shipped within weeks, with wording aligned to what markets expect and what the law requires.',
 				],
 				shot: { kind: 'slot', label: 'Journey map, anonymised', spec: '3:2, 3000 px wide, redrawn steps only, no real text', ratio: '3 / 2' },
 			},
