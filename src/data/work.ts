@@ -85,7 +85,7 @@ export const cases: Case[] = [
 				heading: 'Journey mapping that changed the scope',
 				body: [
 					'Mapping the in-store membership journey uncovered broken steps and incorrect emails. The scope changed from a screen to the whole journey.',
-					'I worked with business, privacy, legal, the product owner, the flagship app and CRM teams on the fixes. They shipped within weeks, with wording aligned to what markets expect and what the law requires.',
+					'I worked with business, the product owner, the flagship app and CRM teams on the fixes. They shipped within weeks, with wording aligned to what markets expect and what the law requires.',
 				],
 				shot: { kind: 'slot', label: 'Journey map, anonymised', spec: '3:2, 3000 px wide, redrawn steps only, no real text', ratio: '3 / 2' },
 			},
