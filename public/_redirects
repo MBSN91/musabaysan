@@ -1,0 +1,4 @@
+# Old pages from the 2023 site point to the holding page (Oct 2026).
+# Their source lives in src/legacy/. The Astro Netlify adapter appends its own rules below these.
+/home          /    301
+/cases/happy   /    301

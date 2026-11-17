@@ -1,0 +1,21 @@
+---
+// Renders one visual: a sketch/shipped device, a real image, or a slot for a photo Musa still has to make.
+// Slots are drawn in the page's sketch language with the shot spec, so the preview shows what goes where.
+import Device from './Device.astro';
+import type { Shot as ShotT } from '../data/work';
+interface Props { shot: ShotT; eager?: boolean }
+const { shot, eager = false } = Astro.props;
+---
+{shot.kind === 'device' && <Device wire={shot.wire} img={shot.img} alt={shot.alt} eager={eager} />}
+{shot.kind === 'image' && (
+	<figure class="pic"><img src={shot.img} alt={shot.alt} width={shot.w} height={shot.h} loading={eager ? 'eager' : 'lazy'} decoding="async" /></figure>
+)}
+{shot.kind === 'slot' && (
+	<figure class="slot" style={`aspect-ratio:${shot.ratio}`} data-slot>
+		<svg class="slot__cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 100M100 0L0 100" /></svg>
+		<figcaption>
+			<strong>{shot.label}</strong>
+			<span>{shot.spec}{shot.blur ? '. Blur names and data.' : ''}</span>
+		</figcaption>
+	</figure>
+)}

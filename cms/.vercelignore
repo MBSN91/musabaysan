@@ -1,0 +1,9 @@
+node_modules
+.next
+media
+.env
+.env.*
+*.tsbuildinfo
+next-env.d.ts
+# imports the site's defaults from ../src, which is not uploaded; only used locally
+src/seed.ts

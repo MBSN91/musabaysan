@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/pull-content.mjs && astro build",
+    "content": "node scripts/pull-content.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -28,6 +29,7 @@
     "@types/react-dom": "^18.2.14",
     "astro": "^3.4.3",
     "astro-icon": "^0.8.1",
+    "gsap": "^3.15.0",
     "lottie-web": "^5.9.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
