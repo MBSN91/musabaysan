@@ -26,3 +26,4 @@ pnpm-debug.log*
 # CMS snapshot, pulled at build time (scripts/pull-content.mjs)
 src/data/cms.json
 public/cms/
+.assets-src/

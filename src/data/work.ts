@@ -246,46 +246,127 @@ export const cases: Case[] = [
 		],
 	},
 	{
+		// Rewritten 17 Nov 2026 from Musa's own 2021 case page, his Figma files and archive captures; facts confirmed by Musa.
+		// Never show the filled-in sign-up screens (real phone number and email).
 		slug: 'happy-italy',
 		name: 'Happy Italy',
-		title: 'Ordering and loyalty in one app',
-		summary: 'A guest app for ordering with a built-in loyalty system, plus a redesigned website. Research and usability tests shaped the ordering journey; I set up the design system with the external developers.',
+		title: 'Twenty closed restaurants, one tap to order',
+		summary: 'Happy Italy, a chain of 20 Italian restaurants, had to keep trading through the lockdowns of 2020 and 2021. I designed and built its new website around ordering and hiring, and designed its ordering and rewards app from research to the design system the developers built from.',
 		field: 'var(--panel-3)',
 		ink: 'var(--on-panel-3)',
 		facts: [
-			['Role', 'UX designer'],
+			['Role', 'UX designer: research, UX and visual design, prototyping, testing and the website build in Webflow'],
+			['Worked with', 'Management, restaurant stakeholders, an external development team for the app'],
+			['Platform', 'Website; iOS and Android app'],
 			['Years', '2020 to 2021'],
-			['Platform', 'iOS, Android and web'],
-			['Worked with', 'Stakeholders, external development team'],
+			['Status', 'Website live in 2021, replaced after the chain changed owners. App designed, tested and in development when I left in July 2021; never launched'],
+			['Research', 'A survey of 90+ people, interviews, Google Analytics and Hotjar'],
 		],
 		front: {
 			mast: 'Happy Italy',
-			title: 'Ordering and loyalty in one app',
-			lines: [['Years', '2020 to 2021'], ['Platform', 'iOS, Android and web'], ['Role', 'UX designer']],
-			star: { kind: 'comp', img: '/img/happy-italy.webp', alt: 'Five Happy Italy app screens: menu, coupons, loyalty points and ordering', w: 1035, h: 613 },
+			title: 'Twenty closed restaurants, one tap to order',
+			lines: [['Role', 'UX designer'], ['Survey', '90+ people'], ['Years', '2020 to 2021']],
+			star: { kind: 'comp', img: '/img/happy/happy-cover.webp', alt: 'Five Happy Italy app screens: picking a day and time, a live coupon with its countdown, the home screen with coupons, the profile with points, and a coupon', w: 2400, h: 1399 },
 		},
 		chapter: {
-			body: 'A guest app for ordering with a built-in loyalty system, plus a redesigned website. Research and usability tests shaped the ordering journey; I set up the design system with the external developers.',
-			visual: { kind: 'image', img: '/img/happy-italy.webp', alt: 'Five Happy Italy app screens: menu, coupons, loyalty points and ordering', w: 1035, h: 613 },
+			body: 'A restaurant chain closed by the lockdowns. I designed and built its website around ordering and hiring, and designed its ordering and rewards app from research to the design system.',
+			visual: { kind: 'image', img: '/img/happy/happy-cover.webp', alt: 'Five Happy Italy app screens: picking a day and time, a live coupon with its countdown, the home screen with coupons, the profile with points, and a coupon', w: 2400, h: 1399 },
+		},
+		closing: {
+			heading: 'What this case shows',
+			body: [
+				'A consumer website designed and built, and an app taken from research to handover, with scope set by the business goal and by what the restaurant systems could carry.',
+				'In a call I walk you through the Figma files: the design system and the 114-screen prototype.',
+			],
+			shot: { kind: 'image', img: '/img/happy/happy-modes.webp', alt: 'The app home screen in light and dark mode: a greeting, order and pay, and coupons', w: 1506, h: 1433 },
 		},
 		sections: [
 			{
-				heading: 'Research first',
+				heading: 'Twenty restaurants, closed, with a plan to double',
 				body: [
-					'I prepared and ran qualitative and quantitative research with guests, and turned it into personas, user flows and customer journeys that set the project goals with the stakeholders.',
+					'The chain planned to grow from 20 restaurants to more than 40, and into Europe, within five years. Then the lockdowns closed the dining rooms, and delivery and takeaway kept the restaurants trading.',
+					'Two things had to work online: ordering, and hiring the people every new restaurant needs.',
 				],
 			},
 			{
-				heading: 'Validated with guests',
+				heading: 'The website: ordering one tap away',
 				body: [
-					'From low to high fidelity wireframes and interactive prototypes, every key flow went through usability tests before it was built.',
+					'In February 2021 the site had nine items in its top bar, three of them different ways to order. I designed the new site for phone, tablet and desktop in Figma and built it in Webflow.',
+					'On desktop, the three ordering items became one order button in the top bar; on the phone, delivery and takeaway sit in a panel at the bottom of the first screen, so ordering is always one tap away. The first screen is a campaign slot: a Christmas menu in the designs, terrace bookings when the terraces reopened in June 2021. All 20 restaurants sit in one block on the homepage, each with its own page. It went live in spring 2021.',
 				],
-				shot: { kind: 'slot', label: 'Loyalty card close-up', spec: '1:1, 2000 px, cropped from the app comp', ratio: '1 / 1' },
+				shot: { kind: 'image', img: '/img/happy/happy-site.webp', alt: 'The Happy Italy website design on iPad and phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 1286, h: 1488 },
 			},
 			{
-				heading: 'A system the developers could run with',
+				heading: 'Hiring for twenty restaurants',
 				body: [
-					'I defined the design system and handed it to the external development team, and advised on both guest and business journeys across the app and the website.',
+					'In June 2021 the site listed 100 open vacancies. I explored five concepts for the jobs pages in Figma, from wireframe to final design, then built them in Webflow.',
+					'Every vacancy has its own page with the role, the restaurant and the hours, and an application form that takes role, restaurant, hours, motivation and CV in one go.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
+			},
+			{
+				heading: 'The app: research cut the wish list',
+				body: [
+					'The app had to give guests a reason to order direct and come back: points, personal deals and a way to tell the restaurant how it went. The kick-off with the stakeholders produced far more features than a first version could hold.',
+					'I surveyed 90+ people about using apps in restaurants, recruited through Facebook groups, the newsletter and Reddit, and combined it with interviews, Google Analytics and Hotjar. One persona could not cover the guests of a restaurant chain, so I made two and used them to decide what went into the first version: ordering, coupons, points and feedback. Everything else went on a list for version 2. The option that lost: launching with everything the kick-off asked for.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-personas.webp', alt: 'The two personas for the Happy Italy app, Charlotte and Wouter, with their needs and pain points', w: 1820, h: 1832 },
+			},
+			{
+				heading: 'A coupon you show at the counter',
+				body: [
+					'Coupons were the reason guests said they would open the app, so they lead the home screen; I tested three menu structures as wireframes and built on the one guests found most natural.',
+					'A coupon is used in the restaurant, so the guest activates it in front of staff and it stays valid for 15 minutes, with the countdown on screen. A screenshot can’t be passed around, and staff see at a glance that it is live. Expired coupons stay on the home screen, greyed out, so nobody wonders where theirs went.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-coupon.webp', alt: 'The coupon flow in the app: the coupon, the prompt to activate it in front of staff, and the live coupon counting down from 15 minutes', w: 2213, h: 1433 },
+			},
+			{
+				heading: 'Order where you are',
+				body: [
+					'One start for every way to order: takeaway, delivery, or order and pay at the table. Then the restaurant, the day and the time, so the menu, prices and pickup slot are those of that restaurant at that moment.',
+					'A clickable prototype went to a small group of testers, and ordering and paying were where they struggled. We enlarged the buttons and the type, and added a red badge on the cart the moment something is added, so guests can see it worked.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-ordering.webp', alt: 'A pizza page in the app before and after the prototype test: after the test, a large add-to-cart button with the price', w: 1690, h: 1373 },
+			},
+			{
+				heading: 'Feedback earns points',
+				body: [
+					'The chain wanted to hear from guests after a visit. Rating it takes stars, a few short questions and an optional comment, and earns points, so feedback sits inside the loyalty loop instead of in a survey email.',
+				],
+			},
+			{
+				heading: 'Rewards waited for the till',
+				body: [
+					'During the build it turned out the till and the online ordering platform could not yet handle claiming rewards with points. We took claiming out of the first version instead of shipping a flow that would fail at the counter; guests kept collecting points until the systems caught up.',
+					'Because the app waits on several outside systems, I designed a loading state for every screen that does, so guests always see that something is happening.',
+				],
+			},
+			{
+				heading: 'One system for the website and the app',
+				body: [
+					'There was no design system for web or app. I built one from the 2018 brand identity, updated so it would not look like the fast-food apps: type, colour sets for dark and light mode and for coupons, icons, navigation and 34 components, for the website and the app.',
+					'Every app screen exists in dark and light. I checked colour pairs against WCAG 2.0 contrast and refined the library before handing it to the app developers.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-system.webp', alt: 'Part of the Happy Italy design system: brand and coupon colours, dark and light greys, coupon cards, buttons, navigation and the points block', w: 2207, h: 1560 },
+			},
+			{
+				heading: 'What happened next',
+				body: [
+					'In the second half of 2021 the chain changed owners. The new owner moved the website to the look of its other brands, and the app was not funded. I had left in July 2021, while the app was in development.',
+				],
+			},
+			{
+				heading: 'What shipped, what we saw, what I can’t show',
+				body: [
+					'Shipped: the website with ordering and jobs, live in 2021; the design system and a 114-screen prototype to the app developers.',
+					'Seen: the survey, and the prototype tests that changed ordering and checkout.',
+					'No launch data for the app: it never reached guests.',
+				],
+			},
+			{
+				heading: 'What I’d change',
+				body: [
+					'Check what the till and the ordering platform can do before designing rewards, not during the build. We found the limit late and had to cut claiming rewards from the first version. Next time I map the systems behind a feature with the developers before the first screen.',
 				],
 			},
 		],
