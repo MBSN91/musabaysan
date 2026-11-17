@@ -2,7 +2,8 @@ import type { Field, GroupField, SelectField } from 'payload'
 
 // The redrawn wireframes that live in the site's code (src/wire). A screen can draw itself as one of these.
 export const wireOptions = [
-  { label: 'adidas store app, bulk scan (redrawn)', value: 'adidas-bulkscan' },
+  { label: 'adidas store app, products (redrawn)', value: 'adidas-bulkscan' },
+  { label: 'adidas store app, member lookup (redrawn)', value: 'adidas-member' },
   { label: 'ATHLIQ, day score', value: 'athliq-today' },
   { label: 'ATHLIQ, food diary', value: 'athliq-diary' },
   { label: 'ATHLIQ, workout player', value: 'athliq-player' },

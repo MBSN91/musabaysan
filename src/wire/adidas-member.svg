@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="24 -89 592 1316" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<rect x="6" y="6" width="628" height="1126" rx="44"/>
+<path d="M48 92H120" class="t" style="stroke-width:10px"/>
+<path d="M540 92H592" class="t" style="stroke-width:10px"/>
+<path d="M48 168H330" class="t" style="stroke-width:16px"/>
+<path d="M48 208H250" class="t" style="stroke-width:8px"/>
+<rect x="48" y="240" width="544" height="72" rx="36"/>
+<circle cx="90" cy="274" r="14"/>
+<path d="M100 285L110 295"/>
+<path d="M130 276H320" class="t" style="stroke-width:8px"/>
+<rect x="452" y="254" width="124" height="44" rx="22"/>
+<path d="M480 276H548" class="t" style="stroke-width:8px"/>
+<rect x="48" y="340" width="544" height="250" rx="22"/>
+<circle cx="122" cy="418" r="42"/>
+<path d="M190 402H400" class="t" style="stroke-width:14px"/>
+<path d="M190 440H300" class="t" style="stroke-width:8px"/>
+<rect x="470" y="388" width="98" height="40" rx="20"/>
+<path d="M494 408H544" class="t" style="stroke-width:8px"/>
+<rect x="80" y="498" width="480" height="20" rx="10"/>
+<path d="M92 508H360" class="t" style="stroke-width:10px"/>
+<path d="M80 554H210" class="t" style="stroke-width:8px"/>
+<path d="M440 554H560" class="t" style="stroke-width:10px"/>
+<path d="M48 640H230" class="t" style="stroke-width:10px"/>
+<path d="M500 640H592" class="t" style="stroke-width:8px"/>
+<rect x="48" y="672" width="544" height="150" rx="18"/>
+<rect x="68" y="692" width="56" height="56" rx="12"/>
+<path d="M148 708H400" class="t" style="stroke-width:10px"/>
+<path d="M148 738H300" class="t" style="stroke-width:8px"/>
+<rect x="388" y="764" width="184" height="44" rx="22"/>
+<path d="M432 786H528" class="t" style="stroke-width:10px"/>
+<path d="M48 868H200" class="t" style="stroke-width:10px"/>
+<rect x="48" y="896" width="544" height="84" rx="18"/>
+<rect x="68" y="912" width="52" height="52" rx="12"/>
+<path d="M144 926H360" class="t" style="stroke-width:10px"/>
+<path d="M144 954H260" class="t" style="stroke-width:8px"/>
+<path d="M520 940H568" class="t" style="stroke-width:12px"/>
+<rect x="48" y="1010" width="544" height="84" rx="42"/>
+<path d="M220 1052H420" class="t" style="stroke-width:12px"/>
+</svg>

@@ -190,7 +190,9 @@ export interface Case {
     /**
      * The sketch the screen draws from. With no file below, only the sketch shows (used for confidential work).
      */
-    wire?: ('adidas-bulkscan' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery') | null;
+    wire?:
+      | ('adidas-bulkscan' | 'adidas-member' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery')
+      | null;
     image?: (number | null) | Media;
     /**
      * Leave empty to use the file's own description. Needed when there is only a sketch.
@@ -232,7 +234,9 @@ export interface Case {
           id?: string | null;
         }[]
       | null;
-    wire?: ('adidas-bulkscan' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery') | null;
+    wire?:
+      | ('adidas-bulkscan' | 'adidas-member' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery')
+      | null;
     image?: (number | null) | Media;
     /**
      * Leave empty to use the file's own description.
@@ -259,7 +263,16 @@ export interface Case {
           /**
            * The sketch this screen draws itself from.
            */
-          wire?: ('adidas-bulkscan' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery') | null;
+          wire?:
+            | (
+                | 'adidas-bulkscan'
+                | 'adidas-member'
+                | 'athliq-today'
+                | 'athliq-diary'
+                | 'athliq-player'
+                | 'athliq-recovery'
+              )
+            | null;
           /**
            * Leave empty to use the file's own description.
            */
@@ -287,7 +300,9 @@ export interface Case {
       /**
        * The sketch this screen draws itself from.
        */
-      wire?: ('adidas-bulkscan' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery') | null;
+      wire?:
+        | ('adidas-bulkscan' | 'adidas-member' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery')
+        | null;
       /**
        * Leave empty to use the file's own description.
        */
@@ -771,7 +786,16 @@ export interface Home {
             /**
              * The sketch this screen draws itself from.
              */
-            wire?: ('adidas-bulkscan' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery') | null;
+            wire?:
+              | (
+                  | 'adidas-bulkscan'
+                  | 'adidas-member'
+                  | 'athliq-today'
+                  | 'athliq-diary'
+                  | 'athliq-player'
+                  | 'athliq-recovery'
+                )
+              | null;
             /**
              * Leave empty to use the file's own description.
              */
@@ -827,7 +851,9 @@ export interface Home {
       /**
        * The sketch this screen draws itself from.
        */
-      wire?: ('adidas-bulkscan' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery') | null;
+      wire?:
+        | ('adidas-bulkscan' | 'adidas-member' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery')
+        | null;
       /**
        * Leave empty to use the file's own description.
        */
@@ -862,7 +888,16 @@ export interface Orbit {
          * Shown before the video plays.
          */
         poster?: (number | null) | Media;
-        wire?: ('adidas-bulkscan' | 'athliq-today' | 'athliq-diary' | 'athliq-player' | 'athliq-recovery') | null;
+        wire?:
+          | (
+              | 'adidas-bulkscan'
+              | 'adidas-member'
+              | 'athliq-today'
+              | 'athliq-diary'
+              | 'athliq-player'
+              | 'athliq-recovery'
+            )
+          | null;
         ring: 'outer' | 'inner';
         /**
          * 0 is nearest to you.
