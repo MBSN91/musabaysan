@@ -246,36 +246,36 @@ export const cases: Case[] = [
 		],
 	},
 	{
-		// Rewritten 17 Nov 2026 from Musa's own 2021 case page, his Figma files and archive captures; facts confirmed by Musa.
-		// Never show the filled-in sign-up screens (real phone number and email).
-		slug: 'happy-italy',
-		name: 'Happy Italy',
-		title: 'Twenty closed restaurants, one tap to order',
-		summary: 'Happy Italy, a chain of 20 Italian restaurants, had to keep trading through the lockdowns of 2020 and 2021. I designed and built its new website around ordering and hiring, and designed its ordering and rewards app from research to the design system the developers built from.',
+		// Happy Italy app. Rewritten 17 Nov 2026 from Musa's 2021 case page and his Figma files; facts confirmed by Musa.
+		// Split from the website on Musa's request. Never show the filled-in sign-up screens (real phone number and email).
+		slug: 'happy-italy-app',
+		name: 'Happy Italy app',
+		title: 'A loyalty app scoped to what the tills could do',
+		summary: 'Happy Italy, a chain of 20 Italian restaurants, wanted a direct line to its guests while lockdowns kept the dining rooms closed. I designed its ordering and rewards app from research to the design system the developers built from, and cut the first version to what the restaurant systems could actually carry.',
 		field: 'var(--panel-3)',
 		ink: 'var(--on-panel-3)',
 		facts: [
-			['Role', 'UX designer: research, UX and visual design, prototyping, testing and the website build in Webflow'],
-			['Worked with', 'Management, restaurant stakeholders, an external development team for the app'],
-			['Platform', 'Website; iOS and Android app'],
+			['Role', 'UX designer: research, UX and visual design, prototyping and testing'],
+			['Worked with', 'Management, restaurant stakeholders, an external development team'],
+			['Platform', 'iOS and Android'],
 			['Years', '2020 to 2021'],
-			['Status', 'Website live in 2021, replaced after the chain changed owners. App designed, tested and in development when I left in July 2021; never launched'],
+			['Status', 'Designed, tested and in development when I left in July 2021. Never launched: the chain changed owners and the app was not funded'],
 			['Research', 'A survey of 90+ people, interviews, Google Analytics and Hotjar'],
 		],
 		front: {
 			mast: 'Happy Italy',
-			title: 'Twenty closed restaurants, one tap to order',
-			lines: [['Role', 'UX designer'], ['Survey', '90+ people'], ['Years', '2020 to 2021']],
+			title: 'A loyalty app scoped to what the tills could do',
+			lines: [['Role', 'UX designer'], ['Prototype', '114 screens'], ['Years', '2020 to 2021']],
 			star: { kind: 'comp', img: '/img/happy/happy-cover.webp', alt: 'Five Happy Italy app screens: picking a day and time, a live coupon with its countdown, the home screen with coupons, the profile with points, and a coupon', w: 2400, h: 1399 },
 		},
 		chapter: {
-			body: 'A restaurant chain closed by the lockdowns. I designed and built its website around ordering and hiring, and designed its ordering and rewards app from research to the design system.',
+			body: 'An ordering and rewards app for a restaurant chain closed by the lockdowns: from a survey of [90]+ people to a [114]-screen prototype, with the first version cut to what the tills could carry.',
 			visual: { kind: 'image', img: '/img/happy/happy-cover.webp', alt: 'Five Happy Italy app screens: picking a day and time, a live coupon with its countdown, the home screen with coupons, the profile with points, and a coupon', w: 2400, h: 1399 },
 		},
 		closing: {
 			heading: 'What this case shows',
 			body: [
-				'A consumer website designed and built, and an app taken from research to handover, with scope set by the business goal and by what the restaurant systems could carry.',
+				'A consumer app taken from research to handover, with scope set by the business goal and by what the restaurant systems could carry.',
 				'In a call I walk you through the Figma files: the design system and the 114-screen prototype.',
 			],
 			shot: { kind: 'image', img: '/img/happy/happy-modes.webp', alt: 'The app home screen in light and dark mode: a greeting, order and pay, and coupons', w: 1506, h: 1433 },
@@ -285,30 +285,14 @@ export const cases: Case[] = [
 				heading: 'Twenty restaurants, closed, with a plan to double',
 				body: [
 					'The chain planned to grow from 20 restaurants to more than 40, and into Europe, within five years. Then the lockdowns closed the dining rooms, and delivery and takeaway kept the restaurants trading.',
-					'Two things had to work online: ordering, and hiring the people every new restaurant needs.',
+					'The app had a business job: give guests a reason to order direct and come back, with points, personal deals and a way to tell the restaurant how it went.',
 				],
 			},
 			{
-				heading: 'The website: ordering one tap away',
+				heading: 'Research cut the wish list',
 				body: [
-					'In February 2021 the site had nine items in its top bar, three of them different ways to order. I designed the new site for phone, tablet and desktop in Figma and built it in Webflow.',
-					'On desktop, the three ordering items became one order button in the top bar; on the phone, delivery and takeaway sit in a panel at the bottom of the first screen, so ordering is always one tap away. The first screen is a campaign slot: a Christmas menu in the designs, terrace bookings when the terraces reopened in June 2021. All 20 restaurants sit in one block on the homepage, each with its own page. It went live in spring 2021.',
-				],
-				shot: { kind: 'image', img: '/img/happy/happy-site.webp', alt: 'The Happy Italy website design on iPad and phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 1286, h: 1488 },
-			},
-			{
-				heading: 'Hiring for twenty restaurants',
-				body: [
-					'In June 2021 the site listed 100 open vacancies. I explored five concepts for the jobs pages in Figma, from wireframe to final design, then built them in Webflow.',
-					'Every vacancy has its own page with the role, the restaurant and the hours, and an application form that takes role, restaurant, hours, motivation and CV in one go.',
-				],
-				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
-			},
-			{
-				heading: 'The app: research cut the wish list',
-				body: [
-					'The app had to give guests a reason to order direct and come back: points, personal deals and a way to tell the restaurant how it went. The kick-off with the stakeholders produced far more features than a first version could hold.',
-					'I surveyed 90+ people about using apps in restaurants, recruited through Facebook groups, the newsletter and Reddit, and combined it with interviews, Google Analytics and Hotjar. One persona could not cover the guests of a restaurant chain, so I made two and used them to decide what went into the first version: ordering, coupons, points and feedback. Everything else went on a list for version 2. The option that lost: launching with everything the kick-off asked for.',
+					'The kick-off with the stakeholders produced far more features than a first version could hold. I surveyed 90+ people about using apps in restaurants, recruited through Facebook groups, the newsletter and Reddit, and combined it with interviews, Google Analytics and Hotjar.',
+					'One persona could not cover the guests of a restaurant chain, so I made two and used them to decide what went into the first version: ordering, coupons, points and feedback. Everything else went on a list for version 2. The option that lost: launching with everything the kick-off asked for.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-personas.webp', alt: 'The two personas for the Happy Italy app, Charlotte and Wouter, with their needs and pain points', w: 1820, h: 1832 },
 			},
@@ -342,31 +326,123 @@ export const cases: Case[] = [
 				],
 			},
 			{
-				heading: 'One system for the website and the app',
+				heading: 'A system the developers could build from',
 				body: [
-					'There was no design system for web or app. I built one from the 2018 brand identity, updated so it would not look like the fast-food apps: type, colour sets for dark and light mode and for coupons, icons, navigation and 34 components, for the website and the app.',
-					'Every app screen exists in dark and light. I checked colour pairs against WCAG 2.0 contrast and refined the library before handing it to the app developers.',
+					'There was no design system for web or app. I built one from the 2018 brand identity, updated so it would not look like the fast-food apps: type, colour sets for dark and light mode and for coupons, icons, navigation and 34 components.',
+					'Every app screen exists in dark and light. I checked colour pairs against WCAG 2.0 contrast and refined the library before handing it to the external developers.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-system.webp', alt: 'Part of the Happy Italy design system: brand and coupon colours, dark and light greys, coupon cards, buttons, navigation and the points block', w: 2207, h: 1560 },
 			},
 			{
 				heading: 'What happened next',
 				body: [
-					'In the second half of 2021 the chain changed owners. The new owner moved the website to the look of its other brands, and the app was not funded. I had left in July 2021, while the app was in development.',
+					'In the second half of 2021 the chain changed owners, and the new owner did not fund the app. I had left in July 2021, while it was in development.',
 				],
 			},
 			{
-				heading: 'What shipped, what we saw, what I can’t show',
+				heading: 'What we tested, what shipped, what I can’t show',
 				body: [
-					'Shipped: the website with ordering and jobs, live in 2021; the design system and a 114-screen prototype to the app developers.',
+					'Shipped to the developers: the design system and a 114-screen prototype.',
 					'Seen: the survey, and the prototype tests that changed ordering and checkout.',
-					'No launch data for the app: it never reached guests.',
+					'No launch data: the app never reached guests.',
 				],
 			},
 			{
 				heading: 'What I’d change',
 				body: [
 					'Check what the till and the ordering platform can do before designing rewards, not during the build. We found the limit late and had to cut claiming rewards from the first version. Next time I map the systems behind a feature with the developers before the first screen.',
+				],
+			},
+		],
+	},
+	{
+		// Happy Italy website. Designed in Figma and built in Webflow by Musa, live spring to autumn 2021 (Wayback). Split from the app on Musa's request, 17 Nov 2026.
+		// Before/after top bars are archive captures (Feb and Jun 2021). Nothing measured: never claim a result.
+		slug: 'happy-italy-website',
+		name: 'Happy Italy website',
+		title: 'Three ways to order became one button',
+		summary: 'In 2021 Happy Italy’s 20 restaurants traded through delivery and takeaway, and every new restaurant needed staff. I designed the chain’s new website and built it in Webflow around those two jobs: ordering and hiring.',
+		field: 'var(--lime)',
+		ink: '#000000',
+		facts: [
+			['Role', 'UX designer: the design in Figma and the build in Webflow'],
+			['Worked with', 'Management and restaurant stakeholders'],
+			['Platform', 'Website for phone, tablet and desktop'],
+			['Years', '2020 to 2021'],
+			['Status', 'Live from spring 2021, replaced after the chain changed owners later that year'],
+			['Built with', 'Figma and Webflow'],
+		],
+		front: {
+			mast: 'Happy Italy',
+			title: 'Three ways to order became one button',
+			lines: [['Role', 'Design and build'], ['Restaurants', '20'], ['Live', '2021']],
+			star: { kind: 'comp', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website design in a browser and on a phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 2332, h: 1366 },
+		},
+		chapter: {
+			body: 'Twenty restaurants trading through delivery and takeaway, and hiring for every new one. I designed the new website and built it in Webflow: one order button instead of three, and a page for each of [100] open vacancies.',
+			visual: { kind: 'image', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website design in a browser and on a phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 2332, h: 1366 },
+		},
+		closing: {
+			heading: 'What this case shows',
+			body: [
+				'A consumer website designed and built end to end, around the two things the business needed online: orders and staff.',
+				'The app I designed for the chain in the same period is its own case.',
+			],
+		},
+		sections: [
+			{
+				heading: 'Closed dining rooms, two jobs online',
+				body: [
+					'The chain planned to grow from 20 restaurants to more than 40, and into Europe, within five years. In 2021 the lockdowns kept the dining rooms closed, and delivery and takeaway kept the restaurants trading.',
+					'So the website had two jobs: get guests to order, and hire the people every new restaurant needs. In February 2021 its top bar had eight items, and three of them were different ways to order: To go, Happy Delivery and Takeaway.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-web-nav.webp', alt: 'The Happy Italy top bar in February 2021, with three ways to order, and in June 2021 after the redesign, with one order button and 100 open vacancies on Jobs', w: 1680, h: 820 },
+			},
+			{
+				heading: 'One order button instead of three',
+				body: [
+					'I designed the new site for phone, tablet and desktop. On desktop the three ordering items became one order button, Bestellen, in the top bar. On the phone, delivery and takeaway sit in a bar at the bottom of the first screen, so ordering is always one tap away.',
+					'All 20 restaurants sit in one block on the homepage, each with its own page.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-site.webp', alt: 'The Happy Italy website design on iPad and phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 1286, h: 1488 },
+			},
+			{
+				heading: 'A first screen that changes with the season',
+				body: [
+					'The first screen is a campaign slot rather than a fixed banner: a Christmas menu in the designs, then terrace and table bookings when the terraces reopened in June 2021, next to delivery and takeaway.',
+				],
+			},
+			{
+				heading: 'Hiring for twenty restaurants',
+				body: [
+					'In June 2021 the site listed 100 open vacancies, and the number sat on Jobs in the top bar. I explored five concepts for the jobs pages, from wireframe to final design.',
+					'Every vacancy has its own page with the role, the restaurant and the hours, and an application form that takes role, restaurant, hours, motivation and CV in one go.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
+			},
+			{
+				heading: 'Designed where it was built',
+				body: [
+					'Figma held the concepts; most of the design happened in Webflow itself, where I built the site. The details for phone, tablet and desktop were decided in the build, so what went live is what was designed, with no handover in between.',
+				],
+			},
+			{
+				heading: 'What happened next',
+				body: [
+					'In the second half of 2021 the chain changed owners, and the new owner moved the website to the look of its other brands. I had left in July 2021.',
+				],
+			},
+			{
+				heading: 'What shipped, what I can’t show',
+				body: [
+					'Shipped: the website for phone, tablet and desktop, with ordering and the jobs pages, live in 2021.',
+					'Not measured: I have no before-and-after numbers for orders or applications.',
+				],
+			},
+			{
+				heading: 'What I’d change',
+				body: [
+					'Measure before and after. I didn’t set a baseline for orders and applications before the launch, so the redesign has no number. Next time I agree on the numbers to watch with the business before the build starts.',
 				],
 			},
 		],
