@@ -356,12 +356,13 @@ export const cases: Case[] = [
 		],
 	},
 	{
-		// Happy Italy website. Designed in Figma and built in Webflow by Musa, live spring to autumn 2021 (Wayback). Split from the app on Musa's request, 17 Nov 2026.
-		// Before/after top bars are archive captures (Feb and Jun 2021). Nothing measured: never claim a result.
+		// Happy Italy website. Designed in Figma and built in Webflow by Musa, live spring to autumn 2021 (Wayback).
+		// Split from the app on Musa's request, 17 Nov 2026. Facts from his Webflow project (hppyprjct, read 18 Nov 2026): 18 CMS collections,
+		// 138 dishes, 14 allergens, 20 visible restaurants, 16 standard roles, 125 vacancies (115 not archived). Nothing measured: never claim a result.
 		slug: 'happy-italy-website',
 		name: 'Happy Italy website',
 		title: 'Three ways to order became one button',
-		summary: 'In 2021 Happy Italy’s 20 restaurants traded through delivery and takeaway, and every new restaurant needed staff. I designed the chain’s new website and built it in Webflow around those two jobs: ordering and hiring.',
+		summary: 'In 2021 Happy Italy’s 20 restaurants traded through delivery and takeaway, and every new restaurant needed staff. I designed the chain’s new website and built it in Webflow around those jobs: ordering, finding your restaurant and dishes, and hiring.',
 		field: 'var(--lime)',
 		ink: '#000000',
 		facts: [
@@ -369,23 +370,23 @@ export const cases: Case[] = [
 			['Worked with', 'Management and restaurant stakeholders'],
 			['Platform', 'Website for phone, tablet and desktop'],
 			['Years', '2020 to 2021'],
-			['Status', 'Live from spring 2021, replaced after the chain changed owners later that year'],
-			['Built with', 'Figma and Webflow'],
+			['Status', 'Live from spring 2021, replaced after the chain changed owners later that year. The Webflow project still runs on its Webflow address'],
+			['In the CMS', '138 dishes, 14 allergens, 20 restaurants and over 100 vacancies'],
 		],
 		front: {
 			mast: 'Happy Italy',
 			title: 'Three ways to order became one button',
 			lines: [['Role', 'Design and build'], ['Restaurants', '20'], ['Live', '2021']],
-			star: { kind: 'comp', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website design in a browser and on a phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 2332, h: 1366 },
+			star: { kind: 'comp', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website on desktop and phone: a photo of a smiling server on the terrace, with delivery, takeaway and booking a table on the first screen', w: 2356, h: 1408 },
 		},
 		chapter: {
-			body: 'Twenty restaurants trading through delivery and takeaway, and hiring for every new one. I designed the new website and built it in Webflow: one order button instead of three, and a page for each of [100] open vacancies.',
-			visual: { kind: 'image', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website design in a browser and on a phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 2332, h: 1366 },
+			body: 'Twenty restaurants trading through delivery and takeaway, and hiring for every new one. I designed the new website and built it in Webflow: one order button instead of three, a menu you can filter by allergen, and a page for each of [100] open vacancies.',
+			visual: { kind: 'image', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website on desktop and phone: a photo of a smiling server on the terrace, with delivery, takeaway and booking a table on the first screen', w: 2356, h: 1408 },
 		},
 		closing: {
 			heading: 'What this case shows',
 			body: [
-				'A consumer website designed and built end to end, around the two things the business needed online: orders and staff.',
+				'A consumer website designed and built end to end, with the content model as part of the design: one place for every dish, restaurant and vacancy.',
 				'The app I designed for the chain in the same period is its own case.',
 			],
 		},
@@ -394,37 +395,48 @@ export const cases: Case[] = [
 				heading: 'Closed dining rooms, two jobs online',
 				body: [
 					'The chain planned to grow from 20 restaurants to more than 40, and into Europe, within five years. In 2021 the lockdowns kept the dining rooms closed, and delivery and takeaway kept the restaurants trading.',
-					'So the website had two jobs: get guests to order, and hire the people every new restaurant needs. In February 2021 its top bar had eight items, and three of them were different ways to order: To go, Happy Delivery and Takeaway.',
+					'So the website had two jobs: get guests to order, and hire the people every new restaurant needs.',
 				],
-				shot: { kind: 'image', img: '/img/happy/happy-web-nav.webp', alt: 'The Happy Italy top bar in February 2021, with three ways to order, and in June 2021 after the redesign, with one order button and 100 open vacancies on Jobs', w: 1680, h: 820 },
 			},
 			{
 				heading: 'One order button instead of three',
 				body: [
-					'I designed the new site for phone, tablet and desktop. On desktop the three ordering items became one order button, Bestellen, in the top bar. On the phone, delivery and takeaway sit in a bar at the bottom of the first screen, so ordering is always one tap away.',
-					'All 20 restaurants sit in one block on the homepage, each with its own page.',
+					'In February 2021 the top bar had eight items, and three of them were different ways to order: To go, Happy Delivery and Takeaway. In the new site they became one order button, Bestellen.',
+					'The first screen offers delivery, takeaway and booking a table, and it works as a campaign slot that changes with the season, from a Christmas menu in the designs to terrace bookings when the terraces reopened in June 2021.',
 				],
-				shot: { kind: 'image', img: '/img/happy/happy-site.webp', alt: 'The Happy Italy website design on iPad and phone: a Christmas campaign on the first screen, with delivery and takeaway at the bottom on the phone', w: 1286, h: 1488 },
+				shot: { kind: 'image', img: '/img/happy/happy-web-nav.webp', alt: 'The Happy Italy top bar in February 2021, with three ways to order, and in June 2021 after the redesign, with one order button and 100 open vacancies on Jobs', w: 1680, h: 820 },
 			},
 			{
-				heading: 'A first screen that changes with the season',
+				heading: 'Every restaurant on one template',
 				body: [
-					'The first screen is a campaign slot rather than a fixed banner: a Christmas menu in the designs, then terrace and table bookings when the terraces reopened in June 2021, next to delivery and takeaway.',
+					'Ordering happens per restaurant, so each of the 20 restaurants has its own page from one template: booking a table, with a note that booking for tonight closes at 17:00, the opening hours, the delivery partners that serve that restaurant, the menu, a local deal, and that restaurant’s vacancies.',
+					'Guests see what their own restaurant offers instead of a chain-wide list that may not apply to them.',
 				],
+				shot: { kind: 'image', img: '/img/happy/happy-web-restaurant.webp', alt: 'The Breda restaurant page: booking with a note about booking for tonight, opening hours, the delivery partners that serve Breda, and the restaurant’s own vacancies', w: 1626, h: 1416 },
 			},
 			{
-				heading: 'Hiring for twenty restaurants',
+				heading: 'A menu without your allergens',
 				body: [
-					'In June 2021 the site listed 100 open vacancies, and the number sat on Jobs in the top bar. I explored five concepts for the jobs pages, from wireframe to final design.',
-					'Every vacancy has its own page with the role, the restaurant and the hours, and an application form that takes role, restaurant, hours, motivation and CV in one go.',
+					'The whole menu lives in the CMS: 138 dishes in ten categories, each linked to the 14 allergens it contains and marked vegan, spicy or halal. Guests with a food allergy untick theirs and see their own menu, instead of reading every description.',
+					'A heart on each dish lets guests put their order together before they choose how to order.',
 				],
-				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
+				shot: { kind: 'image', img: '/img/happy/happy-web-menu.webp', alt: 'The menu with the allergy filter open: untick your allergens to see your own menu, with all 14 allergens listed', w: 1626, h: 1237 },
+			},
+			{
+				heading: 'One role description, a hundred vacancies',
+				body: [
+					'In June 2021 the site listed 100 open vacancies. Most of them were the same few roles in different restaurants, so I wrote 16 role descriptions once and linked each vacancy to a role, a restaurant and its hours: fulltime, parttime or flex.',
+					'Every vacancy gets its own page with one apply button, and the number on Jobs in the top bar counts the open vacancies straight from the CMS.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-web-jobs.webp', alt: 'The jobs overview grouped by restaurant on desktop, and a vacancy page on a phone with one apply button', w: 2286, h: 1368 },
 			},
 			{
 				heading: 'Designed where it was built',
 				body: [
-					'Figma held the concepts; most of the design happened in Webflow itself, where I built the site. The details for phone, tablet and desktop were decided in the build, so what went live is what was designed, with no handover in between.',
+					'I explored five concepts for the jobs pages in Figma, from wireframe to final design. Most of the design then happened in Webflow, where I built the site on 18 CMS collections, from dishes and allergens to opening hours.',
+					'A price, an opening time or a new vacancy changes in one place and shows up everywhere it is used.',
 				],
+				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
 			},
 			{
 				heading: 'What happened next',
@@ -435,7 +447,7 @@ export const cases: Case[] = [
 			{
 				heading: 'What shipped, what I can’t show',
 				body: [
-					'Shipped: the website for phone, tablet and desktop, with ordering and the jobs pages, live in 2021.',
+					'Shipped: the website for phone, tablet and desktop, with ordering, the restaurant pages, the menu with allergy filter and the jobs pages, live in 2021. The screens here come from the Webflow project, which still runs on its Webflow address.',
 					'Not measured: I have no before-and-after numbers for orders or applications.',
 				],
 			},
