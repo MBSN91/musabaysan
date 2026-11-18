@@ -358,7 +358,7 @@ export const cases: Case[] = [
 	{
 		// Happy Italy website. Designed in Figma and built in Webflow by Musa, live spring to autumn 2021 (Wayback).
 		// Split from the app on Musa's request, 17 Nov 2026. Facts from his Webflow project (hppyprjct, read 18 Nov 2026): 18 CMS collections,
-		// 138 dishes, 14 allergens, 20 visible restaurants, 16 standard roles, 125 vacancies (115 not archived). Nothing measured: never claim a result.
+		// 138 dishes, 14 allergens, 20 visible restaurants, 16 standard roles, 125 vacancies (115 not archived). Musa entered the dishes; HR entered the vacancies (Musa, 18 Nov). Nothing measured: never claim a result.
 		slug: 'happy-italy-website',
 		name: 'Happy Italy website',
 		title: 'Three ways to order became one button',
@@ -417,7 +417,7 @@ export const cases: Case[] = [
 			{
 				heading: 'A menu without your allergens',
 				body: [
-					'The whole menu lives in the CMS: 138 dishes in ten categories, each linked to the 14 allergens it contains and marked vegan, spicy or halal. Guests with a food allergy untick theirs and see their own menu, instead of reading every description.',
+					'The whole menu lives in the CMS, and I entered it myself: 138 dishes in ten categories, each linked to the 14 allergens it contains and marked vegan, spicy or halal. Guests with a food allergy untick theirs and see their own menu, instead of reading every description.',
 					'A heart on each dish lets guests put their order together before they choose how to order.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-menu.webp', alt: 'The menu with the allergy filter open: untick your allergens to see your own menu, with all 14 allergens listed', w: 1626, h: 1237 },
@@ -425,7 +425,7 @@ export const cases: Case[] = [
 			{
 				heading: 'One role description, a hundred vacancies',
 				body: [
-					'In June 2021 the site listed 100 open vacancies. Most of them were the same few roles in different restaurants, so I wrote 16 role descriptions once and linked each vacancy to a role, a restaurant and its hours: fulltime, parttime or flex.',
+					'In June 2021 the site listed 100 open vacancies. Most of them were the same few roles in different restaurants, so I set up the jobs as 16 standard roles, each described once. HR then added the vacancies themselves, without me: pick a role, a restaurant and the hours, fulltime, parttime or flex.',
 					'Every vacancy gets its own page with one apply button, and the number on Jobs in the top bar counts the open vacancies straight from the CMS.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-jobs.webp', alt: 'The jobs overview grouped by restaurant on desktop, and a vacancy page on a phone with one apply button', w: 2286, h: 1368 },
