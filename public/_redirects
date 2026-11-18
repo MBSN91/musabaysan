@@ -2,3 +2,8 @@
 # Their source lives in src/legacy/. The Astro Netlify adapter appends its own rules below these.
 /home          /    301
 /cases/happy   /    301
+# Happy Italy was split into an app and a website case (Nov 2026). Unknown case pages go home instead of
+# rendering the last case. Real case pages are static files, which Netlify serves before these rules.
+/work/happy-italy    /work/happy-italy-app/   301
+/work/happy-italy/*  /work/happy-italy-app/   301
+/work/*              /                        302
