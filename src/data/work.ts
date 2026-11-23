@@ -380,7 +380,7 @@ export const cases: Case[] = [
 			star: { kind: 'comp', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website on desktop and phone: a photo of a smiling server on the terrace, with delivery, takeaway and booking a table on the first screen', w: 2356, h: 1408 },
 		},
 		chapter: {
-			body: 'Twenty restaurants trading through delivery and takeaway, and hiring for every new one. I designed the new website and built it in Webflow: one order button instead of three, a menu you can filter by allergen, and a page for each of [100] open vacancies.',
+			body: 'Twenty restaurants trading through delivery and takeaway, and hiring for every new one. I designed the new website and built it in Webflow: one order button instead of three, a menu with a photo and the allergens of every dish, and a page for each of [100] open vacancies.',
 			visual: { kind: 'image', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website on desktop and phone: a photo of a smiling server on the terrace, with delivery, takeaway and booking a table on the first screen', w: 2356, h: 1408 },
 		},
 		closing: {
@@ -415,10 +415,17 @@ export const cases: Case[] = [
 				shot: { kind: 'image', img: '/img/happy/happy-web-restaurant.webp', alt: 'The Breda restaurant page: booking with a note about booking for tonight, opening hours, the delivery partners that serve Breda, and the restaurant’s own vacancies', w: 1626, h: 1416 },
 			},
 			{
+				heading: 'Pick your dishes before you order',
+				body: [
+					'The whole menu lives in the CMS, and I entered it myself: 138 dishes, each with a photo, a price, a short description and the allergens it contains. Guests browse it by section, from appetizers, pizza and pasta to salads, panini and dolci, search for a dish, or switch the pizzas to vegetarian and vegan only.',
+					'A heart on each dish saves it to the guest’s own favourites, and a counter shows how many they have picked. Guests put together what they wanted at home before their visit, or at the table.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-web-dishes.webp', alt: 'The menu on desktop: pizzas with a photo, price, description and allergen icons, two of them saved with a heart. On the phone: the menu sections, search, and a counter showing two saved dishes', w: 2378, h: 1433 },
+			},
+			{
 				heading: 'A menu without your allergens',
 				body: [
-					'The whole menu lives in the CMS, and I entered it myself: 138 dishes in ten categories, each linked to the 14 allergens it contains and marked vegan, spicy or halal. Guests with a food allergy untick theirs and see their own menu, instead of reading every description.',
-					'A heart on each dish lets guests put their order together before they choose how to order.',
+					'Every dish is linked to the 14 allergens it contains and marked vegan, spicy or halal. Guests with a food allergy untick theirs and see their own menu, instead of reading every description.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-menu.webp', alt: 'The menu with the allergy filter open: untick your allergens to see your own menu, with all 14 allergens listed', w: 1626, h: 1237 },
 			},
