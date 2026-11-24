@@ -1,0 +1,28 @@
+---
+// The story part of a case page: the sections and the closing. Used by the public case page
+// and, for private cases, by the full page that only renders after the password.
+import Shot from './Shot.astro';
+import type { Case } from '../data/work';
+
+interface Props { c: Case }
+const { c } = Astro.props;
+---
+{c.sections.map((s, i) => (
+	<section class:list={['cs__part', { 'cs__part--flip': i % 2 }]}>
+		<div class="cs__copy">
+			<h2 data-wipe>{s.heading}</h2>
+			{s.body.map((p) => <p>{p}</p>)}
+		</div>
+		{s.shot && <div class="cs__shot"><Shot shot={s.shot} /></div>}
+	</section>
+))}
+
+{c.closing && (
+	<section class="cs__part">
+		<div class="cs__copy">
+			<h2 data-wipe>{c.closing.heading}</h2>
+			{c.closing.body.map((p) => <p>{p}</p>)}
+		</div>
+		{c.closing.shot && <div class="cs__shot"><Shot shot={c.closing.shot} /></div>}
+	</section>
+)}

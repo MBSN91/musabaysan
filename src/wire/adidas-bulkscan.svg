@@ -1,30 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="24 -89 592 1316" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<!-- Online order screen, redrawn (Nov 2026). The file name stays because the CMS stores it as the wire option value. -->
 <rect x="6" y="6" width="628" height="1126" rx="44"/>
 <path d="M48 92H120" class="t" style="stroke-width:10px"/>
 <path d="M540 92H592" class="t" style="stroke-width:10px"/>
-<path d="M48 168H360" class="t" style="stroke-width:16px"/>
-<path d="M48 210H270" class="t" style="stroke-width:8px"/>
-<rect x="48" y="252" width="544" height="260" rx="22"/>
-<circle cx="320" cy="350" r="62"/>
-<path d="M286 350H354" class="t" style="stroke-width:14px"/>
-<path d="M230 462H410" class="t" style="stroke-width:10px"/>
-<path d="M48 566H200" class="t" style="stroke-width:10px"/>
-<path d="M480 566H592" class="t" style="stroke-width:8px"/>
-<rect x="48" y="600" width="544" height="96" rx="18"/>
-<rect x="68" y="620" width="56" height="56" rx="12"/>
-<path d="M148 634H360" class="t" style="stroke-width:10px"/>
-<path d="M148 664H280" class="t" style="stroke-width:8px"/>
-<path d="M520 648H568" class="t" style="stroke-width:12px"/>
-<rect x="48" y="712" width="544" height="96" rx="18"/>
-<rect x="68" y="732" width="56" height="56" rx="12"/>
-<path d="M148 746H330" class="t" style="stroke-width:10px"/>
-<path d="M148 776H250" class="t" style="stroke-width:8px"/>
-<path d="M520 760H568" class="t" style="stroke-width:12px"/>
-<rect x="48" y="824" width="544" height="96" rx="18"/>
-<rect x="68" y="844" width="56" height="56" rx="12"/>
-<path d="M148 858H390" class="t" style="stroke-width:10px"/>
-<path d="M148 888H230" class="t" style="stroke-width:8px"/>
-<path d="M520 872H568" class="t" style="stroke-width:12px"/>
-<rect x="48" y="1000" width="544" height="84" rx="42"/>
-<path d="M240 1042H400" class="t" style="stroke-width:12px"/>
+<path d="M48 168H300" class="t" style="stroke-width:16px"/>
+<path d="M48 208H230" class="t" style="stroke-width:8px"/>
+<rect x="48" y="240" width="544" height="196" rx="22"/>
+<rect x="72" y="264" width="176" height="40" rx="20"/>
+<path d="M96 284H224" class="t" style="stroke-width:8px"/>
+<path d="M480 284H568" class="t" style="stroke-width:10px"/>
+<path d="M72 344H360" class="t" style="stroke-width:14px"/>
+<path d="M72 380H250" class="t" style="stroke-width:8px"/>
+<circle cx="84" cy="486" r="18"/>
+<path d="M76 486l6 6 11-11"/>
+<path d="M102 486H218"/>
+<circle cx="236" cy="486" r="18"/>
+<path d="M228 486l6 6 11-11"/>
+<path d="M254 486H370"/>
+<circle cx="388" cy="486" r="18"/>
+<circle cx="388" cy="486" r="6"/>
+<path d="M406 486H522" style="stroke-dasharray:6 10"/>
+<circle cx="540" cy="486" r="18"/>
+<path d="M60 532H108" class="t" style="stroke-width:8px"/>
+<path d="M212 532H260" class="t" style="stroke-width:8px"/>
+<path d="M364 532H412" class="t" style="stroke-width:8px"/>
+<path d="M516 532H564" class="t" style="stroke-width:8px"/>
+<path d="M48 600H220" class="t" style="stroke-width:10px"/>
+<path d="M520 600H592" class="t" style="stroke-width:8px"/>
+<rect x="48" y="632" width="544" height="104" rx="18"/>
+<rect x="68" y="652" width="64" height="64" rx="12"/>
+<path d="M156 668H380" class="t" style="stroke-width:10px"/>
+<path d="M156 700H280" class="t" style="stroke-width:8px"/>
+<path d="M520 684l12 12 24-24"/>
+<rect x="48" y="752" width="544" height="104" rx="18"/>
+<rect x="68" y="772" width="64" height="64" rx="12"/>
+<path d="M156 788H340" class="t" style="stroke-width:10px"/>
+<path d="M156 820H260" class="t" style="stroke-width:8px"/>
+<path d="M520 804l12 12 24-24"/>
+<rect x="48" y="872" width="544" height="104" rx="18"/>
+<rect x="68" y="892" width="64" height="64" rx="12"/>
+<path d="M156 908H360" class="t" style="stroke-width:10px"/>
+<path d="M156 940H240" class="t" style="stroke-width:8px"/>
+<path d="M520 908V900a8 8 0 0 1 8-8h8M548 892h8a8 8 0 0 1 8 8v8M564 940v8a8 8 0 0 1-8 8h-8M536 956h-8a8 8 0 0 1-8-8v-8"/>
+<rect x="48" y="1010" width="544" height="84" rx="42"/>
+<path d="M220 1052H420" class="t" style="stroke-width:12px"/>
 </svg>

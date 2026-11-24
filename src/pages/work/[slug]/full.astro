@@ -1,0 +1,50 @@
+---
+// The full page of a private case (src/data/lock.ts). Rendered on the server, only with a valid unlock cookie;
+// everyone else goes back to the public case page with the password form.
+import Site from '../../../layouts/Site.astro';
+import CaseCover from '../../../components/CaseCover.astro';
+import CaseStory from '../../../components/CaseStory.astro';
+import { cases } from '../../../data/content';
+import { isLocked } from '../../../data/lock';
+import { forget, isUnlocked } from '../../../lib/lock';
+
+export const prerender = false;
+
+const slug = Astro.params.slug || '';
+const i = cases.findIndex((x) => x.slug === slug);
+if (i < 0) return Astro.redirect('/', 302);
+if (!isLocked(slug)) return Astro.redirect(`/work/${slug}/`, 302);
+if (!isUnlocked(Astro.cookies)) {
+	forget(Astro.cookies);
+	return Astro.redirect(`/work/${slug}/`, 302);
+}
+Astro.response.headers.set('Cache-Control', 'private, no-store');
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+
+const c = cases[i];
+const next = cases[(i + 1) % cases.length];
+const shown = new Set(c.front.lines.map(([k]) => k));
+const facts = c.facts.filter(([k]) => !shown.has(k));
+---
+<Site title={`${c.name}: ${c.title} · Musa Baysan`} description={c.summary} path={`/work/${c.slug}/`} barInk={c.ink} noindex>
+	<article class="cs" style={`--field:${c.field};--on-field:${c.ink}`}>
+		<CaseCover c={c} />
+
+		<section class="cs__intro" aria-label="Summary">
+			<p class="cs__lead">{c.summary}</p>
+			<dl class="cs__facts">
+				{facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+			</dl>
+		</section>
+
+		<CaseStory c={c} />
+
+		<nav class="cs__next" aria-label="More work">
+			<a href={`/work/${next.slug}/`} data-curtain={next.name} data-cursor="view">
+				<span class="cs__next-label">Next case, {next.name}</span>
+				<strong>{next.title}</strong>
+			</a>
+			<p class="cs__all"><a class="u" href="/#work">All work</a></p>
+		</nav>
+	</article>
+</Site>

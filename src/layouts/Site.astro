@@ -4,8 +4,8 @@ import logoRaw from '../icons/logo.svg?raw';
 import SecBar from '../components/SecBar.astro';
 import { contact } from '../data/content';
 
-interface Props { title: string; description: string; path?: string; barInk?: string }
-const { title, description, path = '/', barInk } = Astro.props;
+interface Props { title: string; description: string; path?: string; barInk?: string; noindex?: boolean }
+const { title, description, path = '/', barInk, noindex = false } = Astro.props;
 const logo = logoRaw.replace(/<\?xml[^>]*>/, '').replace(/<!--[\s\S]*?-->/g, '')
 	.replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
 const { email, linkedin } = contact;
@@ -23,6 +23,7 @@ const nav = [
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
 		<meta name="theme-color" content="#000000" />
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />

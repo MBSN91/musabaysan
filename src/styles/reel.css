@@ -329,6 +329,22 @@ html.motion [data-mast] { visibility: hidden; animation: reveal-fallback 0s 2.5s
 .cs__part--flip .cs__shot { grid-column: 1 / 7; }
 .cs__copy h2 { font-size: clamp(1.75rem, 1rem + 2.4vw, 3.25rem); line-height: 1.02; }
 .cs__copy p { margin-top: 20px; max-width: 46ch; }
+/* private case: the password form in place of the story (components/CaseLock.astro) */
+.cs__copy .cs__lock-tag { margin: 0 0 16px; font-weight: 600; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); }
+.cs__lock-form { margin-top: 28px; max-width: 46ch; }
+.cs__lock-form label { display: block; font-weight: 600; margin-bottom: 10px; }
+.cs__lock-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.cs__lock-row input { flex: 1 1 220px; min-width: 0; height: 56px; padding: 0 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--ground-2); color: var(--ink); font: 500 1rem/1 "Tomorrow", system-ui, sans-serif; }
+.cs__lock-row input:focus-visible { outline: 2px solid var(--hi); outline-offset: 2px; }
+.cs__lock-row input[aria-invalid="true"] { border-color: #ff8a8a; }
+.cs__copy .cs__lock-error { margin-top: 12px; color: #ff8a8a; }
+:root[data-theme="light"] .cs__copy .cs__lock-error { color: #b42318; }
+:root[data-theme="light"] .cs__lock-row input[aria-invalid="true"] { border-color: #b42318; }
+.cs__copy .cs__lock-sub { margin-top: 40px; font-weight: 600; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); }
+.cs__lock-list { margin-top: 12px; padding-left: 1.4em; list-style: decimal; }
+.cs__lock-list li { margin-top: 6px; padding-left: 4px; }
+.cs__lock-pic { overflow: hidden; border-radius: 16px; }
+.cs__lock-pic img { filter: blur(16px); opacity: 0.6; transform: scale(1.04); }
 .cs__shot .device { --h: min(72svh, 640px); }
 .cs__next { padding: var(--section) var(--m); }
 .cs__next a { display: block; }

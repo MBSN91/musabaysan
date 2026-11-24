@@ -8,6 +8,7 @@ import Orbit from '../components/Orbit.astro';
 import SecBar from '../components/SecBar.astro';
 import Shot from '../components/Shot.astro';
 import { cases, home, contact, rollParts, numberLead, yearsOf } from '../data/content';
+import { isLocked } from '../data/lock';
 
 export const prerender = true;
 
@@ -53,7 +54,7 @@ const email = contact.email;
 					<div class="chapter__panel" data-panel>
 						<div class="chapter__text" data-chapter-text>
 							<h3 id={`ch-${c.slug}`} class="chapter__title"><a href={`/work/${c.slug}/`} data-curtain={c.name}>{c.title}</a></h3>
-							<p class="chapter__meta">{c.name}, {yearsOf(c)}</p>
+							<p class="chapter__meta">{c.name}, {yearsOf(c)}{isLocked(c.slug) && <span class="chapter__private">, private case</span>}</p>
 							<p class="chapter__body">{rollParts(c.chapter.body).map((p) => (p.roll ? <span data-roll>{p.text}</span> : p.text))}</p>
 							<a class="btn btn--ink" href={`/work/${c.slug}/`} data-curtain={c.name} data-magnetic>Read the case</a>
 						</div>

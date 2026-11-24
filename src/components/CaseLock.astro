@@ -1,0 +1,47 @@
+---
+// The locked part of a private case: what the case covers, and the password form.
+// The story itself is not in this page; it is rendered on the server after the password.
+import type { Case } from '../data/work';
+
+interface Props { c: Case }
+const { c } = Astro.props;
+const teaser = c.sections.find((s) => s.shot?.kind === 'image')?.shot;
+---
+<section class="cs__part cs__lock" id="unlock" aria-labelledby="lock-title">
+	<div class="cs__copy">
+		<p class="cs__lock-tag">Private case</p>
+		<h2 id="lock-title" data-wipe>The full case is behind a password</h2>
+		<p>It covers confidential work, so the story, the decisions and the research results stay private. The password is in my CV and application. No password? Ask me for it.</p>
+		<form class="cs__lock-form" method="post" action="/api/unlock">
+			<input type="hidden" name="slug" value={c.slug} />
+			<label for="case-password">Password</label>
+			<div class="cs__lock-row">
+				<input id="case-password" name="password" type="password" autocomplete="current-password" required spellcheck="false" />
+				<button class="btn" type="submit">Unlock</button>
+			</div>
+			<p class="cs__lock-error" id="lock-error" role="alert" hidden data-lock-error>That password didn’t work. Check it and try again.</p>
+		</form>
+		{c.sections.length > 0 && (
+			<>
+				<p class="cs__lock-sub">Inside</p>
+				<ol class="cs__lock-list">{c.sections.map((s) => <li>{s.heading}</li>)}</ol>
+			</>
+		)}
+	</div>
+	{teaser && teaser.kind === 'image' && (
+		<div class="cs__shot" aria-hidden="true">
+			<figure class="pic cs__lock-pic"><img src={teaser.img} alt="" width={teaser.w} height={teaser.h} loading="lazy" decoding="async" /></figure>
+		</div>
+	)}
+</section>
+<script is:inline define:vars={{ slug: c.slug }}>
+	(function () {
+		if (/(^|;\s*)mb_open=1/.test(document.cookie)) { location.replace('/work/' + slug + '/full/'); return; }
+		if (/[?&]wrong=1/.test(location.search)) {
+			var e = document.querySelector('[data-lock-error]');
+			if (e) e.hidden = false;
+			var i = document.getElementById('case-password');
+			if (i) { i.setAttribute('aria-invalid', 'true'); i.setAttribute('aria-describedby', 'lock-error'); }
+		}
+	})();
+</script>
