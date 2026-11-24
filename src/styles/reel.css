@@ -85,6 +85,7 @@ body :focus-visible { outline: 2px solid var(--hi); outline-offset: 4px; border-
 .rnum { display: inline-flex; align-items: flex-start; overflow: hidden; height: 1.06em; line-height: 1.06; }
 .rcol { display: inline-flex; flex-direction: column; flex: none; height: max-content; }
 .rcol > span, .rch { display: block; height: 1.06em; }
+.rcol > span { text-align: center; } /* proportional digits: a narrow 1 sits centred in its column, not against the next digit */
 
 /* ---------- cursor and curtain ---------- */
 .cursor {
