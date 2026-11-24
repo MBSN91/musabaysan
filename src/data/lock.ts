@@ -1,7 +1,9 @@
 // Private cases. Their page shows the cover, the summary, the facts and the chapter headings; the story itself
 // is rendered on the server (src/pages/work/[slug]/full.astro) after the password (src/pages/api/unlock.ts).
 // This repo is public: keep the full text of a private case in the CMS only, never in work.ts.
-export const lockedSlugs: string[] = ['adidas-store-app'];
+// The slugs live in locked.json so scripts/pull-content.mjs can read them too (it keeps their images out of public/).
+import locked from './locked.json';
+export const lockedSlugs: string[] = locked;
 export const isLocked = (slug: string) => lockedSlugs.includes(slug);
 
 // PBKDF2-SHA256 of the case password (one password for all private cases).

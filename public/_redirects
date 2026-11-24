@@ -9,4 +9,5 @@
 # Private cases: the full page is rendered by the server function (src/pages/work/[slug]/full.astro).
 /work/:slug/full     /.netlify/functions/entry  200
 /work/:slug/full/    /.netlify/functions/entry  200
+/work/:slug/img/*    /.netlify/functions/entry  200
 /work/*              /                        302

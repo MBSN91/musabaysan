@@ -4,7 +4,7 @@
 // the built-in defaults. With CMS_URL set, any failure stops the build, so a half-pulled site never deploys.
 //
 //   CMS_URL=https://cms.example.com CMS_API_KEY=... node scripts/pull-content.mjs
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,8 +30,17 @@ const get = async (p) => {
 
 // ---- media ---------------------------------------------------------------------------------------
 const downloads = new Map(); // local path -> remote url
+// Private cases (src/data/locked.json): the files in their story stay in the CMS. The page points at
+// /work/<slug>/img/<file>, which the server only serves after the password (src/pages/work/[slug]/img/[file].ts).
+const locked = new Set(JSON.parse(await readFile(path.join(root, 'src/data/locked.json'), 'utf8')));
+const privateMedia = {}; // slug -> { file name -> remote url }
+let privateSlug = null;
 const want = (url, name) => {
 	if (!url || !name) throw new Error(`a file has no url (${name})`);
+	if (privateSlug) {
+		(privateMedia[privateSlug] ||= {})[name] = url.startsWith('http') ? url : base + url;
+		return `/work/${privateSlug}/img/${name}`;
+	}
 	const local = `/cms/${name}`;
 	downloads.set(local, url.startsWith('http') ? url : base + url);
 	return local;
@@ -92,7 +101,12 @@ const toCase = (d) => {
 		: v.kind === 'image'
 			? (() => { const f = file(v.image); return { kind: 'image', img: f.img, alt: altOf(v.image, v.alt), w: f.w, h: f.h }; })()
 			: { kind: 'screens', screens: (v.screens || []).map((s) => ({ img: screen(s.image), alt: altOf(s.image, s.alt) })) };
-	const section = (s) => ({ heading: s.heading, body: paragraphs(s.body), ...(shot(s.shot) ? { shot: shot(s.shot) } : {}) });
+	const section = (s) => {
+		privateSlug = locked.has(d.slug) ? d.slug : null;
+		const sh = shot(s.shot);
+		privateSlug = null;
+		return { heading: s.heading, body: paragraphs(s.body), ...(sh ? { shot: sh } : {}) };
+	};
 	const c = colours[d.colour] || colours.lime;
 	return {
 		slug: d.slug, name: d.name, title: d.title, summary: d.summary, field: c.field, ink: c.ink,
@@ -116,6 +130,7 @@ if (!caseRes.docs?.length) throw new Error('the CMS has no published case studie
 
 const snapshot = {
 	cases: caseRes.docs.map(toCase),
+	privateMedia,
 	home: {
 		seo: { title: h.seoTitle, description: h.seoDescription },
 		hero: { lines: texts(h.lines), lead: h.lead, cta: h.cta },
@@ -165,4 +180,5 @@ for (const [local, url] of downloads) {
 	await writeFile(path.join(root, 'public', local), Buffer.from(await res.arrayBuffer()));
 }
 await writeFile(out, JSON.stringify(snapshot, null, '\t'));
-console.log(`[content] pulled ${snapshot.cases.length} case studies, ${snapshot.tiles.length} orbit tiles and ${downloads.size} files from ${base}`);
+const kept = Object.values(privateMedia).reduce((n, m) => n + Object.keys(m).length, 0);
+console.log(`[content] pulled ${snapshot.cases.length} case studies, ${snapshot.tiles.length} orbit tiles and ${downloads.size} files from ${base}; ${kept} private files left in the CMS`);

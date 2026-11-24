@@ -2,10 +2,13 @@
 // The locked part of a private case: what the case covers, and the password form.
 // The story itself is not in this page; it is rendered on the server after the password.
 import type { Case } from '../data/work';
+import Device from './Device.astro';
 
 interface Props { c: Case }
 const { c } = Astro.props;
-const teaser = c.sections.find((s) => s.shot?.kind === 'image')?.shot;
+const pub = (src: string) => !src.startsWith('/work/');
+const teaser = c.sections.map((s) => s.shot).find((s) => s?.kind === 'image' && pub(s.img));
+const star = c.front.star;
 ---
 <section class="cs__part cs__lock" id="unlock" aria-labelledby="lock-title">
 	<div class="cs__copy">
@@ -28,11 +31,13 @@ const teaser = c.sections.find((s) => s.shot?.kind === 'image')?.shot;
 			</>
 		)}
 	</div>
-	{teaser && teaser.kind === 'image' && (
+	{teaser && teaser.kind === 'image' ? (
 		<div class="cs__shot" aria-hidden="true">
 			<figure class="pic cs__lock-pic"><img src={teaser.img} alt="" width={teaser.w} height={teaser.h} loading="lazy" decoding="async" /></figure>
 		</div>
-	)}
+	) : star.kind === 'device' && !star.img ? (
+		<div class="cs__shot cs__lock-sketch" aria-hidden="true"><Device wire={star.wire} alt="" bare id="lock-sketch" /></div>
+	) : null}
 </section>
 <script is:inline define:vars={{ slug: c.slug }}>
 	(function () {

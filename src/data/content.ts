@@ -6,7 +6,8 @@ import { cases as defaultCases, type Case } from './work';
 import { home as defaultHome, contact as defaultContact, type Home, type Contact } from './home';
 import { tiles as defaultTiles, type Tile } from './orbit';
 
-type Snapshot = { cases: Case[]; home: Home; contact: Contact; tiles: Tile[] };
+// privateMedia: images of private cases, by slug and file name -> CMS url. Served only by src/pages/work/[slug]/img/[file].ts.
+type Snapshot = { cases: Case[]; home: Home; contact: Contact; tiles: Tile[]; privateMedia?: Record<string, Record<string, string>> };
 const found = import.meta.glob<Snapshot>('./cms.json', { eager: true, import: 'default' });
 const cms: Snapshot | undefined = found['./cms.json'];
 
@@ -15,6 +16,7 @@ export const cases: Case[] = cms?.cases ?? defaultCases;
 export const home: Home = cms?.home ?? defaultHome;
 export const contact: Contact = cms?.contact ?? defaultContact;
 export const tiles: Tile[] = cms?.tiles ?? defaultTiles;
+export const privateMedia: Record<string, Record<string, string>> = cms?.privateMedia ?? {};
 
 // "[20] active users": the bracketed number counts up when it scrolls in. Years never roll.
 export const rollParts = (text: string) =>

@@ -1,5 +1,6 @@
 ---
 import { existsSync } from 'node:fs';
+import { privateMedia } from '../data/content';
 // A phone that exists twice: the dotted wireframe derived from the real screen, and the shipped screen.
 // Without script or with reduced motion it shows the shipped screen; the buttons flip between the two.
 interface Props { wire: string; img?: string; alt: string; caption?: string; eager?: boolean; bare?: boolean; notes?: { text: string; x: number; y: number; side: 'l' | 'r' }[]; id?: string }
@@ -9,7 +10,9 @@ const wires = import.meta.glob('../wire/*.svg', { as: 'raw', eager: true });
 const svg = (wires[`../wire/${wire}.svg`] as string) ?? '';
 const uid = id ?? `d-${wire}`;
 const img2x = img ? img.replace(/\.webp$/, '@2x.webp') : '';
-const srcset = img && existsSync(`public${img2x}`) ? `${img} 1x, ${img2x} 2x` : undefined;
+const priv = img?.match(/^\/work\/([^/]+)\/img\/(.+)$/);
+const has2x = priv ? !!privateMedia[priv[1]]?.[priv[2].replace(/\.webp$/, '@2x.webp')] : !!img && existsSync(`public${img2x}`);
+const srcset = img && has2x ? `${img} 1x, ${img2x} 2x` : undefined;
 ---
 <figure class:list={["device", { "device--sketch": sketchOnly }]} data-plot data-state={sketchOnly ? "sketch" : "shipped"} data-sketch-only={sketchOnly ? "" : undefined} id={uid} role={sketchOnly ? "img" : undefined} aria-label={sketchOnly ? alt : undefined}>
 	<div class="device__body">
