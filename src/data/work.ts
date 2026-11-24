@@ -234,7 +234,8 @@ export const cases: Case[] = [
 		// Split from the website on Musa's request. Never show the filled-in sign-up screens (real phone number and email).
 		// Drive (read 24 Nov 2026): survey export (93 responses), feedback concepts Oct 2020, flowchart Aug 2020, ordering test notes 14 Jun 2021
 		// (6 testers with notes, 24 to 42), handover notes Jul 2021 (soft launch near, scope cuts, coupon QR idea). Never quote the handover's credentials.
-		// Table QR stands (Dec 2020) linked to the Eijsink web ordering branded Happy Italy, not the app; the app used the same platform via its API (Musa, 24 Nov).
+		// Table QR stands (Dec 2020) went live in the restaurants and opened the Eijsink ordering website branded Happy Italy (Happy Order), not the app;
+		// the app used the same platform via its API (Musa, 24 Nov).
 		// Musa doesn't recall why the one-sheet rating won: never present it as a reasoned decision.
 		slug: 'happy-italy-app',
 		name: 'Happy Italy app',
@@ -297,7 +298,7 @@ export const cases: Case[] = [
 				heading: 'Order where you are',
 				body: [
 					'One start for every way to order: takeaway, delivery, or order and pay at the table. Then the restaurant, the day and the time, so the menu, prices and pickup slot are those of that restaurant at that moment.',
-					'All of it ran on the till supplier’s ordering platform. The chain’s web ordering used it, the table QR stands I prepared for more than 2,700 tables in 19 restaurants linked to it, and the app connected to it through its API, so a menu or price changed once, everywhere.',
+					'All of it ran on the till supplier’s ordering platform. The chain’s ordering website used it, and so did the table QR stands I prepared for more than 2,700 tables in 19 restaurants: they went live in the restaurants, one code per table, and opened that website. The app connected to the same platform through its API, so a menu or price changed once, everywhere.',
 					'In June 2021 I tested three versions of the ordering flow with six people aged 24 to 42 who order food on their phone, with one task: order a margherita with extra cheese and pay. In the first, testers weren’t sure the pizza was in the cart, hunted for the extra topping and missed the payment method. The third confirmed every addition straight away, listed all toppings together and put the payment method in plain sight. All six found it the easiest, and four scored it 5 out of 5.',
 					'Still open after the test: more colour, because the dark screens felt less like Happy Italy to some, and choosing the pickup time at the end of the order.',
 				],
@@ -337,6 +338,7 @@ export const cases: Case[] = [
 				heading: 'What we tested, what shipped, what I can’t show',
 				body: [
 					'Shipped to the developers: the design system and a 114-screen prototype.',
+					'Live in the restaurants: the table QR stands, which opened the chain’s ordering website rather than the app.',
 					'Tested: the survey of 93 people, and the June 2021 ordering test, where all six testers found the third version the easiest.',
 					'No launch data: the app never reached guests.',
 				],
