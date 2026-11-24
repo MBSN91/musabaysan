@@ -359,7 +359,8 @@ export const cases: Case[] = [
 		// Happy Italy website. Researched, designed in Figma and built in Webflow by Musa. Live between 28 Feb and 14 Mar 2021 (Wayback, first form application) until late 2021.
 		// Split from the app on Musa's request, 17 Nov 2026. CMS facts from his Webflow project (hppyprjct, read 18 Nov 2026). Musa entered the dishes; HR entered the vacancies (Musa, 18 Nov).
 		// Numbers from Musa's 2020 research doc and laptop backup (read 24 Nov 2026): GA week 27 Jul to 2 Aug 2020, 8 of 40, Lookback with 5 colleagues, Oct 2020 promotion,
-		// Webflow form export 7 Jul 2021 (704 applications, 564 people). Sheet: ~/.hermes/plans/portfolio-research/G-happy-italy-archive-findings.md. No after-launch order or booking numbers: never claim one.
+		// Webflow form export 7 Jul 2021 (704 applications, 564 people). Drive (read 24 Nov): handover notes Jul 2021 (Stadia Maps, Zapier, Google Business bulk import, 100k+ visitors/month),
+		// Oct 2020 campaign sheets are daily figures (5+6 Oct: 522 sign-ups, 182 orders), old menu popup had category tabs (Aug 2020 capture). Sheet: ~/.hermes/plans/portfolio-research/G-happy-italy-archive-findings.md. No after-launch order or booking numbers: never claim one.
 		slug: 'happy-italy-website',
 		name: 'Happy Italy website',
 		title: 'Three ways to order became one button',
@@ -389,7 +390,7 @@ export const cases: Case[] = [
 		closing: {
 			heading: 'What this case shows',
 			body: [
-				'A consumer website taken from measurement and testing to design and build, with the content model as part of the design: one place for every dish, restaurant and vacancy.',
+				'A consumer website from measurement and testing to design and build, with the content model as part of the design: one place for every dish, restaurant and vacancy.',
 				'The app I designed for the chain in the same period is its own case.',
 			],
 		},
@@ -397,15 +398,15 @@ export const cases: Case[] = [
 			{
 				heading: 'Closed dining rooms, two jobs online',
 				body: [
-					'The chain planned to grow from 20 restaurants to more than 40, and into Europe, within five years. In 2021 the lockdowns kept the dining rooms closed, and delivery and takeaway kept the restaurants trading.',
+					'The chain planned to grow from 20 restaurants to more than 40 within five years. Then the lockdowns closed the dining rooms, and delivery and takeaway kept the restaurants trading.',
 					'So the website had two jobs: get guests to order, and hire the people every new restaurant needs.',
 				],
 			},
 			{
 				heading: 'Measuring the old site first',
 				body: [
-					'When I started, the website had no analytics, so nobody could say how it was used. I installed Google Analytics, and one week in the summer of 2020 showed 28,189 visitors. 86% came on a phone, half of all visits ended within ten seconds, and visitors went back and forth between the booking and location pages.',
-					'In a short feedback round on the site, 8 of 40 people could not book a table or did not see how straight away. I then gave five colleagues at head office three tasks in Lookback: order takeaway, book a table for two at eight, and look at the menu while you wait. The menu was a popup of plain text without sections, and one tester said she couldn’t see what she was choosing. Allergen information sat two clicks away from the dish.',
+					'When I started, the website had no analytics. I installed Google Analytics, and one week in the summer of 2020 showed 28,189 visitors. 86% came on a phone, half of all visits ended within ten seconds, and visitors went back and forth between the booking and location pages.',
+					'In a short feedback round on the site, 8 of 40 people could not book a table or did not see how straight away. I then gave five colleagues at head office three tasks in Lookback: order takeaway, book a table for two at eight, and look at the menu while you wait. The menu was a popup of plain text, one tester said she couldn’t see what she was choosing, and allergen information sat two clicks away from the dish.',
 					'While the tests ran, I cut one step from the booking path on the old site straight away. The rest needed a new site.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-research.webp', alt: 'The old Happy Italy homepage in November 2020, with the restaurants stacked down the page, next to the numbers measured in 2020: 28,189 visitors in one week, 86% on a phone, 52% of visits ended within ten seconds, and 8 of 40 people could not book a table or not straight away', w: 1960, h: 1560 },
@@ -414,7 +415,7 @@ export const cases: Case[] = [
 				heading: 'A site head office could edit itself',
 				body: [
 					'The research pointed at more than a new look. My notes from 2020 say the old site’s base was solid; what held the chain back was that content changes depended on outside parties. So instead of a facelift I proposed a new site on a CMS that head office could edit itself.',
-					'I explored the pages in Figma, five concepts for the jobs pages alone, and did most of the design in Webflow, where I built the site on 18 CMS collections, from dishes and allergens to opening hours. A price, an opening time or a new vacancy changes in one place and shows up everywhere it is used.',
+					'I explored the pages in Figma, five concepts for the jobs pages alone, and did most of the design in Webflow, on 18 CMS collections from dishes and allergens to opening hours. A price or a new vacancy changes in one place and shows up everywhere.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
 			},
@@ -422,7 +423,7 @@ export const cases: Case[] = [
 				heading: 'One order button instead of three',
 				body: [
 					'In February 2021 the top bar had eight items, and three of them were different ways to order: To go, Happy Delivery and Takeaway. In the new site they became one order button, Bestellen.',
-					'The first screen offers delivery, takeaway and booking a table, and works as a campaign slot that changes with the season. The slot came from a test on the old site: until October 2020 promotions only ran on social media and in the restaurants. The first one on the website, which I tracked, brought 751 clicks from the site, 202 newsletter sign-ups and 88 takeaway orders through its order button.',
+					'The first screen offers delivery, takeaway and booking a table, and works as a campaign slot that changes with the season. The slot came from the old site. In 2020 promotions ran only on social media and in the restaurants, so I gave them a place on the website and tracked it: on 5 and 6 October 2020 alone, the Happy Deals page collected 522 newsletter sign-ups and its order button brought 182 takeaway orders.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-nav.webp', alt: 'The Happy Italy top bar in February 2021, with three ways to order, and in June 2021 after the redesign, with one order button and 100 open vacancies on Jobs', w: 1680, h: 820 },
 			},
@@ -430,7 +431,7 @@ export const cases: Case[] = [
 				heading: 'Every restaurant on one template',
 				body: [
 					'On the old site the restaurant map was a static image, and the restaurants were stacked down one long page. Ordering happens per restaurant, so each of the 20 restaurants got its own page from one template: booking a table, with a note that booking for tonight closes at 17:00, the opening hours, the delivery partners that serve that restaurant, the menu, a local deal, and that restaurant’s vacancies.',
-					'Guests see what their own restaurant offers instead of a chain-wide list that may not apply to them.',
+					'Guests see what their own restaurant offers instead of a chain-wide list. I also linked every restaurant’s Google listing to its own page, made their opening hours editable in one spreadsheet import, and swapped Mapbox, at hundreds of euros a month, for the free Stadia Maps.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-restaurant.webp', alt: 'The Breda restaurant page: booking with a note about booking for tonight, opening hours, the delivery partners that serve Breda, and the restaurant’s own vacancies', w: 1626, h: 1416 },
 			},
@@ -454,21 +455,21 @@ export const cases: Case[] = [
 				body: [
 					'In June 2021 the site listed 100 open vacancies. Most of them were the same few roles in different restaurants, so I set up the jobs as 16 standard roles, each described once. HR then added the vacancies themselves, without me: pick a role, a restaurant and the hours, fulltime, parttime or flex.',
 					'Every vacancy gets its own page with one apply button, and the number on Jobs in the top bar counts the open vacancies straight from the CMS.',
-					'In its first 16 weeks, from mid-March to early July 2021, the apply form took 704 applications from 564 people, and the count grew every month: 154 in April, 196 in May, 215 in June. Every restaurant received applications.',
+					'Applications went straight to HR’s inbox, and franchise requests to the franchise team, through an automation I set up. In its first 16 weeks, from mid-March to early July 2021, the apply form took 704 applications from 564 people, and the count grew every month: 154 in April, 196 in May, 215 in June. Every restaurant received applications.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-jobs.webp', alt: 'The jobs overview grouped by restaurant on desktop, and a vacancy page on a phone with one apply button', w: 2286, h: 1368 },
 			},
 			{
 				heading: 'What happened next',
 				body: [
-					'In the second half of 2021 the chain changed owners, and the new owner moved the website to the look of its other brands. I had left in July 2021.',
+					'When I left in July 2021, I moved the site to the company’s own Webflow account and wrote a handover, down to what to fix next: restaurants were hard to reach by phone after five. Later that year the chain changed owners and moved the website to the look of its other brands.',
 				],
 			},
 			{
 				heading: 'What shipped, what I measured, what I can’t show',
 				body: [
-					'Shipped: the website for phone, tablet and desktop, live from March 2021, with ordering, the restaurant pages, the menu with allergy filter and favourites, and the jobs pages. The screens here come from the Webflow project, which still runs on its Webflow address.',
-					'Measured: the 2020 baseline, the feedback round and the October 2020 promotion come from my Google Analytics reports and research notes of the time. The 704 applications come from the Webflow form export of July 2021.',
+					'Shipped: the website for phone, tablet and desktop, live from March 2021. The screens here come from the Webflow project, which still runs on its Webflow address.',
+					'Measured: the 2020 baseline, the feedback round and the October 2020 promotion come from my Google Analytics reports and research notes of the time. The 704 applications come from the Webflow form export of July 2021, and my handover notes put the traffic at well over 100,000 unique visitors a month.',
 					'Can’t show: before-and-after numbers for orders and bookings, and an application count from the old site to compare with.',
 				],
 			},
