@@ -45,49 +45,110 @@ export type Case = {
 
 export const cases: Case[] = [
 	{
+		// v2, 24 Nov 2026. Sources: Musa's Drive (old/Losse projecten/adidas), work-adidas memory, Musa's answers of 17 and 24 Nov 2026.
+		// Sheet: ~/.hermes/plans/portfolio-research/H-adidas-drive-findings.md. Attribution: part of the 2021 merge research; LED the 2023 research
+		// with UX colleagues; first label printing version (piloted in Russia, restyled since by the team); product filters his; order handling: part
+		// of the team; feedback loop: pushed by him. Bulk scanning is NOT his and stays out. The 2021 XD files are the previous designer's.
+		// July 2023 online test: 11 store staff (one team dry run excluded). Never name testers or their regions. No internal app names.
 		slug: 'adidas-store-app',
 		name: 'adidas store app',
-		title: 'Many store apps, one app',
-		summary: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers, product owners and retail UX designers, and work with the membership team on bringing adiClub into the stores.',
+		title: 'Seven store apps became one',
+		summary: 'adidas store staff ran their day on seven separate apps. Since 2021 I have worked on the one app that replaced them, with developers, product owners and UX designers: I designed the first label printing on a phone, led the research with store staff in 2023, designed the product filters and worked on moving online orders into the app, which now runs in 1,300 stores in 45 countries.',
 		field: 'var(--lime)',
 		ink: '#000000',
 		facts: [
-			['Role', 'UX designer, Manager UX Design from 2022, now Digital Experience Designer'],
-			['Years', '2021 to now'],
+			['Role', 'UX designer on contract from 2021, in the store app team since 2022: Manager UX Design, now Digital Experience Designer'],
+			['My parts', 'The first version of label printing, the 2023 research with store staff (led, with UX colleagues), the product filters, the component library (with the developers and retail UX designers), order handling (part of the team), the feedback loop (pushed for it)'],
+			['Worked with', 'Product owners, developers, retail UX designers, digital champions in stores, markets'],
 			['Platform', 'iPhone and iPad, all markets'],
-			['Worked with', 'Product, business, developers, retail UX designers, markets'],
+			['Years', '2021 to now'],
+			['Status', 'Rolled out worldwide in November 2025: 1,300 stores in 45 countries, used by 30,000+ store employees'],
 		],
 		front: {
 			mast: 'adidas',
-			title: 'Many store apps, one app',
-			lines: [['Used by', '30,000+ employees'], ['Platform', 'iPhone and iPad'], ['Years', '2021 to now']],
+			title: 'Seven store apps became one',
+			lines: [['Apps replaced', '7'], ['Stores', '1,300'], ['Years', '2021 to now']],
 			star: { kind: 'device', wire: 'adidas-bulkscan', alt: 'Redrawn wireframe of a store app screen: a summary card and a list of products', caption: 'Redrawn as a wireframe. The real screens are confidential.' },
 		},
 		chapter: {
-			body: 'The app 30,000+ adidas store employees work with every day, on iPhone and iPad. I design its flows and component library with the developers, product owners and retail UX designers, and work with the membership team on bringing adiClub into the stores.',
+			body: 'Seven store apps became one, used by [30,000]+ adidas store employees in [1,300] stores. My parts: the first label printing on a phone, the 2023 research with store staff, the product filters, and order handling on one phone.',
 			visual: { kind: 'wire', wire: 'adidas-bulkscan', alt: 'Redrawn wireframe of a store app screen: a summary card and a list of products', note: 'Redrawn as a wireframe. The real screens are confidential.' },
 		},
 		closing: {
-			heading: 'What I can show in a call',
-			body: ['The screens are confidential. In a call I walk you through the flows, the research and the decisions behind them.'],
-			shot: { kind: 'slot', label: 'Store app flows, rebuilt as wireframes', spec: '3 screens, 1170 × 2532 each, greys only, no real data', ratio: '4 / 3', blur: true },
+			heading: 'What this case shows',
+			body: [
+				'Five years on one product with many teams: from a first feature on a phone, through research that shaped the whole app, to the loop we are now building so staff can shape it.',
+				'The real screens are confidential. In a call I walk you through them.',
+			],
 		},
 		sections: [
 			{
-				heading: 'One app instead of many',
+				heading: 'Seven apps for one store day',
 				body: [
-					'Store employees used separate apps for stock, orders, membership and tasks. The store app brings them together for 30,000+ employees on iPhone and iPad.',
-					'I built its design system and components together with the developers and the retail UX designers, so new features land in one consistent app.',
+					'When I started as a contractor in August 2021, a store employee’s day ran through seven apps, for jobs like looking up stock, refilling the shop floor, the stockroom bins, online orders, RFID counts, price labels and selling the online range on an iPad.',
+					'In 2023 we mapped a day in store, from opening to closing, with staff around the world. The same pains came back at every step: Wi-Fi dropping out, stock that didn’t match the shelf, being logged out of one tool after two minutes, and requests spread over different tools. One employee asked for a single place to get help, because they used so many tools.',
 				],
-				shot: { kind: 'slot', label: 'Design system, rebuilt', spec: '16:10, 2880 × 1800, components redrawn as greyscale wireframes, no real UI', ratio: '16 / 10' },
+				shot: { kind: 'image', img: '/img/adidas/adidas-map.webp', alt: 'Before: seven apps, for looking up stock, refilling the shop floor, stockroom bins, online orders, RFID counts, price labels and selling the online range on an iPad. After: one app, with every feature sorted by store staff into five areas: signing in, stock and logistics, the store’s daily rhythm, my own tools, and finding products in store and online', w: 2080, h: 1542 },
 			},
 			{
-				heading: 'Journey mapping that changed the scope',
+				heading: 'Price labels from a phone',
 				body: [
-					'Mapping the in-store membership journey uncovered broken steps and incorrect emails. The scope changed from a screen to the whole journey.',
-					'I worked with business, the product owner, the flagship app and CRM teams on the fixes. They shipped within weeks, with wording aligned to what markets expect and what the law requires.',
+					'My first piece of this work, in 2021, was the first version of label printing from a phone. Until then, staff wrote price labels by hand. I mapped the flow so a store sets up once and then only scans and prints: pick the store, connect the printer and fetch the label template, then scan or type an article, choose how many and print.',
+					'The first version went to a pilot in stores in Russia, which ended when adidas stopped trading there in 2022. The flow lived on: today’s label printing in the one app still follows it. We have since moved its look from Apple’s standard components to adidas’s own design system, and the latest version is the team’s.',
 				],
-				shot: { kind: 'slot', label: 'Journey map, anonymised', spec: '3:2, 3000 px wide, redrawn steps only, no real text', ratio: '3 / 2' },
+				shot: { kind: 'image', img: '/img/adidas/adidas-labels.webp', alt: 'The first version of label printing from a phone, redrawn as four steps: pick your store, connect the printer and fetch the label once, scan or type the article, choose how many and print. Before it, price labels were written by hand', w: 2224, h: 1707 },
+			},
+			{
+				heading: 'Research with the people who use it',
+				body: [
+					'In November 2022 I built five versions of a prototype for the merged app in one week. In 2023 I led the research with store staff, together with colleagues from the UX team: a remote panel of store staff, seven recorded feedback sessions in March and April, card sorts in which staff sorted every feature into five areas, and the day-in-store map. We decided the navigation in tests with digital champions: store employees around the world who speak for their colleagues on the app.',
+					'In July 2023, 11 store staff tested two versions of the product page on their own, in an online test with three tasks: request a size from the stockroom, find vegan shoes and offer other sizes. They rated the first version higher, 8 of 11 gave it 4 or 5 out of 5 against 5 of 11 for the second, yet when asked to choose, six picked the second. One said the page looked so much like the app they knew that there was nothing new to learn.',
+					'A split vote is a finding too: neither page was finished. Their asks were concrete: a bigger price and article number, men’s and women’s sizes, total stock, and when the stock was last updated.',
+				],
+				shot: { kind: 'image', img: '/img/adidas/adidas-research.webp', alt: 'Research with store staff, 2022 to 2023: 5 prototype versions of the one app built in one week (November 2022); 7 recorded feedback sessions with store staff (March and April 2023); 5 areas that store staff sorted every feature into (card sorts, May 2023); 8 of 11 rated product page A 4 or 5 out of 5, yet 6 of 11 chose page B (online test, July 2023)', w: 2080, h: 1338 },
+			},
+			{
+				heading: 'Filters staff asked for',
+				body: [
+					'Staff look up products while the customer waits. I designed the product filters for looking up stock, piloted in 10 stores from late 2022 and switched on in every store in North America and Western Europe in 2023.',
+					'In an internal survey of 60 store staff from more than 50 stores, 93% said the filters help them give customers the best service, a net promoter score of +43. Staff also ranked the features they wanted next, and two of them shipped: filtering by age group and searching by product name.',
+				],
+			},
+			{
+				heading: 'One phone for an online order',
+				body: [
+					'Click and collect and ship-from-store orders took several apps and two devices, one of them a PC in the back office. I was part of the team that moved order handling into the app: build the pick list, pick, pack by order, print the shipping label and hand the order over, all on one phone.',
+					'We tested it with staff in stores in Barcelona, London and Amsterdam and showed it at the digital champions summit, where staff told us they wanted it yesterday. It went live with the worldwide rollout in November 2025.',
+				],
+			},
+			{
+				heading: 'One look on every device and in every market',
+				body: [
+					'New features land in one app that looks and works the same everywhere. I built the component library with the developers and the retail UX designers, for iPhone and iPad, and in 2025 for smaller devices too.',
+					'Markets bring their own rules. When Bulgaria moved to the euro, I designed the product page to show prices in both currencies.',
+				],
+			},
+			{
+				heading: '30,000 users, and their feedback came in by chance',
+				body: [
+					'Feedback from stores reached the product team through market teams, calls and chats, and lost detail on the way. Each region had its own workaround, from group chats to a shared spreadsheet. In 2026 I pushed for a feedback loop inside the app.',
+					'With the product owner I ran a listening tour with the six global operations regions, then a two-day hackathon with developers, QA and product to turn what we heard into working prototypes. We also sorted 114 paper feedback cards from store leaders in the US and Canada; the most common asks were about refill lists, prices and incoming stock.',
+					'Status: the in-app loop is designed and its backend approved. Building it is next.',
+				],
+			},
+			{
+				heading: 'What shipped, what we measured, what I can’t share',
+				body: [
+					'Shipped: one app that brings together the work of seven, rolled out in November 2025 to 1,300 stores in 45 countries, with order handling inside it; label printing that still follows the 2021 flow; product filters in every store in North America and Western Europe.',
+					'Measured: the July 2023 online test with 11 store staff, and the 2023 internal survey on the filters (93% of 60 store staff).',
+					'Not shared: usage numbers, store data and the real screens.',
+				],
+			},
+			{
+				heading: 'What I’d change',
+				body: [
+					'Start the feedback loop on day one. We merged seven apps on research and tests, but a steady signal from 30,000 users only started in 2026, five years in.',
+				],
 			},
 		],
 	},
