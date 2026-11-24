@@ -356,37 +356,40 @@ export const cases: Case[] = [
 		],
 	},
 	{
-		// Happy Italy website. Designed in Figma and built in Webflow by Musa, live spring to autumn 2021 (Wayback).
-		// Split from the app on Musa's request, 17 Nov 2026. Facts from his Webflow project (hppyprjct, read 18 Nov 2026): 18 CMS collections,
-		// 138 dishes, 14 allergens, 20 visible restaurants, 16 standard roles, 125 vacancies (115 not archived). Musa entered the dishes; HR entered the vacancies (Musa, 18 Nov). Nothing measured: never claim a result.
+		// Happy Italy website. Researched, designed in Figma and built in Webflow by Musa. Live between 28 Feb and 14 Mar 2021 (Wayback, first form application) until late 2021.
+		// Split from the app on Musa's request, 17 Nov 2026. CMS facts from his Webflow project (hppyprjct, read 18 Nov 2026). Musa entered the dishes; HR entered the vacancies (Musa, 18 Nov).
+		// Numbers from Musa's 2020 research doc and laptop backup (read 24 Nov 2026): GA week 27 Jul to 2 Aug 2020, 8 of 40, Lookback with 5 colleagues, Oct 2020 promotion,
+		// Webflow form export 7 Jul 2021 (704 applications, 564 people). Sheet: ~/.hermes/plans/portfolio-research/G-happy-italy-archive-findings.md. No after-launch order or booking numbers: never claim one.
 		slug: 'happy-italy-website',
 		name: 'Happy Italy website',
 		title: 'Three ways to order became one button',
-		summary: 'In 2021 Happy Italy’s 20 restaurants traded through delivery and takeaway, and every new restaurant needed staff. I designed the chain’s new website and built it in Webflow around those jobs: ordering, finding your restaurant and dishes, and hiring.',
+		summary: 'When I started in 2020, Happy Italy’s website had no analytics. Once I measured it, 86% of visitors came on a phone and half of all visits ended within ten seconds. I researched, designed and built the chain’s new website in Webflow around ordering, the menu and hiring, and in its first 16 weeks the vacancy pages took 704 applications.',
 		field: 'var(--lime)',
 		ink: '#000000',
 		facts: [
-			['Role', 'UX designer: the design in Figma and the build in Webflow'],
-			['Worked with', 'Management and restaurant stakeholders'],
+			['Role', 'UX designer: research, the design in Figma and the build in Webflow'],
+			['Worked with', 'Management, HR and restaurant stakeholders'],
 			['Platform', 'Website for phone, tablet and desktop'],
 			['Years', '2020 to 2021'],
-			['Status', 'Live from spring 2021, replaced after the chain changed owners later that year. The Webflow project still runs on its Webflow address'],
+			['Research', 'Google Analytics, a feedback round with 40 visitors, usability tests with five colleagues'],
+			['Status', 'Live from March 2021, replaced after the chain changed owners later that year. The Webflow project still runs on its Webflow address'],
 			['In the CMS', '138 dishes, 14 allergens, 20 restaurants and over 100 vacancies'],
+			['Result', '704 job applications in the first 16 weeks'],
 		],
 		front: {
 			mast: 'Happy Italy',
 			title: 'Three ways to order became one button',
-			lines: [['Role', 'Design and build'], ['Restaurants', '20'], ['Live', '2021']],
+			lines: [['Role', 'Research, design and build'], ['Applications', '704 in 16 weeks'], ['Live', 'March 2021']],
 			star: { kind: 'comp', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website on desktop and phone: a photo of a smiling server on the terrace, with delivery, takeaway and booking a table on the first screen', w: 2356, h: 1408 },
 		},
 		chapter: {
-			body: 'Twenty restaurants trading through delivery and takeaway, and hiring for every new one. I designed the new website and built it in Webflow: one order button instead of three, a menu with a photo and the allergens of every dish, and a page for each of [100] open vacancies.',
+			body: 'Twenty restaurants trading through delivery and takeaway, and hiring for every new one. I measured the old site, then designed and built the new one in Webflow: one order button instead of three, a menu with a photo and the allergens of every dish, and vacancy pages that took [704] applications in 16 weeks.',
 			visual: { kind: 'image', img: '/img/happy/happy-web-cover.webp', alt: 'The Happy Italy website on desktop and phone: a photo of a smiling server on the terrace, with delivery, takeaway and booking a table on the first screen', w: 2356, h: 1408 },
 		},
 		closing: {
 			heading: 'What this case shows',
 			body: [
-				'A consumer website designed and built end to end, with the content model as part of the design: one place for every dish, restaurant and vacancy.',
+				'A consumer website taken from measurement and testing to design and build, with the content model as part of the design: one place for every dish, restaurant and vacancy.',
 				'The app I designed for the chain in the same period is its own case.',
 			],
 		},
@@ -399,17 +402,33 @@ export const cases: Case[] = [
 				],
 			},
 			{
+				heading: 'Measuring the old site first',
+				body: [
+					'When I started, the website had no analytics, so nobody could say how it was used. I installed Google Analytics, and one week in the summer of 2020 showed 28,189 visitors. 86% came on a phone, half of all visits ended within ten seconds, and visitors went back and forth between the booking and location pages.',
+					'In a short feedback round on the site, 8 of 40 people could not book a table or did not see how straight away. I then gave five colleagues at head office three tasks in Lookback: order takeaway, book a table for two at eight, and look at the menu while you wait. The menu was a popup of plain text without sections, and one tester said she couldn’t see what she was choosing. Allergen information sat two clicks away from the dish.',
+					'While the tests ran, I cut one step from the booking path on the old site straight away. The rest needed a new site.',
+				],
+			},
+			{
+				heading: 'A site head office could edit itself',
+				body: [
+					'The research pointed at more than a new look. My notes from 2020 say the old site’s base was solid; what held the chain back was that content changes depended on outside parties. So instead of a facelift I proposed a new site on a CMS that head office could edit itself.',
+					'I explored the pages in Figma, five concepts for the jobs pages alone, and did most of the design in Webflow, where I built the site on 18 CMS collections, from dishes and allergens to opening hours. A price, an opening time or a new vacancy changes in one place and shows up everywhere it is used.',
+				],
+				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
+			},
+			{
 				heading: 'One order button instead of three',
 				body: [
 					'In February 2021 the top bar had eight items, and three of them were different ways to order: To go, Happy Delivery and Takeaway. In the new site they became one order button, Bestellen.',
-					'The first screen offers delivery, takeaway and booking a table, and it works as a campaign slot that changes with the season, from a Christmas menu in the designs to terrace bookings when the terraces reopened in June 2021.',
+					'The first screen offers delivery, takeaway and booking a table, and works as a campaign slot that changes with the season. The slot came from a test on the old site: until October 2020 promotions only ran on social media and in the restaurants. The first one on the website, which I tracked, brought 751 clicks from the site, 202 newsletter sign-ups and 88 takeaway orders through its order button.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-nav.webp', alt: 'The Happy Italy top bar in February 2021, with three ways to order, and in June 2021 after the redesign, with one order button and 100 open vacancies on Jobs', w: 1680, h: 820 },
 			},
 			{
 				heading: 'Every restaurant on one template',
 				body: [
-					'Ordering happens per restaurant, so each of the 20 restaurants has its own page from one template: booking a table, with a note that booking for tonight closes at 17:00, the opening hours, the delivery partners that serve that restaurant, the menu, a local deal, and that restaurant’s vacancies.',
+					'On the old site the restaurant map was a static image, and the restaurants were stacked down one long page. Ordering happens per restaurant, so each of the 20 restaurants got its own page from one template: booking a table, with a note that booking for tonight closes at 17:00, the opening hours, the delivery partners that serve that restaurant, the menu, a local deal, and that restaurant’s vacancies.',
 					'Guests see what their own restaurant offers instead of a chain-wide list that may not apply to them.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-restaurant.webp', alt: 'The Breda restaurant page: booking with a note about booking for tonight, opening hours, the delivery partners that serve Breda, and the restaurant’s own vacancies', w: 1626, h: 1416 },
@@ -417,7 +436,7 @@ export const cases: Case[] = [
 			{
 				heading: 'Pick your dishes before you order',
 				body: [
-					'The whole menu lives in the CMS, and I entered it myself: 138 dishes, each with a photo, a price, a short description and the allergens it contains. Guests browse it by section, from appetizers, pizza and pasta to salads, panini and dolci, search for a dish, or switch the pizzas to vegetarian and vegan only.',
+					'The old menu was a popup of plain text. The new one is a page of its own, and the whole menu lives in the CMS. I entered it myself: 138 dishes, each with a photo, a price, a short description and the allergens it contains. Guests browse it by section, from appetizers, pizza and pasta to salads, panini and dolci, search for a dish, or switch the pizzas to vegetarian and vegan only.',
 					'A heart on each dish saves it to the guest’s own favourites, and a counter shows how many they have picked. Guests put together what they wanted at home before their visit, or at the table.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-dishes.webp', alt: 'The menu on desktop: pizzas with a photo, price, description and allergen icons, two of them saved with a heart. On the phone: the menu sections, search, and a counter showing two saved dishes', w: 2378, h: 1433 },
@@ -425,7 +444,7 @@ export const cases: Case[] = [
 			{
 				heading: 'A menu without your allergens',
 				body: [
-					'Every dish is linked to the 14 allergens it contains and marked vegan, spicy or halal. Guests with a food allergy untick theirs and see their own menu, instead of reading every description.',
+					'Every dish is linked to the 14 allergens it contains and marked vegan, spicy or halal. Guests with a food allergy untick theirs and see their own menu, instead of clicking through to every dish.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-menu.webp', alt: 'The menu with the allergy filter open: untick your allergens to see your own menu, with all 14 allergens listed', w: 1626, h: 1237 },
 			},
@@ -434,16 +453,9 @@ export const cases: Case[] = [
 				body: [
 					'In June 2021 the site listed 100 open vacancies. Most of them were the same few roles in different restaurants, so I set up the jobs as 16 standard roles, each described once. HR then added the vacancies themselves, without me: pick a role, a restaurant and the hours, fulltime, parttime or flex.',
 					'Every vacancy gets its own page with one apply button, and the number on Jobs in the top bar counts the open vacancies straight from the CMS.',
+					'In its first 16 weeks, from mid-March to early July 2021, the apply form took 704 applications from 564 people, and the count grew every month: 154 in April, 196 in May, 215 in June. Every restaurant received applications.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-web-jobs.webp', alt: 'The jobs overview grouped by restaurant on desktop, and a vacancy page on a phone with one apply button', w: 2286, h: 1368 },
-			},
-			{
-				heading: 'Designed where it was built',
-				body: [
-					'I explored five concepts for the jobs pages in Figma, from wireframe to final design. Most of the design then happened in Webflow, where I built the site on 18 CMS collections, from dishes and allergens to opening hours.',
-					'A price, an opening time or a new vacancy changes in one place and shows up everywhere it is used.',
-				],
-				shot: { kind: 'image', img: '/img/happy/happy-jobs.webp', alt: 'Four concepts for the Happy Italy jobs pages, from two wireframes to two final designs', w: 1824, h: 1420 },
 			},
 			{
 				heading: 'What happened next',
@@ -452,16 +464,17 @@ export const cases: Case[] = [
 				],
 			},
 			{
-				heading: 'What shipped, what I can’t show',
+				heading: 'What shipped, what I measured, what I can’t show',
 				body: [
-					'Shipped: the website for phone, tablet and desktop, with ordering, the restaurant pages, the menu with allergy filter and the jobs pages, live in 2021. The screens here come from the Webflow project, which still runs on its Webflow address.',
-					'Not measured: I have no before-and-after numbers for orders or applications.',
+					'Shipped: the website for phone, tablet and desktop, live from March 2021, with ordering, the restaurant pages, the menu with allergy filter and favourites, and the jobs pages. The screens here come from the Webflow project, which still runs on its Webflow address.',
+					'Measured: the 2020 baseline, the feedback round and the October 2020 promotion come from my Google Analytics reports and research notes of the time. The 704 applications come from the Webflow form export of July 2021.',
+					'Can’t show: before-and-after numbers for orders and bookings, and an application count from the old site to compare with.',
 				],
 			},
 			{
 				heading: 'What I’d change',
 				body: [
-					'Measure before and after. I didn’t set a baseline for orders and applications before the launch, so the redesign has no number. Next time I agree on the numbers to watch with the business before the build starts.',
+					'Keep the numbers outside the tool. My 2020 baseline survived because I wrote it into my research notes. The after-launch figures stayed in Google Analytics, and Google deleted that data in 2024. Next time I agree the numbers to watch with the business before the build, and save the before and after side by side in the project notes.',
 				],
 			},
 		],
