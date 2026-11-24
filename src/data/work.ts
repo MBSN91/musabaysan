@@ -408,6 +408,7 @@ export const cases: Case[] = [
 					'In a short feedback round on the site, 8 of 40 people could not book a table or did not see how straight away. I then gave five colleagues at head office three tasks in Lookback: order takeaway, book a table for two at eight, and look at the menu while you wait. The menu was a popup of plain text without sections, and one tester said she couldn’t see what she was choosing. Allergen information sat two clicks away from the dish.',
 					'While the tests ran, I cut one step from the booking path on the old site straight away. The rest needed a new site.',
 				],
+				shot: { kind: 'image', img: '/img/happy/happy-web-research.webp', alt: 'The old Happy Italy homepage in November 2020, with the restaurants stacked down the page, next to the numbers measured in 2020: 28,189 visitors in one week, 86% on a phone, 52% of visits ended within ten seconds, and 8 of 40 people could not book a table or not straight away', w: 1960, h: 1560 },
 			},
 			{
 				heading: 'A site head office could edit itself',
