@@ -250,6 +250,8 @@ export const cases: Case[] = [
 		// Split from the website on Musa's request. Never show the filled-in sign-up screens (real phone number and email).
 		// Drive (read 24 Nov 2026): survey export (93 responses), feedback concepts Oct 2020, flowchart Aug 2020, ordering test notes 14 Jun 2021
 		// (6 testers with notes, 24 to 42), handover notes Jul 2021 (soft launch near, scope cuts, coupon QR idea). Never quote the handover's credentials.
+		// Table QR stands (Dec 2020) linked to the Eijsink web ordering branded Happy Italy, not the app; the app used the same platform via its API (Musa, 24 Nov).
+		// Musa doesn't recall why the one-sheet rating won: never present it as a reasoned decision.
 		slug: 'happy-italy-app',
 		name: 'Happy Italy app',
 		title: 'A loyalty app scoped to what the tills could do',
@@ -311,6 +313,7 @@ export const cases: Case[] = [
 				heading: 'Order where you are',
 				body: [
 					'One start for every way to order: takeaway, delivery, or order and pay at the table. Then the restaurant, the day and the time, so the menu, prices and pickup slot are those of that restaurant at that moment.',
+					'All of it ran on the till supplier’s ordering platform. The chain’s web ordering used it, the table QR stands I prepared for more than 2,700 tables in 19 restaurants linked to it, and the app connected to it through its API, so a menu or price changed once, everywhere.',
 					'In June 2021 I tested three versions of the ordering flow with six people aged 24 to 42 who order food on their phone, with one task: order a margherita with extra cheese and pay. In the first, testers weren’t sure the pizza was in the cart, hunted for the extra topping and missed the payment method. The third confirmed every addition straight away, listed all toppings together and put the payment method in plain sight. All six found it the easiest, and four scored it 5 out of 5.',
 					'Still open after the test: more colour, because the dark screens felt less like Happy Italy to some, and choosing the pickup time at the end of the order.',
 				],
@@ -320,7 +323,7 @@ export const cases: Case[] = [
 				heading: 'Feedback earns points',
 				body: [
 					'The chain wanted to hear from guests while the visit was still fresh. In the flow I drew, the request comes a while after the order or once the till marks the bill paid, and answering earns points, so feedback sits inside the loyalty loop instead of in a survey email.',
-					'I explored several ways to ask. The option that lost: one question per screen, with faces and a progress line towards a trophy. The prototype kept five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu, each with an optional comment.',
+					'I explored several ways to ask, from one question per screen with faces and a progress line to everything on a single sheet. The final prototype has five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu, each with an optional comment.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-feedback.webp', alt: 'Rating a visit in the app. Kept: five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu, with a button to claim your points. Explored: one question per screen with faces and a progress line, ending in plus ten points', w: 2154, h: 1320 },
 			},
