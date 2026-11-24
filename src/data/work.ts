@@ -248,19 +248,21 @@ export const cases: Case[] = [
 	{
 		// Happy Italy app. Rewritten 17 Nov 2026 from Musa's 2021 case page and his Figma files; facts confirmed by Musa.
 		// Split from the website on Musa's request. Never show the filled-in sign-up screens (real phone number and email).
+		// Drive (read 24 Nov 2026): survey export (93 responses), feedback concepts Oct 2020, flowchart Aug 2020, ordering test notes 14 Jun 2021
+		// (6 testers with notes, 24 to 42), handover notes Jul 2021 (soft launch near, scope cuts, coupon QR idea). Never quote the handover's credentials.
 		slug: 'happy-italy-app',
 		name: 'Happy Italy app',
 		title: 'A loyalty app scoped to what the tills could do',
-		summary: 'Happy Italy, a chain of 20 Italian restaurants, wanted a direct line to its guests while lockdowns kept the dining rooms closed. I designed its ordering and rewards app from research to the design system the developers built from, and cut the first version to what the restaurant systems could actually carry.',
+		summary: 'Happy Italy, a chain of 20 Italian restaurants, wanted a direct line to its guests while lockdowns kept the dining rooms closed. I designed its ordering and rewards app from a survey of 93 people to a tested ordering flow and the design system an outside agency built from, and cut the first version to what the restaurant systems could carry.',
 		field: 'var(--panel-3)',
 		ink: 'var(--on-panel-3)',
 		facts: [
 			['Role', 'UX designer: research, UX and visual design, prototyping and testing'],
-			['Worked with', 'Management, restaurant stakeholders, an external development team'],
+			['Worked with', 'Management, restaurant stakeholders, an external development agency'],
 			['Platform', 'iOS and Android'],
 			['Years', '2020 to 2021'],
-			['Status', 'Designed, tested and in development when I left in July 2021. Never launched: the chain changed owners and the app was not funded'],
-			['Research', 'A survey of 90+ people, interviews, Google Analytics and Hotjar'],
+			['Status', 'Designed, tested and in development when I left in July 2021, nearing a small soft launch. Never launched: the chain changed owners and the app was not funded'],
+			['Research', 'A survey of 93 people, interviews, Google Analytics, Hotjar and usability tests'],
 		],
 		front: {
 			mast: 'Happy Italy',
@@ -269,7 +271,7 @@ export const cases: Case[] = [
 			star: { kind: 'comp', img: '/img/happy/happy-cover.webp', alt: 'Five Happy Italy app screens: picking a day and time, a live coupon with its countdown, the home screen with coupons, the profile with points, and a coupon', w: 2400, h: 1399 },
 		},
 		chapter: {
-			body: 'An ordering and rewards app for a restaurant chain closed by the lockdowns: from a survey of [90]+ people to a [114]-screen prototype, with the first version cut to what the tills could carry.',
+			body: 'An ordering and rewards app for a restaurant chain closed by the lockdowns: from a survey of [93] people to a [114]-screen prototype, with the first version cut to what the tills could carry.',
 			visual: { kind: 'image', img: '/img/happy/happy-cover.webp', alt: 'Five Happy Italy app screens: picking a day and time, a live coupon with its countdown, the home screen with coupons, the profile with points, and a coupon', w: 2400, h: 1399 },
 		},
 		closing: {
@@ -291,7 +293,7 @@ export const cases: Case[] = [
 			{
 				heading: 'Research cut the wish list',
 				body: [
-					'The kick-off with the stakeholders produced far more features than a first version could hold. I surveyed 90+ people about using apps in restaurants, recruited through Facebook groups, the newsletter and Reddit, and combined it with interviews, Google Analytics and Hotjar.',
+					'The kick-off with the stakeholders produced far more features than a first version could hold. I surveyed 93 people about restaurants and apps, recruited mostly through Facebook groups and Reddit, and combined it with interviews, Google Analytics and Hotjar. Most had never downloaded a restaurant app, and several said they would not install one for a single visit. Those who saw value named deals you only get in the app, and ordering ahead.',
 					'One persona could not cover the guests of a restaurant chain, so I made two and used them to decide what went into the first version: ordering, coupons, points and feedback. Everything else went on a list for version 2. The option that lost: launching with everything the kick-off asked for.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-personas.webp', alt: 'The two personas for the Happy Italy app, Charlotte and Wouter, with their needs and pain points', w: 1820, h: 1832 },
@@ -301,6 +303,7 @@ export const cases: Case[] = [
 				body: [
 					'Coupons were the reason guests said they would open the app, so they lead the home screen; I tested three menu structures as wireframes and built on the one guests found most natural.',
 					'A coupon is used in the restaurant, so the guest activates it in front of staff and it stays valid for 15 minutes, with the countdown on screen. A screenshot can’t be passed around, and staff see at a glance that it is live. Expired coupons stay on the home screen, greyed out, so nobody wonders where theirs went.',
+					'Showing a coupon still leaves staff to judge it, and in my handover I called it a source of arguments at the counter. For the next version I listed a unique QR code per coupon: staff scan it, the discount applies itself, and the chain sees how many coupons are used in the app and in the restaurant.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-coupon.webp', alt: 'The coupon flow in the app: the coupon, the prompt to activate it in front of staff, and the live coupon counting down from 15 minutes', w: 2213, h: 1433 },
 			},
@@ -308,20 +311,23 @@ export const cases: Case[] = [
 				heading: 'Order where you are',
 				body: [
 					'One start for every way to order: takeaway, delivery, or order and pay at the table. Then the restaurant, the day and the time, so the menu, prices and pickup slot are those of that restaurant at that moment.',
-					'A clickable prototype went to a small group of testers, and ordering and paying were where they struggled. We enlarged the buttons and the type, and added a red badge on the cart the moment something is added, so guests can see it worked.',
+					'In June 2021 I tested three versions of the ordering flow with six people aged 24 to 42 who order food on their phone, with one task: order a margherita with extra cheese and pay. In the first, testers weren’t sure the pizza was in the cart, hunted for the extra topping and missed the payment method. The third confirmed every addition straight away, listed all toppings together and put the payment method in plain sight. All six found it the easiest, and four scored it 5 out of 5.',
+					'Still open after the test: more colour, because the dark screens felt less like Happy Italy to some, and choosing the pickup time at the end of the order.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-ordering.webp', alt: 'A pizza page in the app before and after the prototype test: after the test, a large add-to-cart button with the price', w: 1690, h: 1373 },
 			},
 			{
 				heading: 'Feedback earns points',
 				body: [
-					'The chain wanted to hear from guests after a visit. Rating it takes stars, a few short questions and an optional comment, and earns points, so feedback sits inside the loyalty loop instead of in a survey email.',
+					'The chain wanted to hear from guests while the visit was still fresh. In the flow I drew, the request comes a while after the order or once the till marks the bill paid, and answering earns points, so feedback sits inside the loyalty loop instead of in a survey email.',
+					'I explored several ways to ask. The option that lost: one question per screen, with faces and a progress line towards a trophy. The prototype kept five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu, each with an optional comment.',
 				],
+				shot: { kind: 'image', img: '/img/happy/happy-feedback.webp', alt: 'Rating a visit in the app. Kept: a prompt that promises points, then five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu. Explored: one question per screen with faces and a progress line, ending in plus ten points', w: 2576, h: 1200 },
 			},
 			{
 				heading: 'Rewards waited for the till',
 				body: [
-					'During the build it turned out the till and the online ordering platform could not yet handle claiming rewards with points. We took claiming out of the first version instead of shipping a flow that would fail at the counter; guests kept collecting points until the systems caught up.',
+					'During the build it turned out the till and the online ordering platform could not yet handle claiming rewards with points. We took claiming out of the first version instead of shipping a flow that would fail at the counter; guests kept collecting points until the systems caught up. The same limit held back allergens: I had designed them, but the till’s back office couldn’t hold them yet.',
 					'Because the app waits on several outside systems, I designed a loading state for every screen that does, so guests always see that something is happening.',
 				],
 			},
@@ -330,20 +336,21 @@ export const cases: Case[] = [
 				body: [
 					'There was no design system for web or app. I built one from the 2018 brand identity, updated so it would not look like the fast-food apps: type, colour sets for dark and light mode and for coupons, icons, navigation and 34 components.',
 					'Every app screen exists in dark and light. I checked colour pairs against WCAG 2.0 contrast and refined the library before handing it to the external developers.',
+					'An outside agency built the app on the till supplier’s system, which held the menu and prices. I tested the builds at the office and fed what I found back to the developers through their tracker.',
 				],
 				shot: { kind: 'image', img: '/img/happy/happy-system.webp', alt: 'Part of the Happy Italy design system: brand and coupon colours, dark and light greys, coupon cards, buttons, navigation and the points block', w: 2207, h: 1560 },
 			},
 			{
 				heading: 'What happened next',
 				body: [
-					'In the second half of 2021 the chain changed owners, and the new owner did not fund the app. I had left in July 2021, while it was in development.',
+					'When I left in July 2021, the first version was nearing a small soft launch, and I wrote a handover for the next designer: what to test, and what waited for later versions, from order history and favourites to booking a table in the app and following your order live. Later that year the chain changed owners, and the new owner did not fund the app.',
 				],
 			},
 			{
 				heading: 'What we tested, what shipped, what I can’t show',
 				body: [
 					'Shipped to the developers: the design system and a 114-screen prototype.',
-					'Seen: the survey, and the prototype tests that changed ordering and checkout.',
+					'Tested: the survey of 93 people, and the June 2021 ordering test, where all six testers found the third version the easiest.',
 					'No launch data: the app never reached guests.',
 				],
 			},
@@ -409,7 +416,7 @@ export const cases: Case[] = [
 					'In a short feedback round on the site, 8 of 40 people could not book a table or did not see how straight away. I then gave five colleagues at head office three tasks in Lookback: order takeaway, book a table for two at eight, and look at the menu while you wait. The menu was a popup of plain text, one tester said she couldn’t see what she was choosing, and allergen information sat two clicks away from the dish.',
 					'While the tests ran, I cut one step from the booking path on the old site straight away. The rest needed a new site.',
 				],
-				shot: { kind: 'image', img: '/img/happy/happy-web-research.webp', alt: 'The old Happy Italy homepage in November 2020, with the restaurants stacked down the page, next to the numbers measured in 2020: 28,189 visitors in one week, 86% on a phone, 52% of visits ended within ten seconds, and 8 of 40 people could not book a table or not straight away', w: 1960, h: 1560 },
+				shot: { kind: 'image', img: '/img/happy/happy-web-research.webp', alt: 'The old Happy Italy homepage in November 2020, with the restaurants stacked down the page, next to the numbers measured in 2020: 28,189 visitors in one week, 86% on a phone, 52% of visits ended within ten seconds, and 8 of 40 people could not book a table or not straight away', w: 1912, h: 1560 },
 			},
 			{
 				heading: 'A site head office could edit itself',
