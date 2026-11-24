@@ -322,7 +322,7 @@ export const cases: Case[] = [
 					'The chain wanted to hear from guests while the visit was still fresh. In the flow I drew, the request comes a while after the order or once the till marks the bill paid, and answering earns points, so feedback sits inside the loyalty loop instead of in a survey email.',
 					'I explored several ways to ask. The option that lost: one question per screen, with faces and a progress line towards a trophy. The prototype kept five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu, each with an optional comment.',
 				],
-				shot: { kind: 'image', img: '/img/happy/happy-feedback.webp', alt: 'Rating a visit in the app. Kept: a prompt that promises points, then five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu. Explored: one question per screen with faces and a progress line, ending in plus ten points', w: 2576, h: 1200 },
+				shot: { kind: 'image', img: '/img/happy/happy-feedback.webp', alt: 'Rating a visit in the app. Kept: five quick star ratings on one sheet, on the service, the speed, the food, the atmosphere and the menu, with a button to claim your points. Explored: one question per screen with faces and a progress line, ending in plus ten points', w: 2154, h: 1320 },
 			},
 			{
 				heading: 'Rewards waited for the till',
@@ -416,7 +416,7 @@ export const cases: Case[] = [
 					'In a short feedback round on the site, 8 of 40 people could not book a table or did not see how straight away. I then gave five colleagues at head office three tasks in Lookback: order takeaway, book a table for two at eight, and look at the menu while you wait. The menu was a popup of plain text, one tester said she couldn’t see what she was choosing, and allergen information sat two clicks away from the dish.',
 					'While the tests ran, I cut one step from the booking path on the old site straight away. The rest needed a new site.',
 				],
-				shot: { kind: 'image', img: '/img/happy/happy-web-research.webp', alt: 'The old Happy Italy homepage in November 2020, with the restaurants stacked down the page, next to the numbers measured in 2020: 28,189 visitors in one week, 86% on a phone, 52% of visits ended within ten seconds, and 8 of 40 people could not book a table or not straight away', w: 1912, h: 1560 },
+				shot: { kind: 'image', img: '/img/happy/happy-web-research.webp', alt: 'The old Happy Italy homepage in November 2020, with the restaurants stacked down the page, next to the numbers measured in 2020: 28,189 visitors in one week, 86% on a phone, 52% of visits ended within ten seconds, and 8 of 40 people could not book a table or not straight away', w: 2080, h: 1720 },
 			},
 			{
 				heading: 'A site head office could edit itself',
